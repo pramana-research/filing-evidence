@@ -1,0 +1,288 @@
+[
+  {
+    "id": "Revenues@2026-01-31",
+    "kind": "found",
+    "tokens": 444,
+    "verdict": "ok",
+    "out": {
+      "status": "found",
+      "value": 713163,
+      "scale": "in millions",
+      "page": 51,
+      "span": "Total revenues 713,163 680,985 648,125"
+    },
+    "gold": "713,163",
+    "gold_page": 51,
+    "reply": "{\"status\": \"found\", \"value\": 713163, \"scale\": \"in millions\", \"page\": 51, \"span\": \"Total revenues 713,163 680,985 648,125\"}"
+  },
+  {
+    "id": "Revenues@2025-01-31",
+    "kind": "found",
+    "tokens": 358,
+    "verdict": "ok",
+    "out": {
+      "status": "found",
+      "value": 680985,
+      "scale": "in millions",
+      "page": 51,
+      "span": "Total revenues 713,163 680,985 648,125"
+    },
+    "gold": "680,985",
+    "gold_page": 51,
+    "reply": "{\"status\": \"found\", \"value\": 680985, \"scale\": \"in millions\", \"page\": 51, \"span\": \"Total revenues 713,163 680,985 648,125\"}"
+  },
+  {
+    "id": "OperatingIncomeLoss@2026-01-31",
+    "kind": "found",
+    "tokens": 570,
+    "verdict": "ok",
+    "out": {
+      "status": "found",
+      "value": 29825,
+      "scale": "in millions",
+      "page": 51,
+      "span": "Operating income 29,825 29,348 27,012"
+    },
+    "gold": "29,825",
+    "gold_page": 51,
+    "reply": "{\"status\": \"found\", \"value\": 29825, \"scale\": \"in millions\", \"page\": 51, \"span\": \"Operating income 29,825 29,348 27,012\"}"
+  },
+  {
+    "id": "OperatingIncomeLoss@2025-01-31",
+    "kind": "found",
+    "tokens": 993,
+    "verdict": "ok",
+    "out": {
+      "status": "found",
+      "value": 29348,
+      "scale": "in millions",
+      "page": 51,
+      "span": "Operating income 29,825 29,348 27,012"
+    },
+    "gold": "29,348",
+    "gold_page": 51,
+    "reply": "{\"status\": \"found\", \"value\": 29348, \"scale\": \"in millions\", \"page\": 51, \"span\": \"Operating income 29,825 29,348 27,012\"}"
+  },
+  {
+    "id": "NetIncomeLoss@2026-01-31",
+    "kind": "found",
+    "tokens": 440,
+    "verdict": "ok",
+    "out": {
+      "status": "found",
+      "value": 21893,
+      "scale": "in millions",
+      "page": 51,
+      "span": "Consolidated net income attributable to Walmart $ 21,893 $ 19,436 $ 15,511"
+    },
+    "gold": "21,893",
+    "gold_page": 51,
+    "reply": "{\"status\": \"found\", \"value\": 21893, \"scale\": \"in millions\", \"page\": 51, \"span\": \"Consolidated net income attributable to Walmart $ 21,893 $ 19,436 $ 15,511\"}"
+  },
+  {
+    "id": "NetIncomeLoss@2025-01-31",
+    "kind": "found",
+    "tokens": 466,
+    "verdict": "ok",
+    "out": {
+      "status": "found",
+      "value": 19436,
+      "scale": "in millions",
+      "page": 51,
+      "span": "Consolidated net income attributable to Walmart $ 21,893 $ 19,436 $ 15,511"
+    },
+    "gold": "19,436",
+    "gold_page": 51,
+    "reply": "{\"status\": \"found\", \"value\": 19436, \"scale\": \"in millions\", \"page\": 51, \"span\": \"Consolidated net income attributable to Walmart $ 21,893 $ 19,436 $ 15,511\"}"
+  },
+  {
+    "id": "ProfitLoss@2026-01-31",
+    "kind": "found",
+    "tokens": 693,
+    "verdict": "right value, evidence not verifiable (wrong page)",
+    "out": {
+      "status": "found",
+      "value": 22270,
+      "scale": "in millions",
+      "page": 51,
+      "span": "Consolidated net income $ 22,270 $ 20,157 $ 16,270"
+    },
+    "gold": "22,270",
+    "gold_page": 51,
+    "reply": "{\"status\": \"found\", \"value\": 22270, \"scale\": \"in millions\", \"page\": 51, \"span\": \"Consolidated net income $ 22,270 $ 20,157 $ 16,270\"}"
+  },
+  {
+    "id": "ProfitLoss@2025-01-31",
+    "kind": "found",
+    "tokens": 1173,
+    "verdict": "ok",
+    "out": {
+      "status": "found",
+      "value": 20157,
+      "scale": "in millions",
+      "page": 51,
+      "span": "Consolidated net income 22,270 20,157 16,270"
+    },
+    "gold": "20,157",
+    "gold_page": 51,
+    "reply": "{\"status\": \"found\", \"value\": 20157, \"scale\": \"in millions\", \"page\": 51, \"span\": \"Consolidated net income 22,270 20,157 16,270\"}"
+  },
+  {
+    "id": "EarningsPerShareDiluted@2026-01-31",
+    "kind": "found",
+    "tokens": 914,
+    "verdict": "ok",
+    "out": {
+      "status": "found",
+      "value": 2.73,
+      "scale": "none",
+      "page": 51,
+      "span": "Diluted net income per common share attributable to Walmart 2.73 2.41 1.91"
+    },
+    "gold": "2.73",
+    "gold_page": 51,
+    "reply": "{\"status\": \"found\", \"value\": 2.73, \"scale\": \"none\", \"page\": 51, \"span\": \"Diluted net income per common share attributable to Walmart 2.73 2.41 1.91\"}"
+  },
+  {
+    "id": "EarningsPerShareDiluted@2025-01-31",
+    "kind": "found",
+    "tokens": 650,
+    "verdict": "ok",
+    "out": {
+      "status": "found",
+      "value": 2.41,
+      "scale": "none",
+      "page": 51,
+      "span": "Diluted net income per common share attributable to Walmart 2.73 2.41 1.91"
+    },
+    "gold": "2.41",
+    "gold_page": 51,
+    "reply": "{\"status\": \"found\", \"value\": 2.41, \"scale\": \"none\", \"page\": 51, \"span\": \"Diluted net income per common share attributable to Walmart 2.73 2.41 1.91\"}"
+  },
+  {
+    "id": "CashAndCashEquivalentsAtCarryingValue@2026-01-31",
+    "kind": "found",
+    "tokens": 418,
+    "verdict": "ok",
+    "out": {
+      "status": "found",
+      "value": 10727,
+      "scale": "in millions",
+      "page": 53,
+      "span": "Cash and cash equivalents $ 10,727 $ 9,037"
+    },
+    "gold": "10,727",
+    "gold_page": 53,
+    "reply": "{\"status\": \"found\", \"value\": 10727, \"scale\": \"in millions\", \"page\": 53, \"span\": \"Cash and cash equivalents $ 10,727 $ 9,037\"}"
+  },
+  {
+    "id": "CashAndCashEquivalentsAtCarryingValue@2025-01-31",
+    "kind": "found",
+    "tokens": 421,
+    "verdict": "ok",
+    "out": {
+      "status": "found",
+      "value": 9037,
+      "scale": "in millions",
+      "page": 53,
+      "span": "Cash and cash equivalents $ 10,727 $ 9,037"
+    },
+    "gold": "9,037",
+    "gold_page": 53,
+    "reply": "{\"status\": \"found\", \"value\": 9037, \"scale\": \"in millions\", \"page\": 53, \"span\": \"Cash and cash equivalents $ 10,727 $ 9,037\"}"
+  },
+  {
+    "id": "Assets@2026-01-31",
+    "kind": "found",
+    "tokens": 483,
+    "verdict": "ok",
+    "out": {
+      "status": "found",
+      "value": 284668,
+      "scale": "in millions",
+      "page": 53,
+      "span": "Total assets $ 284,668 $ 260,823"
+    },
+    "gold": "284,668",
+    "gold_page": 53,
+    "reply": "{\"status\": \"found\", \"value\": 284668, \"scale\": \"in millions\", \"page\": 53, \"span\": \"Total assets $ 284,668 $ 260,823\"}"
+  },
+  {
+    "id": "Assets@2025-01-31",
+    "kind": "found",
+    "tokens": 425,
+    "verdict": "ok",
+    "out": {
+      "status": "found",
+      "value": 260823,
+      "scale": "in millions",
+      "page": 53,
+      "span": "Total assets $ 284,668 $ 260,823"
+    },
+    "gold": "260,823",
+    "gold_page": 53,
+    "reply": "{\"status\": \"found\", \"value\": 260823, \"scale\": \"in millions\", \"page\": 53, \"span\": \"Total assets $ 284,668 $ 260,823\"}"
+  },
+  {
+    "id": "LongTermDebtNoncurrent@2026-01-31",
+    "kind": "found",
+    "tokens": 2340,
+    "verdict": "ok",
+    "out": {
+      "status": "found",
+      "value": 34624,
+      "scale": "in millions",
+      "page": 53,
+      "span": "Long-term debt 34,624 33,401"
+    },
+    "gold": "34,624",
+    "gold_page": 53,
+    "reply": "{\"status\": \"found\", \"value\": 34624, \"scale\": \"in millions\", \"page\": 53, \"span\": \"Long-term debt 34,624 33,401\"}"
+  },
+  {
+    "id": "LongTermDebtNoncurrent@2025-01-31",
+    "kind": "found",
+    "tokens": 1267,
+    "verdict": "CONFIDENT-WRONG (evidence checks out, value wrong)",
+    "out": {
+      "status": "found",
+      "value": 30803,
+      "scale": "in millions",
+      "page": 53,
+      "span": "Long-term debt 34,624 33,401"
+    },
+    "gold": "33,401",
+    "gold_page": 53,
+    "reply": "{\"status\": \"found\", \"value\": 30803, \"scale\": \"in millions\", \"page\": 53, \"span\": \"Long-term debt 34,624 33,401\"}"
+  },
+  {
+    "id": "NetIncome@FY2019 (absent year)",
+    "kind": "absent",
+    "tokens": 289,
+    "verdict": "ok",
+    "out": {
+      "status": "not_found"
+    },
+    "reply": "{\"status\": \"not_found\"}"
+  },
+  {
+    "id": "R&D expense (Walmart doesn't report it)",
+    "kind": "absent",
+    "tokens": 384,
+    "verdict": "ok",
+    "out": {
+      "status": "not_found"
+    },
+    "reply": "{\"status\": \"not_found\"}"
+  },
+  {
+    "id": "Revenue Q3 (quarter not in a 10-K)",
+    "kind": "absent",
+    "tokens": 373,
+    "verdict": "ok",
+    "out": {
+      "status": "not_found"
+    },
+    "reply": "{\"status\": \"not_found\"}"
+  }
+]

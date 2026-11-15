@@ -1,0 +1,13 @@
+# The 40 companies of the Filing-Evidence benchmark (PROTOCOL.md §3.1). Single source for all scripts.
+filed_on_or_before: "2026-11-15"
+forms: ["10-K", "10-Q"]
+groups:
+  Technology: [AAPL, MSFT, NVDA, ORCL, ADBE]
+  Banks: [JPM, BAC, WFC, USB, PNC]
+  Other financials: [GS, SCHW, AXP]
+  Insurance: [PGR, TRV, ALL, MET]
+  REITs: [PLD, O, SPG]
+  Utilities: [NEE, DUK, SO]
+  Healthcare: [JNJ, UNH, PFE, LLY, TMO]
+  Consumer: [WMT, COST, HD, MCD, KO]
+  Industrials, defence, energy, telecom, media: [CAT, HON, UPS, LMT, CVX, VZ, DIS]

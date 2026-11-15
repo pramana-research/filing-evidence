@@ -1,0 +1,2666 @@
+{
+  "created": "2026-11-15T12:27:48+00:00",
+  "cutoff": "2026-11-15",
+  "source": "SEC EDGAR (sec.gov/Archives), public records",
+  "filings": [
+    {
+      "ticker": "AAPL",
+      "group": "Technology",
+      "cik": 320193,
+      "company": "Apple Inc.",
+      "form": "10-K",
+      "accession": "0000320193-26-000026",
+      "filed": "2026-11-03",
+      "report_date": "2026-09-26",
+      "primary_document": "aapl-20260926.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000026/FilingSummary.xml",
+          "sha256": "bbe3d2dac9c994bfa5323d2a20ccec8431cadf9e3c8478ee85d23854dd10db92",
+          "bytes": 48480
+        },
+        "documents": [
+          {
+            "name": "aapl-20260926.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000026/aapl-20260926.htm",
+            "sha256": "02af9abd1f26909045fc61a3b365b6fd91a8a33c58994900edba0e9acdb1d5a1",
+            "bytes": 1650107
+          }
+        ],
+        "labels": {
+          "name": "aapl-20260926_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000026/aapl-20260926_lab.xml",
+          "sha256": "0a17891af24144cbb881bfb8919f97dc78b5f97f6092a4d4b7383fc2a1627a33",
+          "bytes": 825459
+        }
+      }
+    },
+    {
+      "ticker": "AAPL",
+      "group": "Technology",
+      "cik": 320193,
+      "company": "Apple Inc.",
+      "form": "10-Q",
+      "accession": "0000320193-26-000020",
+      "filed": "2026-07-31",
+      "report_date": "2026-06-27",
+      "primary_document": "aapl-20260627.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/FilingSummary.xml",
+          "sha256": "48813c60ff787b4dcbefa6916997beec6d986940d6afea85b0f73b84d26079ca",
+          "bytes": 28383
+        },
+        "documents": [
+          {
+            "name": "aapl-20260627.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/aapl-20260627.htm",
+            "sha256": "e4adec8be45e72467685b099596eb43fb994d96776054c57b4f69c600bb4ad6f",
+            "bytes": 1018314
+          }
+        ],
+        "labels": {
+          "name": "aapl-20260627_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/aapl-20260627_lab.xml",
+          "sha256": "4f3ec383bcc942aacb369a6d23e897af25e8e04277a569ee8037bc1ea6ea39bf",
+          "bytes": 511737
+        }
+      }
+    },
+    {
+      "ticker": "MSFT",
+      "group": "Technology",
+      "cik": 789019,
+      "company": "MICROSOFT CORP",
+      "form": "10-K",
+      "accession": "0001193125-26-323660",
+      "filed": "2026-07-29",
+      "report_date": "2026-06-30",
+      "primary_document": "msft-20260630.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/FilingSummary.xml",
+          "sha256": "7aebf20bc8d8fbff937ee00db1d30319dd03712cfa45d083c96ca18bf072d0f6",
+          "bytes": 68644
+        },
+        "documents": [
+          {
+            "name": "msft-20260630.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm",
+            "sha256": "8280da84d81fb57b3f3684e0af6e94d581e76502a1a0bb84f8067624064faa22",
+            "bytes": 8585605
+          }
+        ],
+        "labels": {
+          "name": "msft-20260630.xsd",
+          "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.xsd",
+          "sha256": "29d4cdf7695b78550142ff145e3981d80637ecb3290383be4fa779d9be3d0512",
+          "bytes": 2170276
+        }
+      }
+    },
+    {
+      "ticker": "MSFT",
+      "group": "Technology",
+      "cik": 789019,
+      "company": "MICROSOFT CORP",
+      "form": "10-Q",
+      "accession": "0001193125-26-436133",
+      "filed": "2026-10-28",
+      "report_date": "2026-09-30",
+      "primary_document": "msft-20260930.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526436133/FilingSummary.xml",
+          "sha256": "be55ee9052042816798a178590cfb74db67bc14ad49440987c3f4b9dc17c74cb",
+          "bytes": 51721
+        },
+        "documents": [
+          {
+            "name": "msft-20260930.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526436133/msft-20260930.htm",
+            "sha256": "a50ac57adcd6a32f5f4709c3a65da8af141c9891e80063d124e95c6352cbaa5d",
+            "bytes": 5482964
+          }
+        ],
+        "labels": {
+          "name": "msft-20260930.xsd",
+          "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526436133/msft-20260930.xsd",
+          "sha256": "8e0e9c9c97cc16d4f0fd225d5e8b6a20b39b3090b626d7bcd728814d2364215a",
+          "bytes": 1500127
+        }
+      }
+    },
+    {
+      "ticker": "NVDA",
+      "group": "Technology",
+      "cik": 1045810,
+      "company": "NVIDIA CORP",
+      "form": "10-K",
+      "accession": "0001045810-26-000021",
+      "filed": "2026-02-25",
+      "report_date": "2026-01-25",
+      "primary_document": "nvda-20260125.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/FilingSummary.xml",
+          "sha256": "368d8bd0f1906c4a60177387b8944948c964a0182fad38464e6613032b7953c6",
+          "bytes": 52270
+        },
+        "documents": [
+          {
+            "name": "nvda-20260125.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+            "sha256": "216bc969a5133d75f5064c52db671e4e380285d8ed9545f2b69f7bc38141ea7f",
+            "bytes": 1967920
+          }
+        ],
+        "labels": {
+          "name": "nvda-20260125_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125_lab.xml",
+          "sha256": "b79a3977b491bc85a979a9d9e92b39396021662c2e2a2861c977fc15d1f2e3ba",
+          "bytes": 903401
+        }
+      }
+    },
+    {
+      "ticker": "NVDA",
+      "group": "Technology",
+      "cik": 1045810,
+      "company": "NVIDIA CORP",
+      "form": "10-Q",
+      "accession": "0001045810-26-000075",
+      "filed": "2026-08-26",
+      "report_date": "2026-07-26",
+      "primary_document": "nvda-20260726.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/FilingSummary.xml",
+          "sha256": "1af3a67ddc2db77280c967fad0b55ef84044bada2715960a396379aceacf0f79",
+          "bytes": 42432
+        },
+        "documents": [
+          {
+            "name": "nvda-20260726.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+            "sha256": "0edc645cfa4172dc3230e9809010b0f4dc21cd0e28a0ab1801b916de07f06803",
+            "bytes": 1517151
+          }
+        ],
+        "labels": {
+          "name": "nvda-20260726_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726_lab.xml",
+          "sha256": "4cadb48b25852b062425fe4584258f81d9691c7f30716ea44effd697eb8a0ae1",
+          "bytes": 701014
+        }
+      }
+    },
+    {
+      "ticker": "ORCL",
+      "group": "Technology",
+      "cik": 1341439,
+      "company": "ORACLE CORP",
+      "form": "10-K",
+      "accession": "0001193125-26-277521",
+      "filed": "2026-06-22",
+      "report_date": "2026-05-31",
+      "primary_document": "orcl-20260531.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526277521/FilingSummary.xml",
+          "sha256": "010b105c0fe64e2ab84f512e2048ca2eb9ff95a040d80eed6b141b91f3a0d848",
+          "bytes": 59749
+        },
+        "documents": [
+          {
+            "name": "orcl-20260531.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526277521/orcl-20260531.htm",
+            "sha256": "42f24a1156993bd538f0007eb5e448f2b0043214682968af343716e20f2fa4c9",
+            "bytes": 6874041
+          }
+        ],
+        "labels": {
+          "name": "orcl-20260531.xsd",
+          "url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526277521/orcl-20260531.xsd",
+          "sha256": "d109086a238fe66c8744a9882be7a3508c31cad8dcba1b17fb9a14d861d6a8ee",
+          "bytes": 2682419
+        }
+      }
+    },
+    {
+      "ticker": "ORCL",
+      "group": "Technology",
+      "cik": 1341439,
+      "company": "ORACLE CORP",
+      "form": "10-Q",
+      "accession": "0001193125-26-389274",
+      "filed": "2026-09-11",
+      "report_date": "2026-08-31",
+      "primary_document": "orcl-20260831.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526389274/FilingSummary.xml",
+          "sha256": "1d357b2184a1b2e0a83e7888f8593e5701651d73d104548c9e9eb3aedcfbdaba",
+          "bytes": 38162
+        },
+        "documents": [
+          {
+            "name": "orcl-20260831.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526389274/orcl-20260831.htm",
+            "sha256": "a904d975c3b9a875d28a5917c37aea69a4afdd86a211fe4063e0add2bf2d0da1",
+            "bytes": 2709057
+          }
+        ],
+        "labels": {
+          "name": "orcl-20260831.xsd",
+          "url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526389274/orcl-20260831.xsd",
+          "sha256": "6cfd7ba064a8897e52830519db76bfb9b50c2561fba3f9b3413cb21c12c7a936",
+          "bytes": 1260971
+        }
+      }
+    },
+    {
+      "ticker": "ADBE",
+      "group": "Technology",
+      "cik": 796343,
+      "company": "ADOBE INC.",
+      "form": "10-K",
+      "accession": "0000796343-26-000003",
+      "filed": "2026-01-15",
+      "report_date": "2025-11-28",
+      "primary_document": "adbe-20251128.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000003/FilingSummary.xml",
+          "sha256": "4f7e77714d0e1b6e40a59ffcc82fe60788bb3b903b4c0e33e41f1a456d9ea2c5",
+          "bytes": 56096
+        },
+        "documents": [
+          {
+            "name": "adbe-20251128.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000003/adbe-20251128.htm",
+            "sha256": "7ca51477782082e8d592ccc0ce9f135dbbe7d2d29734af442b48c9d8d45df020",
+            "bytes": 2321280
+          }
+        ],
+        "labels": {
+          "name": "adbe-20251128_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000003/adbe-20251128_lab.xml",
+          "sha256": "690d84ede7b12b1a89ff3b78a7aaa8fb79691189e02523afce10f19bee2f5b5d",
+          "bytes": 920913
+        }
+      }
+    },
+    {
+      "ticker": "ADBE",
+      "group": "Technology",
+      "cik": 796343,
+      "company": "ADOBE INC.",
+      "form": "10-Q",
+      "accession": "0000796343-26-000156",
+      "filed": "2026-09-22",
+      "report_date": "2026-08-28",
+      "primary_document": "adbe-20260828.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000156/FilingSummary.xml",
+          "sha256": "2c99338e958ebe4a241929e26fc595fdaad7c6b56e8b5da2b43f4bc481231609",
+          "bytes": 39296
+        },
+        "documents": [
+          {
+            "name": "adbe-20260828.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000156/adbe-20260828.htm",
+            "sha256": "af543b534c4903a35e518144a3919cd48f19a09f0c241c32e2e6c7b5ae1f4e94",
+            "bytes": 1641551
+          }
+        ],
+        "labels": {
+          "name": "adbe-20260828_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000156/adbe-20260828_lab.xml",
+          "sha256": "13d50dcc0c3b1a37907ec1397f2ff64b1bd460c42c9d977ab926602216b10b51",
+          "bytes": 666426
+        }
+      }
+    },
+    {
+      "ticker": "JPM",
+      "group": "Banks",
+      "cik": 19617,
+      "company": "JPMORGAN CHASE & CO",
+      "form": "10-K",
+      "accession": "0001628280-26-008131",
+      "filed": "2026-02-13",
+      "report_date": "2025-12-31",
+      "primary_document": "jpm-20251231.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/19617/000162828026008131/FilingSummary.xml",
+          "sha256": "4fdc570b773041c9b61a96cde09917ea29a6e0f36e2c82d8f39e58d3e2b68cdb",
+          "bytes": 145403
+        },
+        "documents": [
+          {
+            "name": "jpm-20251231.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/19617/000162828026008131/jpm-20251231.htm",
+            "sha256": "a6daa64e58df7484c936d2313bc7588cf34c13a89c432d7e4d45d6763557b8b0",
+            "bytes": 12927429
+          }
+        ],
+        "labels": {
+          "name": "jpm-20251231_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/19617/000162828026008131/jpm-20251231_lab.xml",
+          "sha256": "0bc0c30e784e7ef83d81c64a37ab6c69d7082540ab07b857bea80bef3ec715f3",
+          "bytes": 2810980
+        }
+      }
+    },
+    {
+      "ticker": "JPM",
+      "group": "Banks",
+      "cik": 19617,
+      "company": "JPMORGAN CHASE & CO",
+      "form": "10-Q",
+      "accession": "0001628280-26-069523",
+      "filed": "2026-11-03",
+      "report_date": "2026-09-30",
+      "primary_document": "jpm-20260930.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/19617/000162828026069523/FilingSummary.xml",
+          "sha256": "836db2077682e44eb4e1bcf5befe98c7102d6a5ec44d6fdf56a84a95ce2afa74",
+          "bytes": 104712
+        },
+        "documents": [
+          {
+            "name": "jpm-20260930.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/19617/000162828026069523/jpm-20260930.htm",
+            "sha256": "708e71a7981c2242e7160bc831954603898140d7b58c3e310c3303e2a50a821f",
+            "bytes": 11540723
+          }
+        ],
+        "labels": {
+          "name": "jpm-20260930_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/19617/000162828026069523/jpm-20260930_lab.xml",
+          "sha256": "1aa54a9a32cb8a996d406cad427e9591fb117ff23f1db74b8a7b874d230afb9a",
+          "bytes": 2051229
+        }
+      }
+    },
+    {
+      "ticker": "BAC",
+      "group": "Banks",
+      "cik": 70858,
+      "company": "BANK OF AMERICA CORP /DE/",
+      "form": "10-K",
+      "accession": "0000070858-26-000157",
+      "filed": "2026-02-25",
+      "report_date": "2025-12-31",
+      "primary_document": "bac-20251231.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/70858/000007085826000157/FilingSummary.xml",
+          "sha256": "2830b66e9df81b29f8891da36fba50c8ac9d0fd1ad18c28a32413e48fe490582",
+          "bytes": 111895
+        },
+        "documents": [
+          {
+            "name": "bac-20251231.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/70858/000007085826000157/bac-20251231.htm",
+            "sha256": "15f5697a54198cc7b5376d3c3f7124e7bfdf0300ae2c55c094fd12fb93f1772d",
+            "bytes": 12819164
+          }
+        ],
+        "labels": {
+          "name": "bac-20251231_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/70858/000007085826000157/bac-20251231_lab.xml",
+          "sha256": "3c189767e5e2ea75251931daeb4abe3a3ce8c7a9bf0eeab061426a96df29dd24",
+          "bytes": 2456311
+        }
+      }
+    },
+    {
+      "ticker": "BAC",
+      "group": "Banks",
+      "cik": 70858,
+      "company": "BANK OF AMERICA CORP /DE/",
+      "form": "10-Q",
+      "accession": "0000070858-26-000548",
+      "filed": "2026-10-30",
+      "report_date": "2026-09-30",
+      "primary_document": "bac-20260930.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/70858/000007085826000548/FilingSummary.xml",
+          "sha256": "beaf9aebea17085d4f6648d824a0d804b98e156b82200404b8b1e15822cdeab1",
+          "bytes": 73688
+        },
+        "documents": [
+          {
+            "name": "bac-20260930.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/70858/000007085826000548/bac-20260930.htm",
+            "sha256": "43d426d7c7463432c276c3c4037089dcd2d850a9ae29621d4386de2f36e56869",
+            "bytes": 10917358
+          }
+        ],
+        "labels": {
+          "name": "bac-20260930_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/70858/000007085826000548/bac-20260930_lab.xml",
+          "sha256": "281c5706b9006ae09f94bc1c8feca89c59724bf25524f76e6d20b9f87624ae0c",
+          "bytes": 1692644
+        }
+      }
+    },
+    {
+      "ticker": "WFC",
+      "group": "Banks",
+      "cik": 72971,
+      "company": "WELLS FARGO & COMPANY/MN",
+      "form": "10-K",
+      "accession": "0000072971-26-000133",
+      "filed": "2026-02-24",
+      "report_date": "2025-12-31",
+      "primary_document": "wfc-20251231_d2.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/72971/000007297126000133/FilingSummary.xml",
+          "sha256": "df03390eb21e82d2b2d3f80de6d96d997ad398718122b45fc68950b823da33dd",
+          "bytes": 113228
+        },
+        "documents": [
+          {
+            "name": "wfc-20251231_d2.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/72971/000007297126000133/wfc-20251231_d2.htm",
+            "sha256": "dd386c0b12c669f8e5efa45c39349f108f91cb18ccf9c328a7e41dfb5ad4e5f4",
+            "bytes": 359713
+          },
+          {
+            "name": "wfc-20251231.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/72971/000007297126000133/wfc-20251231.htm",
+            "sha256": "999ca2f70b36033a3f697746a2211cb9f4977800ed6b76656cc986df14ff3f9c",
+            "bytes": 11595725
+          }
+        ],
+        "labels": {
+          "name": "wfc-20251231_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/72971/000007297126000133/wfc-20251231_lab.xml",
+          "sha256": "c8c55f72e6a66947137a8bae9ea454793a7dc6e5ebe24654d58ca833fb813952",
+          "bytes": 2769796
+        }
+      }
+    },
+    {
+      "ticker": "WFC",
+      "group": "Banks",
+      "cik": 72971,
+      "company": "WELLS FARGO & COMPANY/MN",
+      "form": "10-Q",
+      "accession": "0000072971-26-000327",
+      "filed": "2026-10-28",
+      "report_date": "2026-09-30",
+      "primary_document": "wfc-20260930.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/72971/000007297126000327/FilingSummary.xml",
+          "sha256": "aef445167b2fbb0aed413fa47a65e23123d1030fcd05a3f01a7184597ad62082",
+          "bytes": 84145
+        },
+        "documents": [
+          {
+            "name": "wfc-20260930.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/72971/000007297126000327/wfc-20260930.htm",
+            "sha256": "cac022b74ddd156b9905d0ca99e0de88941736ceacb4f45e0ae5e6bd4438e644",
+            "bytes": 10685297
+          }
+        ],
+        "labels": {
+          "name": "wfc-20260930_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/72971/000007297126000327/wfc-20260930_lab.xml",
+          "sha256": "84950d76807357f7fe3b405480976576e6ede7cb6d5cdb5442b70ad86d1b9b3b",
+          "bytes": 2121224
+        }
+      }
+    },
+    {
+      "ticker": "USB",
+      "group": "Banks",
+      "cik": 36104,
+      "company": "US BANCORP \\DE\\",
+      "form": "10-K",
+      "accession": "0000036104-26-000011",
+      "filed": "2026-02-23",
+      "report_date": "2025-12-31",
+      "primary_document": "usb-20251231.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/36104/000003610426000011/FilingSummary.xml",
+          "sha256": "a692a39e044f235db69d181e9c03b0c3ec76f32c9a34745bc02af8dd3ea4b158",
+          "bytes": 99336
+        },
+        "documents": [
+          {
+            "name": "usb-20251231.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/36104/000003610426000011/usb-20251231.htm",
+            "sha256": "9054ee430b666544b5364e01e58d1069ac7acc3fe32d4ec5dde7dd7411fc7ac3",
+            "bytes": 972710
+          },
+          {
+            "name": "usb-20251231_d2.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/36104/000003610426000011/usb-20251231_d2.htm",
+            "sha256": "c0e150e3f08a779e2e2d8c8bce93dd24fcd35ba1817aa0b0793725a6e3dad71d",
+            "bytes": 5431021
+          }
+        ],
+        "labels": {
+          "name": "usb-20251231_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/36104/000003610426000011/usb-20251231_lab.xml",
+          "sha256": "b0d857bb678aa1f3742b3dacfb1f1815dc2c3b61f670925ca43876e605447b43",
+          "bytes": 1977633
+        }
+      }
+    },
+    {
+      "ticker": "USB",
+      "group": "Banks",
+      "cik": 36104,
+      "company": "US BANCORP \\DE\\",
+      "form": "10-Q",
+      "accession": "0000036104-26-000058",
+      "filed": "2026-11-05",
+      "report_date": "2026-09-30",
+      "primary_document": "usb-20260930.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/36104/000003610426000058/FilingSummary.xml",
+          "sha256": "ca2c89f2525e0dc7ce3dd7620c6e2a5917461b2f9b57b6d1abce3085394eff84",
+          "bytes": 62045
+        },
+        "documents": [
+          {
+            "name": "usb-20260930.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/36104/000003610426000058/usb-20260930.htm",
+            "sha256": "035f40d44c9b4ceb298ba1f80ba80f77d83a272064bcca805e613ed80279b924",
+            "bytes": 5107538
+          }
+        ],
+        "labels": {
+          "name": "usb-20260930_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/36104/000003610426000058/usb-20260930_lab.xml",
+          "sha256": "e8c64f24ea5aa934941a8244f0ecc79414831984395c926339f4e71293400804",
+          "bytes": 1268172
+        }
+      }
+    },
+    {
+      "ticker": "PNC",
+      "group": "Banks",
+      "cik": 713676,
+      "company": "PNC FINANCIAL SERVICES GROUP, INC.",
+      "form": "10-K",
+      "accession": "0000713676-26-000020",
+      "filed": "2026-02-20",
+      "report_date": "2025-12-31",
+      "primary_document": "pnc-20251231.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/713676/000071367626000020/FilingSummary.xml",
+          "sha256": "2388a75cc2f3b3d1b34308fe4a6f009a73874ee860c9b26c088fde85b41cf841",
+          "bytes": 100773
+        },
+        "documents": [
+          {
+            "name": "pnc-20251231.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/713676/000071367626000020/pnc-20251231.htm",
+            "sha256": "83cdd8130c1e62ab95150b09e32131093656fcbffea7b5717224e2e389583eb9",
+            "bytes": 9163917
+          }
+        ],
+        "labels": {
+          "name": "pnc-20251231_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/713676/000071367626000020/pnc-20251231_lab.xml",
+          "sha256": "81080df2bc151805efb0988f50ddd655c196af4c475acab9f63dcb365fd2dbc2",
+          "bytes": 1823860
+        }
+      }
+    },
+    {
+      "ticker": "PNC",
+      "group": "Banks",
+      "cik": 713676,
+      "company": "PNC FINANCIAL SERVICES GROUP, INC.",
+      "form": "10-Q",
+      "accession": "0001628280-26-069377",
+      "filed": "2026-11-03",
+      "report_date": "2026-09-30",
+      "primary_document": "pnc-20260930.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/713676/000162828026069377/FilingSummary.xml",
+          "sha256": "a889c4a931995855ab0e4408458b0558116e2975297f71fa4ecc1f898956220c",
+          "bytes": 67767
+        },
+        "documents": [
+          {
+            "name": "pnc-20260930.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/713676/000162828026069377/pnc-20260930.htm",
+            "sha256": "741cfa28e93a85370581099097a0d05f630b1ecced9dca6d47fa5a2b5cf9b56b",
+            "bytes": 7741520
+          }
+        ],
+        "labels": {
+          "name": "pnc-20260930_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/713676/000162828026069377/pnc-20260930_lab.xml",
+          "sha256": "ea8f08e8d917238c72ed5cce4285035b74910055c42a453046039301fe056f91",
+          "bytes": 1321433
+        }
+      }
+    },
+    {
+      "ticker": "GS",
+      "group": "Other financials",
+      "cik": 886982,
+      "company": "GOLDMAN SACHS GROUP INC",
+      "form": "10-K",
+      "accession": "0000886982-26-000091",
+      "filed": "2026-02-25",
+      "report_date": "2025-12-31",
+      "primary_document": "gs-20251231.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000091/FilingSummary.xml",
+          "sha256": "aba75baf2b076b8e697b77eff9b6cd2c1a2513fe694fec0c586da296a0484902",
+          "bytes": 128303
+        },
+        "documents": [
+          {
+            "name": "gs-20251231.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000091/gs-20251231.htm",
+            "sha256": "74330384ccfa97e211727650c7c866d77aceccc0cd419ac02bf3872228a268db",
+            "bytes": 9611269
+          }
+        ],
+        "labels": {
+          "name": "gs-20251231_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000091/gs-20251231_lab.xml",
+          "sha256": "fabf79d1dab6aca029ece9fb84c9b17559bd85cad493c0249a33a25fcf421194",
+          "bytes": 2170251
+        }
+      }
+    },
+    {
+      "ticker": "GS",
+      "group": "Other financials",
+      "cik": 886982,
+      "company": "GOLDMAN SACHS GROUP INC",
+      "form": "10-Q",
+      "accession": "0000886982-26-000532",
+      "filed": "2026-11-02",
+      "report_date": "2026-09-30",
+      "primary_document": "gs-20260930.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000532/FilingSummary.xml",
+          "sha256": "a645e15cd45823e87946c3c2363f6ab99920ce6c751bcebb16ce919f2577777f",
+          "bytes": 114110
+        },
+        "documents": [
+          {
+            "name": "gs-20260930.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000532/gs-20260930.htm",
+            "sha256": "f78da3538c804e09dc0328fa9190247f2b086835dd62e22c208749f49f54faa6",
+            "bytes": 9043216
+          }
+        ],
+        "labels": {
+          "name": "gs-20260930_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000532/gs-20260930_lab.xml",
+          "sha256": "02cff00022532caa35f53d59f5c2d9471c37c99cea7a8077dafcb10271f0f136",
+          "bytes": 1868274
+        }
+      }
+    },
+    {
+      "ticker": "SCHW",
+      "group": "Other financials",
+      "cik": 316709,
+      "company": "SCHWAB CHARLES CORP",
+      "form": "10-K",
+      "accession": "0000316709-26-000009",
+      "filed": "2026-02-25",
+      "report_date": "2025-12-31",
+      "primary_document": "schw-20251231.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/316709/000031670926000009/FilingSummary.xml",
+          "sha256": "0d6e9c5e3a1eb8559acd120c1274f4eb85245ee5cf1d279952c3bd3695ea5ada",
+          "bytes": 89706
+        },
+        "documents": [
+          {
+            "name": "schw-20251231.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/316709/000031670926000009/schw-20251231.htm",
+            "sha256": "8b9dad763dd81b97be0c42aa6e810fcdaa5550aaaba9abfd3f31146c4f59f05d",
+            "bytes": 5307900
+          }
+        ],
+        "labels": {
+          "name": "schw-20251231_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/316709/000031670926000009/schw-20251231_lab.xml",
+          "sha256": "46fbb029bc22a92419e6ff92d7a04a832cc1223b62741ec72029428b804f84c6",
+          "bytes": 1684527
+        }
+      }
+    },
+    {
+      "ticker": "SCHW",
+      "group": "Other financials",
+      "cik": 316709,
+      "company": "SCHWAB CHARLES CORP",
+      "form": "10-Q",
+      "accession": "0000316709-26-000038",
+      "filed": "2026-11-06",
+      "report_date": "2026-09-30",
+      "primary_document": "schw-20260930.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/316709/000031670926000038/FilingSummary.xml",
+          "sha256": "11aceaee2889cdab4e9bb1111bcc90e25f5f21b73080cd2968e975a83031f006",
+          "bytes": 60793
+        },
+        "documents": [
+          {
+            "name": "schw-20260930.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/316709/000031670926000038/schw-20260930.htm",
+            "sha256": "d910f268af987d9a9ad7220714789710031eae4737abb2a3b55189ea7c10f533",
+            "bytes": 4436249
+          }
+        ],
+        "labels": {
+          "name": "schw-20260930_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/316709/000031670926000038/schw-20260930_lab.xml",
+          "sha256": "9e799f2aaf5868a2a880ea7c9bb437cec20b369190b82aa75e1ca4f3a98285d1",
+          "bytes": 1328328
+        }
+      }
+    },
+    {
+      "ticker": "AXP",
+      "group": "Other financials",
+      "cik": 4962,
+      "company": "AMERICAN EXPRESS CO",
+      "form": "10-K",
+      "accession": "0000004962-26-000080",
+      "filed": "2026-02-06",
+      "report_date": "2025-12-31",
+      "primary_document": "axp-20251231.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/4962/000000496226000080/FilingSummary.xml",
+          "sha256": "ac3fbafd4c5453e829959bbad5b83474e733a67f32a53d9c3148d17a7e39c5c8",
+          "bytes": 83383
+        },
+        "documents": [
+          {
+            "name": "axp-20251231.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/4962/000000496226000080/axp-20251231.htm",
+            "sha256": "9eaa46a305f92be077ebc133be45c10215f9979d127d0449b38a43a86329373a",
+            "bytes": 5080722
+          }
+        ],
+        "labels": {
+          "name": "axp-20251231_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/4962/000000496226000080/axp-20251231_lab.xml",
+          "sha256": "5d488b23d685dc9d88354ae42533805228c8dad861b8941231479fa8567e83ce",
+          "bytes": 1400295
+        }
+      }
+    },
+    {
+      "ticker": "AXP",
+      "group": "Other financials",
+      "cik": 4962,
+      "company": "AMERICAN EXPRESS CO",
+      "form": "10-Q",
+      "accession": "0000004962-26-000409",
+      "filed": "2026-10-23",
+      "report_date": "2026-09-30",
+      "primary_document": "axp-20260930.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/4962/000000496226000409/FilingSummary.xml",
+          "sha256": "99ba2c776b34fd7daee15842e3bd68fc2a2f35da972305d26a88497db92e9e4d",
+          "bytes": 46141
+        },
+        "documents": [
+          {
+            "name": "axp-20260930.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/4962/000000496226000409/axp-20260930.htm",
+            "sha256": "c40d7eaa3d4fc71327b9a2e34ea9184f4ee08a3ffbb3b105b0672ca58b9e73a0",
+            "bytes": 3265148
+          }
+        ],
+        "labels": {
+          "name": "axp-20260930_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/4962/000000496226000409/axp-20260930_lab.xml",
+          "sha256": "9bd6cc0656e70c388821caa199a3b05abc9c0df4ed22e54864e4269e4a7c4997",
+          "bytes": 832973
+        }
+      }
+    },
+    {
+      "ticker": "PGR",
+      "group": "Insurance",
+      "cik": 80661,
+      "company": "PROGRESSIVE CORP/OH/",
+      "form": "10-K",
+      "accession": "0000080661-26-000086",
+      "filed": "2026-03-02",
+      "report_date": "2025-12-31",
+      "primary_document": "pgr-20251231.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/80661/000008066126000086/FilingSummary.xml",
+          "sha256": "cf09621f08147b1fa1633106e9b2b693f9faaa25a99c9c2ae93063622b370bf7",
+          "bytes": 66508
+        },
+        "documents": [
+          {
+            "name": "pgr-20251231.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/80661/000008066126000086/pgr-20251231.htm",
+            "sha256": "5135bffe932eea9c31ed72305b05bce685cf85f4637a93b0f4e34dafe18bbf90",
+            "bytes": 1313419
+          },
+          {
+            "name": "pgr-20251231_d2.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/80661/000008066126000086/pgr-20251231_d2.htm",
+            "sha256": "097058bfbee5a4714861519d9e185d9b9c9cbf8c6a151a0aad9d5c9fe53ecb1d",
+            "bytes": 3439662
+          }
+        ],
+        "labels": {
+          "name": "pgr-20251231_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/80661/000008066126000086/pgr-20251231_lab.xml",
+          "sha256": "f8c24953af0077dda50d84edc94f74e50334dfaf9dae36a637023606e99169ed",
+          "bytes": 1243980
+        }
+      }
+    },
+    {
+      "ticker": "PGR",
+      "group": "Insurance",
+      "cik": 80661,
+      "company": "PROGRESSIVE CORP/OH/",
+      "form": "10-Q",
+      "accession": "0000080661-26-000379",
+      "filed": "2026-11-02",
+      "report_date": "2026-09-30",
+      "primary_document": "pgr-20260930.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/80661/000008066126000379/FilingSummary.xml",
+          "sha256": "e49ef60e3ec0781b2910c66a6bb3346678d9a525ecf61859e61464eb88d5b642",
+          "bytes": 33302
+        },
+        "documents": [
+          {
+            "name": "pgr-20260930.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/80661/000008066126000379/pgr-20260930.htm",
+            "sha256": "c5f0d6875d67e70832cd21dc10076389064f7babd68ef87d8719f4da6f3e0b2d",
+            "bytes": 2981610
+          }
+        ],
+        "labels": {
+          "name": "pgr-20260930_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/80661/000008066126000379/pgr-20260930_lab.xml",
+          "sha256": "0bb16ff9a106760d29b5db4ee870e9e3fe22d55ba9eb8cb1d91411007786b51d",
+          "bytes": 716318
+        }
+      }
+    },
+    {
+      "ticker": "TRV",
+      "group": "Insurance",
+      "cik": 86312,
+      "company": "TRAVELERS COMPANIES, INC.",
+      "form": "10-K",
+      "accession": "0000086312-26-000065",
+      "filed": "2026-02-12",
+      "report_date": "2025-12-31",
+      "primary_document": "trv-20251231.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/86312/000008631226000065/FilingSummary.xml",
+          "sha256": "a4cce616fd85428de9a81f5455e222776651e9f5287d46d761488091d7d76d58",
+          "bytes": 83300
+        },
+        "documents": [
+          {
+            "name": "trv-20251231.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/86312/000008631226000065/trv-20251231.htm",
+            "sha256": "8f7e5cb3ddefe4722b216aee05d3de80a7424071ec0b0c0860e366206deef5a2",
+            "bytes": 6901543
+          }
+        ],
+        "labels": {
+          "name": "trv-20251231_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/86312/000008631226000065/trv-20251231_lab.xml",
+          "sha256": "d9815274830e51472fdd101207935ec9379f9c58b277129961219bbaba57444d",
+          "bytes": 1620366
+        }
+      }
+    },
+    {
+      "ticker": "TRV",
+      "group": "Insurance",
+      "cik": 86312,
+      "company": "TRAVELERS COMPANIES, INC.",
+      "form": "10-Q",
+      "accession": "0000086312-26-000181",
+      "filed": "2026-10-16",
+      "report_date": "2026-09-30",
+      "primary_document": "trv-20260930.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/86312/000008631226000181/FilingSummary.xml",
+          "sha256": "2e226f925308fd4050455843349192d7dbc1ceabbafb82e16e563ee60a077d64",
+          "bytes": 46704
+        },
+        "documents": [
+          {
+            "name": "trv-20260930.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/86312/000008631226000181/trv-20260930.htm",
+            "sha256": "65ffc41c64d712636e74ad391134a37ea93323e0ba4ac2e9e374fda7eaacee6e",
+            "bytes": 2778824
+          }
+        ],
+        "labels": {
+          "name": "trv-20260930_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/86312/000008631226000181/trv-20260930_lab.xml",
+          "sha256": "dd60db3b77b48a79d486b993a5d5a969abe6129d5cfba89a7e30be45eb0d42dd",
+          "bytes": 764816
+        }
+      }
+    },
+    {
+      "ticker": "ALL",
+      "group": "Insurance",
+      "cik": 899051,
+      "company": "ALLSTATE CORP",
+      "form": "10-K",
+      "accession": "0000899051-26-000031",
+      "filed": "2026-02-20",
+      "report_date": "2025-12-31",
+      "primary_document": "all-20251231.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/899051/000089905126000031/FilingSummary.xml",
+          "sha256": "41da4d3e6b91161dae128f475b09b67fafef3d07707e3cd5575a7ee2da17c2d3",
+          "bytes": 140476
+        },
+        "documents": [
+          {
+            "name": "all-20251231.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/899051/000089905126000031/all-20251231.htm",
+            "sha256": "bf4f94db55f667469340684ca10ec4306a3077e90fb16ee7aae0905ff5529d2a",
+            "bytes": 8064276
+          }
+        ],
+        "labels": {
+          "name": "all-20251231_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/899051/000089905126000031/all-20251231_lab.xml",
+          "sha256": "8289cdef6345925068dc3082e3ceebd69dca2c17fda0faca28c88860885a4846",
+          "bytes": 2279799
+        }
+      }
+    },
+    {
+      "ticker": "ALL",
+      "group": "Insurance",
+      "cik": 899051,
+      "company": "ALLSTATE CORP",
+      "form": "10-Q",
+      "accession": "0000899051-26-000157",
+      "filed": "2026-11-04",
+      "report_date": "2026-09-30",
+      "primary_document": "all-20260930.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/899051/000089905126000157/FilingSummary.xml",
+          "sha256": "f9c11f8b3df1ba8d41b3b8880a8e418cb37413a7e578446351126dff2535122a",
+          "bytes": 66212
+        },
+        "documents": [
+          {
+            "name": "all-20260930.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/899051/000089905126000157/all-20260930.htm",
+            "sha256": "40c963f35d2f608961a79f5898e361d986914a010a4667f18152307d3c2f269f",
+            "bytes": 4781386
+          }
+        ],
+        "labels": {
+          "name": "all-20260930_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/899051/000089905126000157/all-20260930_lab.xml",
+          "sha256": "683b24829917af7140207e1ecfbfb6f3b35829fb20d459664593bd58b6f413c0",
+          "bytes": 1064618
+        }
+      }
+    },
+    {
+      "ticker": "MET",
+      "group": "Insurance",
+      "cik": 1099219,
+      "company": "METLIFE INC",
+      "form": "10-K",
+      "accession": "0001099219-26-000013",
+      "filed": "2026-02-19",
+      "report_date": "2025-12-31",
+      "primary_document": "met-20251231.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1099219/000109921926000013/FilingSummary.xml",
+          "sha256": "898911343f014054994ccee57724906413a299ce6f5e17cc88905b5ebfa28a17",
+          "bytes": 152373
+        },
+        "documents": [
+          {
+            "name": "met-20251231.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/1099219/000109921926000013/met-20251231.htm",
+            "sha256": "1a16accb1d8f0505217a78486bceec2087f5002c8f565b7ac239162bd1f1f202",
+            "bytes": 13958761
+          }
+        ],
+        "labels": {
+          "name": "met-20251231_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1099219/000109921926000013/met-20251231_lab.xml",
+          "sha256": "c9c9bc9a6da1802aab48eabc1df5489009411b87ecd80082b136101ba0c02e5e",
+          "bytes": 2839616
+        }
+      }
+    },
+    {
+      "ticker": "MET",
+      "group": "Insurance",
+      "cik": 1099219,
+      "company": "METLIFE INC",
+      "form": "10-Q",
+      "accession": "0001099219-26-000062",
+      "filed": "2026-11-06",
+      "report_date": "2026-09-30",
+      "primary_document": "met-20260930.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1099219/000109921926000062/FilingSummary.xml",
+          "sha256": "5a2e0135e7f3a5ebb9bec4e79fdd6cc75322b128b8ffda9a4c236142d8da48fe",
+          "bytes": 84020
+        },
+        "documents": [
+          {
+            "name": "met-20260930.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/1099219/000109921926000062/met-20260930.htm",
+            "sha256": "5f19805f224eb916aa8d60e02f2b4c4d10ee96cb3824a2a7be9e796cffe844e7",
+            "bytes": 9142738
+          }
+        ],
+        "labels": {
+          "name": "met-20260930_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1099219/000109921926000062/met-20260930_lab.xml",
+          "sha256": "041b1537b64d128be729969091f077225fae0ec1fceb8b88c34433697e43a613",
+          "bytes": 1570974
+        }
+      }
+    },
+    {
+      "ticker": "PLD",
+      "group": "REITs",
+      "cik": 1045609,
+      "company": "Prologis, Inc.",
+      "form": "10-K",
+      "accession": "0001193125-26-051453",
+      "filed": "2026-02-13",
+      "report_date": "2025-12-31",
+      "primary_document": "pld-20251231.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1045609/000119312526051453/FilingSummary.xml",
+          "sha256": "1d2807b4beb95915c747bd190f7b07615b55ba23d1c1d2f8882787853436e343",
+          "bytes": 76070
+        },
+        "documents": [
+          {
+            "name": "pld-20251231.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/1045609/000119312526051453/pld-20251231.htm",
+            "sha256": "a82ab76a236ca53246f4a1ed995b3a07fdc3c82917f7f56722c44226b564e017",
+            "bytes": 11507382
+          }
+        ],
+        "labels": {
+          "name": "pld-20251231.xsd",
+          "url": "https://www.sec.gov/Archives/edgar/data/1045609/000119312526051453/pld-20251231.xsd",
+          "sha256": "a57b99418de1466eddae947d056099cd3e5d150ef01db1b36742dc55a13bce45",
+          "bytes": 3148005
+        }
+      }
+    },
+    {
+      "ticker": "PLD",
+      "group": "REITs",
+      "cik": 1045609,
+      "company": "Prologis, Inc.",
+      "form": "10-Q",
+      "accession": "0001193125-26-436160",
+      "filed": "2026-10-28",
+      "report_date": "2026-09-30",
+      "primary_document": "pld-20260930.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1045609/000119312526436160/FilingSummary.xml",
+          "sha256": "960239711430a6a5a567883d566eb260d019b3bf784eef9e474441a6d1111ab1",
+          "bytes": 52984
+        },
+        "documents": [
+          {
+            "name": "pld-20260930.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/1045609/000119312526436160/pld-20260930.htm",
+            "sha256": "c4448d1412f1edcc7591703001118cf54487cad442291d4c109d0075b238ae2c",
+            "bytes": 7558712
+          }
+        ],
+        "labels": {
+          "name": "pld-20260930.xsd",
+          "url": "https://www.sec.gov/Archives/edgar/data/1045609/000119312526436160/pld-20260930.xsd",
+          "sha256": "c3ba71df60ac170de7e62047e15075886fab30b82445c01ee70f003294e22d97",
+          "bytes": 1824260
+        }
+      }
+    },
+    {
+      "ticker": "O",
+      "group": "REITs",
+      "cik": 726728,
+      "company": "REALTY INCOME CORP",
+      "form": "10-K",
+      "accession": "0000726728-26-000011",
+      "filed": "2026-02-25",
+      "report_date": "2025-12-31",
+      "primary_document": "o-20251231.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/726728/000072672826000011/FilingSummary.xml",
+          "sha256": "9e4a13ac765338da7f15150902a064df1b0c13acd89fdde7ae469755625a0f20",
+          "bytes": 81181
+        },
+        "documents": [
+          {
+            "name": "o-20251231.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/726728/000072672826000011/o-20251231.htm",
+            "sha256": "104cc434660c9a0f5efb8ccde4b931016012fb8677f61f411918ee0240dae3c9",
+            "bytes": 4098064
+          }
+        ],
+        "labels": {
+          "name": "o-20251231_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/726728/000072672826000011/o-20251231_lab.xml",
+          "sha256": "6270084127cdd80053f880047ef501e5caec5c02542462b1987781467759c36f",
+          "bytes": 1498801
+        }
+      }
+    },
+    {
+      "ticker": "O",
+      "group": "REITs",
+      "cik": 726728,
+      "company": "REALTY INCOME CORP",
+      "form": "10-Q",
+      "accession": "0000726728-26-000059",
+      "filed": "2026-11-03",
+      "report_date": "2026-09-30",
+      "primary_document": "o-20260930.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/726728/000072672826000059/FilingSummary.xml",
+          "sha256": "549098395dac76cd3cb832c6e94c928a76fad4943a74a6d2a3fb4ea693c96c97",
+          "bytes": 61792
+        },
+        "documents": [
+          {
+            "name": "o-20260930.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/726728/000072672826000059/o-20260930.htm",
+            "sha256": "63d17bde394e64940ee263a5eaf6493af75b0fada886a619e5c64ddf19a34ec2",
+            "bytes": 5234704
+          }
+        ],
+        "labels": {
+          "name": "o-20260930_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/726728/000072672826000059/o-20260930_lab.xml",
+          "sha256": "3aa4493d98445c9b5775e34b6dae3aa496a788441b9fc18a99e321dfa1ae045f",
+          "bytes": 1103829
+        }
+      }
+    },
+    {
+      "ticker": "SPG",
+      "group": "REITs",
+      "cik": 1063761,
+      "company": "SIMON PROPERTY GROUP INC.",
+      "form": "10-K",
+      "accession": "0001104659-26-019419",
+      "filed": "2026-02-25",
+      "report_date": "2025-12-31",
+      "primary_document": "spg-20251231x10k.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1063761/000110465926019419/FilingSummary.xml",
+          "sha256": "553a03b5565e48c257cf21b342c7917ffe6f7c939a3034714259448022994467",
+          "bytes": 51540
+        },
+        "documents": [
+          {
+            "name": "spg-20251231x10k.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/1063761/000110465926019419/spg-20251231x10k.htm",
+            "sha256": "61f409c7aabd8b483e1afa7a9b420c4134d3503bc8364feb893520240320c5f0",
+            "bytes": 11335678
+          }
+        ],
+        "labels": {
+          "name": "spg-20251231_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1063761/000110465926019419/spg-20251231_lab.xml",
+          "sha256": "8b9351d58273c7a8de606bbe850c96179f5166fbf28b23420e2d6cb9504141e5",
+          "bytes": 1228560
+        }
+      }
+    },
+    {
+      "ticker": "SPG",
+      "group": "REITs",
+      "cik": 1063761,
+      "company": "SIMON PROPERTY GROUP INC.",
+      "form": "10-Q",
+      "accession": "0001104659-26-123591",
+      "filed": "2026-11-06",
+      "report_date": "2026-09-30",
+      "primary_document": "spg-20260930x10q.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1063761/000110465926123591/FilingSummary.xml",
+          "sha256": "3f3d67b3bc6a4d79209780bb937234c8a8c8b9161a8b3c099b8acae0aa046a96",
+          "bytes": 36108
+        },
+        "documents": [
+          {
+            "name": "spg-20260930x10q.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/1063761/000110465926123591/spg-20260930x10q.htm",
+            "sha256": "5613558be709618464a5ef7360be67667ee42bec140be86467c5c80853c39b00",
+            "bytes": 5196582
+          }
+        ],
+        "labels": {
+          "name": "spg-20260930_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1063761/000110465926123591/spg-20260930_lab.xml",
+          "sha256": "9398c256bb73ce09091738432fcaef5188f4ba3cb4e5f55615025dad05c5cd3f",
+          "bytes": 781845
+        }
+      }
+    },
+    {
+      "ticker": "NEE",
+      "group": "Utilities",
+      "cik": 753308,
+      "company": "NEXTERA ENERGY INC",
+      "form": "10-K",
+      "accession": "0000753308-26-000015",
+      "filed": "2026-02-13",
+      "report_date": "2025-12-31",
+      "primary_document": "nee-20251231.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/753308/000075330826000015/FilingSummary.xml",
+          "sha256": "70b9619e06acb79c1ab2870225b5503ab2e30691368ca3b051f39a411c1d413c",
+          "bytes": 70008
+        },
+        "documents": [
+          {
+            "name": "nee-20251231.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/753308/000075330826000015/nee-20251231.htm",
+            "sha256": "46cc6940723a02f12cad5c1d77574e0bd027ac00259993645e641ea709ceca91",
+            "bytes": 4642286
+          }
+        ],
+        "labels": {
+          "name": "nee-20251231_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/753308/000075330826000015/nee-20251231_lab.xml",
+          "sha256": "5672137966206ae8d8b64af449fde02426bd38762571053110ba4e8b8a8fc9b5",
+          "bytes": 1676538
+        }
+      }
+    },
+    {
+      "ticker": "NEE",
+      "group": "Utilities",
+      "cik": 753308,
+      "company": "NEXTERA ENERGY INC",
+      "form": "10-Q",
+      "accession": "0000753308-26-000081",
+      "filed": "2026-10-21",
+      "report_date": "2026-09-30",
+      "primary_document": "nee-20260930.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/753308/000075330826000081/FilingSummary.xml",
+          "sha256": "42d9f2c4c8a0de6d32787165396c6963281630875614c56671afa539a35853a5",
+          "bytes": 41814
+        },
+        "documents": [
+          {
+            "name": "nee-20260930.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/753308/000075330826000081/nee-20260930.htm",
+            "sha256": "0bf38491e068b4dbdf8081351b21d3daa3c48dafe549e20d80b5c3eadadc433f",
+            "bytes": 3107608
+          }
+        ],
+        "labels": {
+          "name": "nee-20260930_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/753308/000075330826000081/nee-20260930_lab.xml",
+          "sha256": "93186289b0bec90db482e87c075d08c5796e1c82fa8e675f4a74f92564641c28",
+          "bytes": 1068230
+        }
+      }
+    },
+    {
+      "ticker": "DUK",
+      "group": "Utilities",
+      "cik": 1326160,
+      "company": "Duke Energy CORP",
+      "form": "10-K",
+      "accession": "0001326160-26-000014",
+      "filed": "2026-02-26",
+      "report_date": "2025-12-31",
+      "primary_document": "duk-20251231.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1326160/000132616026000014/FilingSummary.xml",
+          "sha256": "e6db6bf6928575e0f6f714e6bc28ab21f23f4dbe69644c3155ec341ef60a0504",
+          "bytes": 137707
+        },
+        "documents": [
+          {
+            "name": "duk-20251231.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/1326160/000132616026000014/duk-20251231.htm",
+            "sha256": "0d72ebe81d2aab5d4ec07d759eb84bec94b779a94ebf1dfa0ac6499bd43fb408",
+            "bytes": 16080280
+          }
+        ],
+        "labels": {
+          "name": "duk-20251231_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1326160/000132616026000014/duk-20251231_lab.xml",
+          "sha256": "291e5f9e34884375db8178f5e25502c03f03b0dfa4cf2872f6192bfc298b182f",
+          "bytes": 2200916
+        }
+      }
+    },
+    {
+      "ticker": "DUK",
+      "group": "Utilities",
+      "cik": 1326160,
+      "company": "Duke Energy CORP",
+      "form": "10-Q",
+      "accession": "0001326160-26-000051",
+      "filed": "2026-11-05",
+      "report_date": "2026-09-30",
+      "primary_document": "duk-20260930.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1326160/000132616026000051/FilingSummary.xml",
+          "sha256": "3c40e35d6ba61acb1a5072223a46950c348797239e6f03888344863758bb8ff0",
+          "bytes": 83171
+        },
+        "documents": [
+          {
+            "name": "duk-20260930.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/1326160/000132616026000051/duk-20260930.htm",
+            "sha256": "4f773f9a5f3baf9f405d5aea3ca655ab58d49fc52d7b86843ad53a424b357b9b",
+            "bytes": 9694543
+          }
+        ],
+        "labels": {
+          "name": "duk-20260930_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1326160/000132616026000051/duk-20260930_lab.xml",
+          "sha256": "a8813329af457402a8926ea0230e56cf24ea4232c4d387d602532a19646d1f19",
+          "bytes": 1288369
+        }
+      }
+    },
+    {
+      "ticker": "SO",
+      "group": "Utilities",
+      "cik": 92122,
+      "company": "SOUTHERN CO",
+      "form": "10-K",
+      "accession": "0000092122-26-000006",
+      "filed": "2026-02-19",
+      "report_date": "2025-12-31",
+      "primary_document": "so-20251231.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/92122/000009212226000006/FilingSummary.xml",
+          "sha256": "8e962c3b942b755540e63183ffc4c62d0bae95269a9350d6cce65d8ca3f3b793",
+          "bytes": 140661
+        },
+        "documents": [
+          {
+            "name": "so-20251231.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/92122/000009212226000006/so-20251231.htm",
+            "sha256": "35c985ba00b7f3203c08c1e5836a2de0001d9a95a50a270e6a318ce6251b84fc",
+            "bytes": 15639302
+          }
+        ],
+        "labels": {
+          "name": "so-20251231_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/92122/000009212226000006/so-20251231_lab.xml",
+          "sha256": "0aeea01cfaccfd4c69ddf49619ee9f2dd7e4953225ea3b26cc572dcd64e80fcb",
+          "bytes": 2377720
+        }
+      }
+    },
+    {
+      "ticker": "SO",
+      "group": "Utilities",
+      "cik": 92122,
+      "company": "SOUTHERN CO",
+      "form": "10-Q",
+      "accession": "0000092122-26-000069",
+      "filed": "2026-11-05",
+      "report_date": "2026-09-30",
+      "primary_document": "so-20260930.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/92122/000009212226000069/FilingSummary.xml",
+          "sha256": "d7aa241d8ed2a90095228729a28460fdc1f415ac9bc592df5b08da1128798042",
+          "bytes": 74937
+        },
+        "documents": [
+          {
+            "name": "so-20260930.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/92122/000009212226000069/so-20260930.htm",
+            "sha256": "5d268673d193e2b6b31b5f8c3462813e1037feed857829dc8415a4147ebd93ca",
+            "bytes": 7627104
+          }
+        ],
+        "labels": {
+          "name": "so-20260930_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/92122/000009212226000069/so-20260930_lab.xml",
+          "sha256": "396e6e2f056f10f0e574937653c17be51bc4257a998526c6c058bcaf37236bdb",
+          "bytes": 1115619
+        }
+      }
+    },
+    {
+      "ticker": "JNJ",
+      "group": "Healthcare",
+      "cik": 200406,
+      "company": "JOHNSON & JOHNSON",
+      "form": "10-K",
+      "accession": "0000200406-26-000016",
+      "filed": "2026-02-11",
+      "report_date": "2025-12-28",
+      "primary_document": "jnj-20251228.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/200406/000020040626000016/FilingSummary.xml",
+          "sha256": "b945a0b3d6640dda59528f05e127d1813e1ef1ee96a086e828c0fa616d834d25",
+          "bytes": 75529
+        },
+        "documents": [
+          {
+            "name": "jnj-20251228.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/200406/000020040626000016/jnj-20251228.htm",
+            "sha256": "080860e466b6844b003f0c7d7ea8a79324ce9b726a31b317f8e444d2194b4294",
+            "bytes": 3701691
+          }
+        ],
+        "labels": {
+          "name": "jnj-20251228_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/200406/000020040626000016/jnj-20251228_lab.xml",
+          "sha256": "e6d0b0e6ec9bdea23d1c59cec98eba816d88bae4d3ca4558098cd75a539c718e",
+          "bytes": 1537914
+        }
+      }
+    },
+    {
+      "ticker": "JNJ",
+      "group": "Healthcare",
+      "cik": 200406,
+      "company": "JOHNSON & JOHNSON",
+      "form": "10-Q",
+      "accession": "0000200406-26-000197",
+      "filed": "2026-10-21",
+      "report_date": "2026-09-27",
+      "primary_document": "jnj-20260927.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/200406/000020040626000197/FilingSummary.xml",
+          "sha256": "98804acea8cc8faa384d5a0a202f94e29a85f8ece0cbf0a1154213a04bb40b53",
+          "bytes": 38256
+        },
+        "documents": [
+          {
+            "name": "jnj-20260927.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/200406/000020040626000197/jnj-20260927.htm",
+            "sha256": "af94934e89b6d1ab7d5eea6f262731c1eb3838bd9170392646d1d3cad1b4cc49",
+            "bytes": 2755216
+          }
+        ],
+        "labels": {
+          "name": "jnj-20260927_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/200406/000020040626000197/jnj-20260927_lab.xml",
+          "sha256": "3b208a41a4b019035ca516d59b53d074bc3f751792a37613b15d04ca460d1bb1",
+          "bytes": 831799
+        }
+      }
+    },
+    {
+      "ticker": "UNH",
+      "group": "Healthcare",
+      "cik": 731766,
+      "company": "UNITEDHEALTH GROUP INC",
+      "form": "10-K",
+      "accession": "0000731766-26-000062",
+      "filed": "2026-03-02",
+      "report_date": "2025-12-31",
+      "primary_document": "unh-20251231.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/731766/000073176626000062/FilingSummary.xml",
+          "sha256": "03f7533cc9fe586b4487a6504d50f6c788e918987f370cd8db5c8b1711f42841",
+          "bytes": 62122
+        },
+        "documents": [
+          {
+            "name": "unh-20251231.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/731766/000073176626000062/unh-20251231.htm",
+            "sha256": "af9a40cdad8dc4c7d031d213c26f5c01d40dff923468ed22067da59d8a4a56ab",
+            "bytes": 2870710
+          }
+        ],
+        "labels": {
+          "name": "unh-20251231_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/731766/000073176626000062/unh-20251231_lab.xml",
+          "sha256": "372fd81be5c2659f454613dcf114e792759aebba97ea846ccc3b94e0179860c6",
+          "bytes": 1220381
+        }
+      }
+    },
+    {
+      "ticker": "UNH",
+      "group": "Healthcare",
+      "cik": 731766,
+      "company": "UNITEDHEALTH GROUP INC",
+      "form": "10-Q",
+      "accession": "0000731766-26-000266",
+      "filed": "2026-11-03",
+      "report_date": "2026-09-30",
+      "primary_document": "unh-20260930.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/731766/000073176626000266/FilingSummary.xml",
+          "sha256": "71324da7b4c02db92e0d571da7dcd805f66acf2ce790d3a0c990e7e52f68bf6b",
+          "bytes": 26015
+        },
+        "documents": [
+          {
+            "name": "unh-20260930.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/731766/000073176626000266/unh-20260930.htm",
+            "sha256": "9e8a6732bd41e623dbb54e6388a3055e07ab4827486603d5fc09c11e50c38e8f",
+            "bytes": 1807753
+          }
+        ],
+        "labels": {
+          "name": "unh-20260930_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/731766/000073176626000266/unh-20260930_lab.xml",
+          "sha256": "1c559165e11fd06f1b124b819b25eae36adddbb728ed7cbc7dcad65b3b341e7e",
+          "bytes": 581816
+        }
+      }
+    },
+    {
+      "ticker": "PFE",
+      "group": "Healthcare",
+      "cik": 78003,
+      "company": "PFIZER INC",
+      "form": "10-K",
+      "accession": "0000078003-26-000026",
+      "filed": "2026-02-26",
+      "report_date": "2025-12-31",
+      "primary_document": "pfe-20251231.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/78003/000007800326000026/FilingSummary.xml",
+          "sha256": "5c0344ed65567f3dbf86986a026971e84103c4a99eb144e409a4e0bc54bd0754",
+          "bytes": 100284
+        },
+        "documents": [
+          {
+            "name": "pfe-20251231.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/78003/000007800326000026/pfe-20251231.htm",
+            "sha256": "ec41794c25c8fd331ec45578bbf4346bb7ee987ef9802b59575dd665b4ad593d",
+            "bytes": 5222428
+          }
+        ],
+        "labels": {
+          "name": "pfe-20251231_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/78003/000007800326000026/pfe-20251231_lab.xml",
+          "sha256": "59320b1094081e16f7dae85e282e615f3b2479b3c98ea53c4c74d94f2e1c533a",
+          "bytes": 1840177
+        }
+      }
+    },
+    {
+      "ticker": "PFE",
+      "group": "Healthcare",
+      "cik": 78003,
+      "company": "PFIZER INC",
+      "form": "10-Q",
+      "accession": "0000078003-26-000127",
+      "filed": "2026-11-03",
+      "report_date": "2026-09-27",
+      "primary_document": "pfe-20260927.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/78003/000007800326000127/FilingSummary.xml",
+          "sha256": "1685d1935104c62b0327c575ccab26340a9269fcf353950e08469e2da67ebc36",
+          "bytes": 56347
+        },
+        "documents": [
+          {
+            "name": "pfe-20260927.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/78003/000007800326000127/pfe-20260927.htm",
+            "sha256": "6de06360eada13ef9e51a43cb0ba1ec4e29ccd0bee0b5138c9072b97271b93f9",
+            "bytes": 2816999
+          }
+        ],
+        "labels": {
+          "name": "pfe-20260927_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/78003/000007800326000127/pfe-20260927_lab.xml",
+          "sha256": "5e9e0019d4c89f2797e1d1a4ad3c1e905623674b47af3194e3c8d159b746e41c",
+          "bytes": 933270
+        }
+      }
+    },
+    {
+      "ticker": "LLY",
+      "group": "Healthcare",
+      "cik": 59478,
+      "company": "ELI LILLY & Co",
+      "form": "10-K",
+      "accession": "0000059478-26-000013",
+      "filed": "2026-02-12",
+      "report_date": "2025-12-31",
+      "primary_document": "lly-20251231.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000013/FilingSummary.xml",
+          "sha256": "705157d8e32d846baf13d774d571f142a71ae706a9005949dbcf57e792e8f225",
+          "bytes": 55922
+        },
+        "documents": [
+          {
+            "name": "lly-20251231.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000013/lly-20251231.htm",
+            "sha256": "6e61772997011851782fbff9a2b3d5757f18f10ecab032b4f08392ae3e4517ae",
+            "bytes": 2370065
+          }
+        ],
+        "labels": {
+          "name": "lly-20251231_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000013/lly-20251231_lab.xml",
+          "sha256": "a359f78b5c45d326d95d3892805f14cd61269daf2c623a879680eba1a04af7ba",
+          "bytes": 947542
+        }
+      }
+    },
+    {
+      "ticker": "LLY",
+      "group": "Healthcare",
+      "cik": 59478,
+      "company": "ELI LILLY & Co",
+      "form": "10-Q",
+      "accession": "0000059478-26-000108",
+      "filed": "2026-10-29",
+      "report_date": "2026-09-30",
+      "primary_document": "lly-20260930.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000108/FilingSummary.xml",
+          "sha256": "870eff817eec9fb1beabdb4856534f8e246cf28b8276ae236fe55e50b9fab59d",
+          "bytes": 30137
+        },
+        "documents": [
+          {
+            "name": "lly-20260930.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000108/lly-20260930.htm",
+            "sha256": "db6a775ad268096251dcee1cff9b1deaf500b8a3003edf7a9e094a23cf9da592",
+            "bytes": 1275843
+          }
+        ],
+        "labels": {
+          "name": "lly-20260930_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000108/lly-20260930_lab.xml",
+          "sha256": "8fa91e88d15385b9fbf7d4ed5b27b0393dec8d6344b35dbe897be04ea3fa6921",
+          "bytes": 515727
+        }
+      }
+    },
+    {
+      "ticker": "TMO",
+      "group": "Healthcare",
+      "cik": 97745,
+      "company": "THERMO FISHER SCIENTIFIC INC.",
+      "form": "10-K",
+      "accession": "0000097745-26-000018",
+      "filed": "2026-02-26",
+      "report_date": "2025-12-31",
+      "primary_document": "tmo-20251231.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/97745/000009774526000018/FilingSummary.xml",
+          "sha256": "7210f2b3e487c959b34985ed9b153d78b53fca8fb8a2e478d754ea27bad421c0",
+          "bytes": 63916
+        },
+        "documents": [
+          {
+            "name": "tmo-20251231.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/97745/000009774526000018/tmo-20251231.htm",
+            "sha256": "d5d574a720beab76923e689806617fdf930af1ed01280fa2b6d56f66b40a72a9",
+            "bytes": 3237977
+          }
+        ],
+        "labels": {
+          "name": "tmo-20251231_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/97745/000009774526000018/tmo-20251231_lab.xml",
+          "sha256": "c24ae553fc81241041e07679edf516d18d132a84b20fbe3e38f6cb46b9e75297",
+          "bytes": 1366723
+        }
+      }
+    },
+    {
+      "ticker": "TMO",
+      "group": "Healthcare",
+      "cik": 97745,
+      "company": "THERMO FISHER SCIENTIFIC INC.",
+      "form": "10-Q",
+      "accession": "0000097745-26-000179",
+      "filed": "2026-10-30",
+      "report_date": "2026-09-26",
+      "primary_document": "tmo-20260926.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/97745/000009774526000179/FilingSummary.xml",
+          "sha256": "eacc2e96f59b65e34b6f12f8fc4613b1792985a2385620280739d28a61802b0b",
+          "bytes": 40174
+        },
+        "documents": [
+          {
+            "name": "tmo-20260926.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/97745/000009774526000179/tmo-20260926.htm",
+            "sha256": "752fabe1afd623ff4bd8ba8bb132d0e00544396d0b23fd1513a65046b4d16d8d",
+            "bytes": 2362046
+          }
+        ],
+        "labels": {
+          "name": "tmo-20260926_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/97745/000009774526000179/tmo-20260926_lab.xml",
+          "sha256": "f8d042dea734ccfaefa6f93eb1d2198af441b7e0c659e9bab30e6986590a101c",
+          "bytes": 807581
+        }
+      }
+    },
+    {
+      "ticker": "WMT",
+      "group": "Consumer",
+      "cik": 104169,
+      "company": "Walmart Inc.",
+      "form": "10-K",
+      "accession": "0000104169-26-000055",
+      "filed": "2026-03-13",
+      "report_date": "2026-01-31",
+      "primary_document": "wmt-20260131.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/FilingSummary.xml",
+          "sha256": "abb152b95e2c9d3b57aa62312803e84012e2a251047ea18d4a7a9a52c7452838",
+          "bytes": 47498
+        },
+        "documents": [
+          {
+            "name": "wmt-20260131.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/wmt-20260131.htm",
+            "sha256": "ec79a926cd42f64d81029026077fa4d17a0d8d8072dcbce585d23c5045f48ffc",
+            "bytes": 2324085
+          }
+        ],
+        "labels": {
+          "name": "wmt-20260131_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/wmt-20260131_lab.xml",
+          "sha256": "9e30361e8a035e1b868b24a22e56259ddfd819b3bbcab72547991a12b9b9109c",
+          "bytes": 884588
+        }
+      }
+    },
+    {
+      "ticker": "WMT",
+      "group": "Consumer",
+      "cik": 104169,
+      "company": "Walmart Inc.",
+      "form": "10-Q",
+      "accession": "0000104169-26-000154",
+      "filed": "2026-08-28",
+      "report_date": "2026-07-31",
+      "primary_document": "wmt-20260731.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000154/FilingSummary.xml",
+          "sha256": "c9c1c6459b890edecf3f989ea3a0a1ebbed59105fdb74e9bb45b60662d0f64eb",
+          "bytes": 23459
+        },
+        "documents": [
+          {
+            "name": "wmt-20260731.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000154/wmt-20260731.htm",
+            "sha256": "aefd7ab017d0766b4e869bfa123fa200a57ec2ea3a8b2984835558103a8548e3",
+            "bytes": 1433293
+          }
+        ],
+        "labels": {
+          "name": "wmt-20260731_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000154/wmt-20260731_lab.xml",
+          "sha256": "2097dbf17eea1982510e9120917d7e4731c2b6345cf4142fa362002b0d03912d",
+          "bytes": 472730
+        }
+      }
+    },
+    {
+      "ticker": "COST",
+      "group": "Consumer",
+      "cik": 909832,
+      "company": "COSTCO WHOLESALE CORP /NEW",
+      "form": "10-K",
+      "accession": "0000909832-26-000093",
+      "filed": "2026-10-07",
+      "report_date": "2026-08-30",
+      "primary_document": "cost-20260830.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/FilingSummary.xml",
+          "sha256": "b4f0bdbfd2f2858503de7a0eb143ad4b631fb38b8133de7619a8feb86d0674e8",
+          "bytes": 44857
+        },
+        "documents": [
+          {
+            "name": "cost-20260830.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm",
+            "sha256": "b3b431929f5f3d83d7a3897289635e3163be08cfc6912ba45e8342fe4d31fd84",
+            "bytes": 1456588
+          }
+        ],
+        "labels": {
+          "name": "cost-20260830_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830_lab.xml",
+          "sha256": "78b60f21affa92c5a160180665ce19192eca82543f802cd6d1e5fafc66e5f6ef",
+          "bytes": 731690
+        }
+      }
+    },
+    {
+      "ticker": "COST",
+      "group": "Consumer",
+      "cik": 909832,
+      "company": "COSTCO WHOLESALE CORP /NEW",
+      "form": "10-Q",
+      "accession": "0000909832-26-000051",
+      "filed": "2026-06-03",
+      "report_date": "2026-05-10",
+      "primary_document": "cost-20260510.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000051/FilingSummary.xml",
+          "sha256": "9fc62896ea811f459fb5b2c2437c6c0d8e24a5516a23ed601bc4001984fb5c8e",
+          "bytes": 27118
+        },
+        "documents": [
+          {
+            "name": "cost-20260510.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000051/cost-20260510.htm",
+            "sha256": "a4e3fcbb1da17a3da3bbfea4497b10fecf209283fee9ac200f958a906382a49d",
+            "bytes": 897730
+          }
+        ],
+        "labels": {
+          "name": "cost-20260510_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000051/cost-20260510_lab.xml",
+          "sha256": "06f8b9cc1920e6ddc967129712b5cd4992c22dd8466b442ccb8bdcef2f738c50",
+          "bytes": 452388
+        }
+      }
+    },
+    {
+      "ticker": "HD",
+      "group": "Consumer",
+      "cik": 354950,
+      "company": "HOME DEPOT, INC.",
+      "form": "10-K",
+      "accession": "0001628280-26-019436",
+      "filed": "2026-03-18",
+      "report_date": "2026-02-01",
+      "primary_document": "hd-20260201.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/354950/000162828026019436/FilingSummary.xml",
+          "sha256": "227505d53a07eb4158ead6de32596376cbbc613c0a25d7243b2549785d707106",
+          "bytes": 56803
+        },
+        "documents": [
+          {
+            "name": "hd-20260201.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/354950/000162828026019436/hd-20260201.htm",
+            "sha256": "39d371287f188be62b27880a606175e811aad27fb1444dba5a5f05abbd15d691",
+            "bytes": 2314832
+          }
+        ],
+        "labels": {
+          "name": "hd-20260201_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/354950/000162828026019436/hd-20260201_lab.xml",
+          "sha256": "b68083df5e29bb2a4a81d133bdec429820b6b31a96962369e7d915ad9ecda971",
+          "bytes": 1012818
+        }
+      }
+    },
+    {
+      "ticker": "HD",
+      "group": "Consumer",
+      "cik": 354950,
+      "company": "HOME DEPOT, INC.",
+      "form": "10-Q",
+      "accession": "0001628280-26-058715",
+      "filed": "2026-08-25",
+      "report_date": "2026-08-02",
+      "primary_document": "hd-20260802.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/354950/000162828026058715/FilingSummary.xml",
+          "sha256": "abe77b27c759b4fa870c0a17e3b0df0bc5cbdb17a357280e3239a7398f75bd4e",
+          "bytes": 29971
+        },
+        "documents": [
+          {
+            "name": "hd-20260802.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/354950/000162828026058715/hd-20260802.htm",
+            "sha256": "52e72666b804f0b3ed0dbc9aa5c67e6b47291255b4dffffa0ab4b06e316dc0c4",
+            "bytes": 953096
+          }
+        ],
+        "labels": {
+          "name": "hd-20260802_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/354950/000162828026058715/hd-20260802_lab.xml",
+          "sha256": "9644e2ce6d4a00d0ff0269384d32d7f895dc4cb0b0d47f236727f5b932abef69",
+          "bytes": 492635
+        }
+      }
+    },
+    {
+      "ticker": "MCD",
+      "group": "Consumer",
+      "cik": 63908,
+      "company": "MCDONALDS CORP",
+      "form": "10-K",
+      "accession": "0000063908-26-000035",
+      "filed": "2026-02-24",
+      "report_date": "2025-12-31",
+      "primary_document": "mcd-20251231.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/63908/000006390826000035/FilingSummary.xml",
+          "sha256": "dd602a08ecc1db60854628711943e7fa52f4690794707505453e2c5e716557c8",
+          "bytes": 48413
+        },
+        "documents": [
+          {
+            "name": "mcd-20251231.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/63908/000006390826000035/mcd-20251231.htm",
+            "sha256": "baf3b0625d6d8908df02c59f5cfaad52b9886eb31dc87927351fc921a67f30ad",
+            "bytes": 2182369
+          }
+        ],
+        "labels": {
+          "name": "mcd-20251231_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/63908/000006390826000035/mcd-20251231_lab.xml",
+          "sha256": "41bc4d4733309f9e5db529405e82a388980dcfad713c932353b836fed1deb378",
+          "bytes": 841966
+        }
+      }
+    },
+    {
+      "ticker": "MCD",
+      "group": "Consumer",
+      "cik": 63908,
+      "company": "MCDONALDS CORP",
+      "form": "10-Q",
+      "accession": "0000063908-26-000083",
+      "filed": "2026-11-06",
+      "report_date": "2026-09-30",
+      "primary_document": "mcd-20260930.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/63908/000006390826000083/FilingSummary.xml",
+          "sha256": "c640502c94fdaab8c913d1e4e647ce3fa7a0a010d2659d11afdda88eed5eef66",
+          "bytes": 25286
+        },
+        "documents": [
+          {
+            "name": "mcd-20260930.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/63908/000006390826000083/mcd-20260930.htm",
+            "sha256": "567729692bcd35469f4bd0b3a194f6a723d60657fd79b381c009fed15627d202",
+            "bytes": 1556069
+          }
+        ],
+        "labels": {
+          "name": "mcd-20260930_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/63908/000006390826000083/mcd-20260930_lab.xml",
+          "sha256": "4a7b13347866b4fa9724482a2c0d934e0d4a5e6a618622ac4f0eda1e642ce350",
+          "bytes": 395182
+        }
+      }
+    },
+    {
+      "ticker": "KO",
+      "group": "Consumer",
+      "cik": 21344,
+      "company": "COCA COLA CO",
+      "form": "10-K",
+      "accession": "0001628280-26-010047",
+      "filed": "2026-02-20",
+      "report_date": "2025-12-31",
+      "primary_document": "ko-20251231.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/FilingSummary.xml",
+          "sha256": "472e961d6bd035f8109fd49d6ab9c4a00f15b29e53d229bf8c625de8669f5cbd",
+          "bytes": 82951
+        },
+        "documents": [
+          {
+            "name": "ko-20251231.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm",
+            "sha256": "1420e86a3e2870ea6a4f55477f1488be16c76a6ddb02fa3a759c2f9c79134f98",
+            "bytes": 3758244
+          }
+        ],
+        "labels": {
+          "name": "ko-20251231_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231_lab.xml",
+          "sha256": "8b5c2c486a346b67e974f0c2f113c16fd3441888cb1fa8ff9d3a8a69a3686805",
+          "bytes": 1521167
+        }
+      }
+    },
+    {
+      "ticker": "KO",
+      "group": "Consumer",
+      "cik": 21344,
+      "company": "COCA COLA CO",
+      "form": "10-Q",
+      "accession": "0001628280-26-067844",
+      "filed": "2026-10-28",
+      "report_date": "2026-10-02",
+      "primary_document": "ko-20261002.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026067844/FilingSummary.xml",
+          "sha256": "bc9a9f50ef7c53a98adfd415e6bc781323ee2a949bdf708fa2dfa4e0c4f1cf80",
+          "bytes": 44018
+        },
+        "documents": [
+          {
+            "name": "ko-20261002.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026067844/ko-20261002.htm",
+            "sha256": "07b30a46eed9c9556ed084be284949b3c0895af045b173cbea70c8be3324d335",
+            "bytes": 2207405
+          }
+        ],
+        "labels": {
+          "name": "ko-20261002_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026067844/ko-20261002_lab.xml",
+          "sha256": "7f5829834304cfce27f62038895dfbd7341c1693497f3c0eed6f2082e02e74d8",
+          "bytes": 828873
+        }
+      }
+    },
+    {
+      "ticker": "CAT",
+      "group": "Industrials, defence, energy, telecom, media",
+      "cik": 18230,
+      "company": "CATERPILLAR INC",
+      "form": "10-K",
+      "accession": "0000018230-26-000008",
+      "filed": "2026-02-13",
+      "report_date": "2025-12-31",
+      "primary_document": "cat-20251231.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/18230/000001823026000008/FilingSummary.xml",
+          "sha256": "abf9d865838f2bda306c2691f04e8244d9a86e84911bd2e54d6c6fc48fd45fba",
+          "bytes": 85427
+        },
+        "documents": [
+          {
+            "name": "cat-20251231.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/18230/000001823026000008/cat-20251231.htm",
+            "sha256": "696085f05864a11e1bff6e3278ab9c654650ff2428c45f0a6ea58d931555d65b",
+            "bytes": 6100573
+          }
+        ],
+        "labels": {
+          "name": "cat-20251231_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/18230/000001823026000008/cat-20251231_lab.xml",
+          "sha256": "071974fb14e9f3abd806cfde103e07a1fa17104333130cddfdbac8d8d5766b71",
+          "bytes": 1511192
+        }
+      }
+    },
+    {
+      "ticker": "CAT",
+      "group": "Industrials, defence, energy, telecom, media",
+      "cik": 18230,
+      "company": "CATERPILLAR INC",
+      "form": "10-Q",
+      "accession": "0000018230-26-000057",
+      "filed": "2026-11-04",
+      "report_date": "2026-09-30",
+      "primary_document": "cat-20260930.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/18230/000001823026000057/FilingSummary.xml",
+          "sha256": "13f01f75acb1c547ce35d7572215d7ed640f04b8c8ab121fe801991dc9da8e19",
+          "bytes": 60114
+        },
+        "documents": [
+          {
+            "name": "cat-20260930.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/18230/000001823026000057/cat-20260930.htm",
+            "sha256": "d5168127a32bbe2357d76bb6787df62e29991a0ab47badb14b401a30c594f018",
+            "bytes": 4618357
+          }
+        ],
+        "labels": {
+          "name": "cat-20260930_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/18230/000001823026000057/cat-20260930_lab.xml",
+          "sha256": "0fca8b45dae8681cb0701b9c8323fd489e85a9a39482456be765aa0015bf290b",
+          "bytes": 930248
+        }
+      }
+    },
+    {
+      "ticker": "HON",
+      "group": "Industrials, defence, energy, telecom, media",
+      "cik": 773840,
+      "company": "HONEYWELL INTERNATIONAL INC",
+      "form": "10-K",
+      "accession": "0000773840-26-000013",
+      "filed": "2026-02-17",
+      "report_date": "2025-12-31",
+      "primary_document": "hon-20251231.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/773840/000077384026000013/FilingSummary.xml",
+          "sha256": "94d9be9b5b45588fd37829fea123a28a0f6076af5237812ef24cd81bc02fe2c1",
+          "bytes": 93314
+        },
+        "documents": [
+          {
+            "name": "hon-20251231.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/773840/000077384026000013/hon-20251231.htm",
+            "sha256": "7a5fe1070b39b378537b9b1a219a079fb474223bd35974bec612ef3c3215f7aa",
+            "bytes": 5132633
+          }
+        ],
+        "labels": {
+          "name": "hon-20251231_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/773840/000077384026000013/hon-20251231_lab.xml",
+          "sha256": "1731ff405ebc9c95eebca9b00f1eace0d8d4ca78ccbb142918ea14e31330ce31",
+          "bytes": 1749112
+        }
+      }
+    },
+    {
+      "ticker": "HON",
+      "group": "Industrials, defence, energy, telecom, media",
+      "cik": 773840,
+      "company": "HONEYWELL INTERNATIONAL INC",
+      "form": "10-Q",
+      "accession": "0000773840-26-000143",
+      "filed": "2026-10-22",
+      "report_date": "2026-09-30",
+      "primary_document": "hon-20260930.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/773840/000077384026000143/FilingSummary.xml",
+          "sha256": "46a0943fb2679bdef90e551eec54c9d695beefaf5291fcb7adc4fb1586b0c43a",
+          "bytes": 55183
+        },
+        "documents": [
+          {
+            "name": "hon-20260930.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/773840/000077384026000143/hon-20260930.htm",
+            "sha256": "372603483e3d70c633de533c6ee7ff10bf386f37c2bf157c1001eb6ad0995671",
+            "bytes": 2648991
+          }
+        ],
+        "labels": {
+          "name": "hon-20260930_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/773840/000077384026000143/hon-20260930_lab.xml",
+          "sha256": "ad69c887ddc9c2117577b2830f6d771c43be31459c8be441bcbb84d118e76204",
+          "bytes": 944838
+        }
+      }
+    },
+    {
+      "ticker": "UPS",
+      "group": "Industrials, defence, energy, telecom, media",
+      "cik": 1090727,
+      "company": "UNITED PARCEL SERVICE INC",
+      "form": "10-K",
+      "accession": "0001628280-26-008432",
+      "filed": "2026-02-17",
+      "report_date": "2025-12-31",
+      "primary_document": "ups-20251231.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1090727/000162828026008432/FilingSummary.xml",
+          "sha256": "1d6e14f168dedc63e90a18f97c12a46b29890f963ae02386386800da124340ad",
+          "bytes": 73219
+        },
+        "documents": [
+          {
+            "name": "ups-20251231.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/1090727/000162828026008432/ups-20251231.htm",
+            "sha256": "b5fbbbc71a8cef6480bc45be2112cb33961ec5031e95cb59cbecd561cb11e12d",
+            "bytes": 4076037
+          }
+        ],
+        "labels": {
+          "name": "ups-20251231_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1090727/000162828026008432/ups-20251231_lab.xml",
+          "sha256": "929a382854ddf9432310fc64e93acb9efdf70cb8cdd1f10d8c766d3a78643571",
+          "bytes": 1583093
+        }
+      }
+    },
+    {
+      "ticker": "UPS",
+      "group": "Industrials, defence, energy, telecom, media",
+      "cik": 1090727,
+      "company": "UNITED PARCEL SERVICE INC",
+      "form": "10-Q",
+      "accession": "0001628280-26-070246",
+      "filed": "2026-11-04",
+      "report_date": "2026-09-30",
+      "primary_document": "ups-20260930.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1090727/000162828026070246/FilingSummary.xml",
+          "sha256": "a0e2e96b952428ea5647d41804010e20b43ee931a4028e79a9597d6d96324490",
+          "bytes": 43928
+        },
+        "documents": [
+          {
+            "name": "ups-20260930.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/1090727/000162828026070246/ups-20260930.htm",
+            "sha256": "0a2358264056adaa8d35961cb80593836bdd0b1fa50a68d0de26a1d037000642",
+            "bytes": 2229669
+          }
+        ],
+        "labels": {
+          "name": "ups-20260930_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1090727/000162828026070246/ups-20260930_lab.xml",
+          "sha256": "ecab9474c968740fc17ed93424dc9e3d3d7a63b7fc32cbc3f41592028119662c",
+          "bytes": 753109
+        }
+      }
+    },
+    {
+      "ticker": "LMT",
+      "group": "Industrials, defence, energy, telecom, media",
+      "cik": 936468,
+      "company": "LOCKHEED MARTIN CORP",
+      "form": "10-K",
+      "accession": "0001628280-26-004195",
+      "filed": "2026-01-29",
+      "report_date": "2025-12-31",
+      "primary_document": "lmt-20251231.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/936468/000162828026004195/FilingSummary.xml",
+          "sha256": "12514bc0d79576a31ad91f773581115b4ffd43f855926badeaac9d667f99e13d",
+          "bytes": 58233
+        },
+        "documents": [
+          {
+            "name": "lmt-20251231.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/936468/000162828026004195/lmt-20251231.htm",
+            "sha256": "f8510d363924c45d99dd25f673219590843be8056c4a7c22067ad6ae4f46f43f",
+            "bytes": 2909283
+          }
+        ],
+        "labels": {
+          "name": "lmt-20251231_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/936468/000162828026004195/lmt-20251231_lab.xml",
+          "sha256": "dd9bbf04d9fe07659d2d67ece039624ebe261b536ddc5020d478c5dff670f595",
+          "bytes": 991195
+        }
+      }
+    },
+    {
+      "ticker": "LMT",
+      "group": "Industrials, defence, energy, telecom, media",
+      "cik": 936468,
+      "company": "LOCKHEED MARTIN CORP",
+      "form": "10-Q",
+      "accession": "0001628280-26-066928",
+      "filed": "2026-10-22",
+      "report_date": "2026-09-27",
+      "primary_document": "lmt-20260927.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/936468/000162828026066928/FilingSummary.xml",
+          "sha256": "f869c165087b300aa9f08f85233ea25a84c5463aa27342a88f20eaea7d0e7326",
+          "bytes": 33392
+        },
+        "documents": [
+          {
+            "name": "lmt-20260927.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/936468/000162828026066928/lmt-20260927.htm",
+            "sha256": "3cb556f8e0c6917682d81d8d70ff7f643bf1568e56f2c3b4bba5ecb44768a971",
+            "bytes": 1703047
+          }
+        ],
+        "labels": {
+          "name": "lmt-20260927_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/936468/000162828026066928/lmt-20260927_lab.xml",
+          "sha256": "b2cdf3a6e823942125e9bdf142b6bd896668864cfe3ba8cc1d9791ad8f8c299c",
+          "bytes": 520704
+        }
+      }
+    },
+    {
+      "ticker": "CVX",
+      "group": "Industrials, defence, energy, telecom, media",
+      "cik": 93410,
+      "company": "CHEVRON CORP",
+      "form": "10-K",
+      "accession": "0000093410-26-000078",
+      "filed": "2026-02-24",
+      "report_date": "2025-12-31",
+      "primary_document": "cvx-20251231.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/93410/000009341026000078/FilingSummary.xml",
+          "sha256": "1949f863ed7ed6188a770ea88fddf328a77b75e08c0b9692a41aabab996196f3",
+          "bytes": 81763
+        },
+        "documents": [
+          {
+            "name": "cvx-20251231.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/93410/000009341026000078/cvx-20251231.htm",
+            "sha256": "131b54573c019454de9f5905dc961198991b4d4107d49e56316a1b2e5e266b8f",
+            "bytes": 6061420
+          }
+        ],
+        "labels": {
+          "name": "cvx-20251231_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/93410/000009341026000078/cvx-20251231_lab.xml",
+          "sha256": "b9cfe9d79b26ab54b453a7b34632bac936f31bd4d533fed53b037b76a5ae0c6e",
+          "bytes": 1485317
+        }
+      }
+    },
+    {
+      "ticker": "CVX",
+      "group": "Industrials, defence, energy, telecom, media",
+      "cik": 93410,
+      "company": "CHEVRON CORP",
+      "form": "10-Q",
+      "accession": "0000093410-26-000200",
+      "filed": "2026-11-05",
+      "report_date": "2026-09-30",
+      "primary_document": "cvx-20260930.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/93410/000009341026000200/FilingSummary.xml",
+          "sha256": "a4f7d393e805157de50a28f03d2258405c05132d1b31e43e1f79041adb4d83bd",
+          "bytes": 44085
+        },
+        "documents": [
+          {
+            "name": "cvx-20260930.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/93410/000009341026000200/cvx-20260930.htm",
+            "sha256": "e9f803d6c8f224eb90712debe493af929f346484276779590bb93ce781fe72fc",
+            "bytes": 2127845
+          }
+        ],
+        "labels": {
+          "name": "cvx-20260930_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/93410/000009341026000200/cvx-20260930_lab.xml",
+          "sha256": "3c0e37fba5719bc913bf1242cd8eb710d85abc4fe9bb54a23bf6b28ee4c59ab5",
+          "bytes": 726301
+        }
+      }
+    },
+    {
+      "ticker": "VZ",
+      "group": "Industrials, defence, energy, telecom, media",
+      "cik": 732712,
+      "company": "VERIZON COMMUNICATIONS INC",
+      "form": "10-K",
+      "accession": "0000732712-26-000007",
+      "filed": "2026-02-17",
+      "report_date": "2025-12-31",
+      "primary_document": "vz-20251231.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/732712/000073271226000007/FilingSummary.xml",
+          "sha256": "96036282a8ad449500a0f8cfd5b0f11f058c621dfb76dbf2865e138cfa90e22c",
+          "bytes": 81925
+        },
+        "documents": [
+          {
+            "name": "vz-20251231.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/732712/000073271226000007/vz-20251231.htm",
+            "sha256": "d2a7cecc183b73fb5441f6b063a3e7cd33f76901d07ea08d0cc9b8477defaaa0",
+            "bytes": 3989690
+          }
+        ],
+        "labels": {
+          "name": "vz-20251231_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/732712/000073271226000007/vz-20251231_lab.xml",
+          "sha256": "c6d4064a2b54fbb90af2e71ec9a2e1cc45fe47fc240c3e34ed84b8cac61ec2e8",
+          "bytes": 1493811
+        }
+      }
+    },
+    {
+      "ticker": "VZ",
+      "group": "Industrials, defence, energy, telecom, media",
+      "cik": 732712,
+      "company": "VERIZON COMMUNICATIONS INC",
+      "form": "10-Q",
+      "accession": "0000732712-26-000052",
+      "filed": "2026-10-29",
+      "report_date": "2026-09-30",
+      "primary_document": "vz-20260930.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/732712/000073271226000052/FilingSummary.xml",
+          "sha256": "c3cd4592fd19ce84a941cfa8be0199ff9432faf7cb14171c14d289a0d1c2ce2c",
+          "bytes": 51438
+        },
+        "documents": [
+          {
+            "name": "vz-20260930.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/732712/000073271226000052/vz-20260930.htm",
+            "sha256": "c08b506af96a9dea959e3f232ab307d5cb0af4fba04ec29377a7784f568e3f85",
+            "bytes": 2678018
+          }
+        ],
+        "labels": {
+          "name": "vz-20260930_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/732712/000073271226000052/vz-20260930_lab.xml",
+          "sha256": "fdbc6bf0219eb47b62739cc072acf6c535f703eac5440af724da5ebddde9fb61",
+          "bytes": 996691
+        }
+      }
+    },
+    {
+      "ticker": "DIS",
+      "group": "Industrials, defence, energy, telecom, media",
+      "cik": 1744489,
+      "company": "Walt Disney Co",
+      "form": "10-K",
+      "accession": "0001744489-25-000155",
+      "filed": "2025-11-13",
+      "report_date": "2025-09-27",
+      "primary_document": "dis-20250927.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1744489/000174448925000155/FilingSummary.xml",
+          "sha256": "f94f3fd5dbbefaad113fa26a3f337cb4a5cd26ab453d3ff79fc37aca8e891889",
+          "bytes": 86703
+        },
+        "documents": [
+          {
+            "name": "dis-20250927.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/1744489/000174448925000155/dis-20250927.htm",
+            "sha256": "4e2451d017d654ee78e27c84fffcea03af27f994bba109fef9754f5dc510be41",
+            "bytes": 4202957
+          }
+        ],
+        "labels": {
+          "name": "dis-20250927_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1744489/000174448925000155/dis-20250927_lab.xml",
+          "sha256": "99b9d4c6ebd158926c2b10baa26f870a4a57f19ccbf1b8c07bffd93762f41daa",
+          "bytes": 1482128
+        }
+      }
+    },
+    {
+      "ticker": "DIS",
+      "group": "Industrials, defence, energy, telecom, media",
+      "cik": 1744489,
+      "company": "Walt Disney Co",
+      "form": "10-Q",
+      "accession": "0001744489-26-000057",
+      "filed": "2026-08-05",
+      "report_date": "2026-06-27",
+      "primary_document": "dis-20260627.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1744489/000174448926000057/FilingSummary.xml",
+          "sha256": "1ef4b1bb995ec82768ea330595271f4a6f418e54b33d584cbe5ec77f7aae749b",
+          "bytes": 48300
+        },
+        "documents": [
+          {
+            "name": "dis-20260627.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/1744489/000174448926000057/dis-20260627.htm",
+            "sha256": "21f8105b95ec14301cca1d202578f4ec242615f9b509515c6007c4c72af344de",
+            "bytes": 2767166
+          }
+        ],
+        "labels": {
+          "name": "dis-20260627_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1744489/000174448926000057/dis-20260627_lab.xml",
+          "sha256": "ba0d3adbefdc63bdd51431691290a745f2565a233216c847be5630de6d8bc36b",
+          "bytes": 756626
+        }
+      }
+    }
+  ],
+  "problems": []
+}
