@@ -175,6 +175,10 @@ def _category_bad_evidence(check: str, answer: dict, question: dict, pages: dict
         span = norm_ws(str(answer.get("span") or ""))
         on_other = span and any(span in norm_ws(pages[p]) for p in question["pages"])
         return "wrong_page_cited" if on_other else "span_not_verbatim"
+    gold = question["gold"]
+    span = norm_ws(str(answer.get("span") or ""))
+    if any(same(abs(gold["shown_value"]), n) for n in numbers_in(span)):
+        return "scale_or_unit"  # right line, value restated in other units ("8,600 in thousands")
     return "wrong_line_quoted"  # check == "value": real line, but not the one with the number
 
 

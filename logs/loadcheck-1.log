@@ -1,0 +1,14 @@
+=== qwen3.5-9b 2026-11-16T16:27:34+05:30
+SERVE FAILED qwen3.5-9b
+Traceback (most recent call last):
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 512.00 MiB. GPU 0 has a total capacity of 23.51 GiB of which 508.69 MiB is free. Including non-PyTorch memory, this process has 22.67 GiB memory in use. Of the allocated memory 22.14 GiB is allocated by PyTorch, and 55.83 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+    raise RuntimeError(
+RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+=== granite-4.2-8b 2026-11-16T16:30:14+05:30
+  C1 accuracy 0/22  confident-wrong 0/24  abstention 2/2  outcomes {'correct': 0, 'confident_wrong': 0, 'caught_wrong': 0, 'unverifiable_right': 0, 'missed': 0, 'abstained_correctly': 2, 'invented': 0, 'invalid': 22}
+  C3 accuracy 17/22  confident-wrong 3/24  abstention 2/2  outcomes {'correct': 17, 'confident_wrong': 3, 'caught_wrong': 2, 'unverifiable_right': 0, 'missed': 0, 'abstained_correctly': 2, 'invented': 0, 'invalid': 0}
+=== ministral-3-8b 2026-11-16T16:38:02+05:30
+  C1 accuracy 9/22  confident-wrong 5/24  abstention 2/2  outcomes {'correct': 9, 'confident_wrong': 5, 'caught_wrong': 2, 'unverifiable_right': 3, 'missed': 3, 'abstained_correctly': 2, 'invented': 0, 'invalid': 0}
+  C3 ministral-3-8b has no reasoning mode: C3 is n/a (PROTOCOL §6)
+=== done 2026-11-16T16:40:20+05:30

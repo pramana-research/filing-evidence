@@ -1,0 +1,18 @@
+=== qwen3.5-9b 2026-11-16T16:41:24+05:30
+SERVE FAILED qwen3.5-9b
+    raise ValueError(
+ValueError: max_num_seqs (256) exceeds available Mamba cache blocks (109). Each decode sequence requires one Mamba cache block, so CUDA graph capture cannot proceed. Please lower max_num_seqs to at most 109 or increase gpu_memory_utilization.
+Traceback (most recent call last):
+    raise RuntimeError(
+RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+=== granite-4.2-8b 2026-11-16T16:43:29+05:30
+  C1 accuracy 16/22  confident-wrong 2/24  abstention 2/2  outcomes {'correct': 16, 'confident_wrong': 2, 'caught_wrong': 3, 'unverifiable_right': 0, 'missed': 1, 'abstained_correctly': 2, 'invented': 0, 'invalid': 0}
+  C3 accuracy 17/22  confident-wrong 3/24  abstention 2/2  outcomes {'correct': 17, 'confident_wrong': 3, 'caught_wrong': 2, 'unverifiable_right': 0, 'missed': 0, 'abstained_correctly': 2, 'invented': 0, 'invalid': 0}
+=== olmo-3-7b 2026-11-16T16:48:49+05:30
+SERVE FAILED olmo-3-7b
+W1116 16:49:15.392000 35667 torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1116 16:49:15.417000 35667 torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+Traceback (most recent call last):
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Undefined is not JSON serializable
+=== done 2026-11-16T16:50:19+05:30

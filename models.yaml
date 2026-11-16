@@ -28,6 +28,9 @@ models:
     repo: Qwen/Qwen3.5-9B
     company: Alibaba
     precision: bf16
+    # vision-language model; text-only task: skip the vision encoder (OOM). Hybrid Mamba: the default 256
+    # concurrent sequences exceed the Mamba cache that fits beside a 16k context
+    vllm_args: [--language-model-only, --max-num-seqs, 64]
     request: {C1: {chat_template_kwargs: {enable_thinking: false}},
               C3: {chat_template_kwargs: {enable_thinking: true}}}
     verified: false
@@ -36,7 +39,10 @@ models:
     repo: ibm-granite/granite-4.2-8b
     company: IBM
     precision: bf16
-    request: {C1: {}, C3: {chat_template_kwargs: {thinking: true}}}
+    # thinks by default (chat template: enable_thinking defaults to True); README recommends temperature 1.0,
+    # but the protocol fixes temperature 0 for every model
+    request: {C1: {chat_template_kwargs: {enable_thinking: false}},
+              C3: {chat_template_kwargs: {enable_thinking: true}}}
     verified: false
 
   ministral-3-8b:
@@ -51,6 +57,9 @@ models:
     repo: allenai/Olmo-3-7B-Instruct
     company: AllenAI
     precision: bf16
+    # The model's own template with `tools is none` also accepting an undefined `tools`: vLLM 0.33's startup
+    # probe renders it with tools undefined and crashes. Renders identically for our requests (tools=None).
+    vllm_args: [--chat-template, research/benchmarks/filing-evidence/templates/olmo-3-7b.jinja]
     request: {C1: {}, C3: null}
     verified: false
 
@@ -58,7 +67,7 @@ models:
     repo: nvidia/NVIDIA-Nemotron-Nano-9B-v2
     company: NVIDIA
     precision: bf16
-    vllm_args: [--trust-remote-code, --mamba-ssm-cache-dtype, float32]
+    vllm_args: [--trust-remote-code, --mamba-ssm-cache-dtype, float32, --max-num-seqs, 64]  # hybrid Mamba (OOM at 256)
     system: {C1: /no_think, C3: /think}
     request: {C1: {}, C3: {}}
     verified: false
@@ -91,6 +100,7 @@ models:
     repo: zai-org/GLM-4.6V-Flash
     company: Zhipu (Z.ai)
     precision: bf16
+    vllm_args: [--language-model-only]   # vision-language model; text-only task
     request: {C1: {chat_template_kwargs: {enable_thinking: false}},
               C3: {chat_template_kwargs: {enable_thinking: true}}}
     verified: false

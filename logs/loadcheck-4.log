@@ -1,0 +1,7 @@
+=== nemotron-nano-9b-v2 2026-11-16T17:01:36+05:30
+  C1 accuracy 9/22  confident-wrong 4/24  abstention 2/2  outcomes {'correct': 9, 'confident_wrong': 4, 'caught_wrong': 1, 'unverifiable_right': 4, 'missed': 4, 'abstained_correctly': 2, 'invented': 0, 'invalid': 0}
+  C3 accuracy 8/22  confident-wrong 5/24  abstention 2/2  outcomes {'correct': 8, 'confident_wrong': 5, 'caught_wrong': 4, 'unverifiable_right': 5, 'missed': 0, 'abstained_correctly': 2, 'invented': 0, 'invalid': 0}
+=== gpt-oss-20b 2026-11-16T17:04:54+05:30
+  C1 accuracy 15/22  confident-wrong 6/24  abstention 2/2  outcomes {'correct': 15, 'confident_wrong': 6, 'caught_wrong': 0, 'unverifiable_right': 1, 'missed': 0, 'abstained_correctly': 2, 'invented': 0, 'invalid': 0}
+  C3 accuracy 16/22  confident-wrong 3/24  abstention 1/2  outcomes {'correct': 16, 'confident_wrong': 3, 'caught_wrong': 0, 'unverifiable_right': 0, 'missed': 0, 'abstained_correctly': 1, 'invented': 0, 'invalid': 4}
+=== done 2026-11-16T17:08:21+05:30
