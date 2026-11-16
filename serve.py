@@ -56,6 +56,9 @@ def command(name: str) -> list[str]:
 
 
 def main() -> None:
+    from dotenv import load_dotenv
+
+    load_dotenv(HERE.parents[2] / ".env")  # HF_TOKEN (gated models, faster downloads) and EVAL_API_KEY
     name = sys.argv[1]
     cmd = command(name)
     m, _ = profile(name)

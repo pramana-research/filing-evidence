@@ -138,3 +138,13 @@ def test_dropped_decimal_point_is_a_scale_error():                              
     r = C.check(reply(value=273, scale="none", page=3, span="Diluted EPS $ 2.01 $ 1.57"),
                 q({**EPS, "display": "2.73", "shown_value": 2.73, "value": 2.73}, "S7"), PAGES)
     assert (r.outcome, r.category) == ("caught_wrong", "scale_or_unit")
+
+
+def test_right_ignoring_scale_is_secondary():                                                    # phi-4 load check
+    r = C.check(reply(value=275746, scale="none", page=4, span="Total liabilities 275,746 285,508"), q(LIAB), PAGES)
+    assert (r.outcome, r.category, r.right_ignoring_scale) == ("confident_wrong", "scale_or_unit", True)
+    r = C.check(reply(value=285508, scale="none", page=4, span="Total liabilities 275,746 285,508"), q(LIAB), PAGES)
+    assert r.right_ignoring_scale is False
+    rows = [{"slice": "S1", "outcome": "confident_wrong", "category": "scale_or_unit", "right_ignoring_scale": True,
+             "retried": False, "completion_tokens": 5, "seconds": 1}]
+    assert C.summarize(rows)["accuracy_ignoring_scale"]["k"] == 1

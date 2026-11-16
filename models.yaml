@@ -74,7 +74,8 @@ models:
   phi-4:
     repo: microsoft/phi-4
     company: Microsoft
-    precision: bf16
+    precision: fp8               # 14B: bf16 weights are ~29 GB
+    vllm_args: [--quantization, fp8]
     request: {C1: {}, C3: null}
     verified: false
 

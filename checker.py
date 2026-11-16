@@ -118,6 +118,9 @@ class Graded:
     outcome: str
     category: str | None  # §9, for every non-correct outcome except abstained_correctly
     value_matches_gold: bool | None
+    # secondary (§8, added 2026-11-16): the checks pass and the digits equal the gold as displayed, whatever
+    # scale the model stated. Separates finding the number from reading its units header.
+    right_ignoring_scale: bool | None = None
 
 
 def failed_check(answer: dict | None, question: dict, pages: dict[str, str]) -> str | None:
@@ -189,13 +192,14 @@ def check(reply_text: str, question: dict, pages: dict[str, str]) -> Graded:
         return Graded(answer, fc, "missed", "missed", False)
     right = value_matches_gold(answer, gold)
     if right and fc is None:
-        return Graded(answer, fc, "correct", None, True)
+        return Graded(answer, fc, "correct", None, True, True)
     if right:
         return Graded(
             answer, fc, "unverifiable_right", _category_bad_evidence(fc, answer, question, pages), True
         )
     outcome = "confident_wrong" if fc is None else "caught_wrong"
-    return Graded(answer, fc, outcome, _category_wrong_value(answer, gold), False)
+    digits = fc is None and same(abs(to_number(answer.get("value")) or 0.0), abs(gold["shown_value"]))
+    return Graded(answer, fc, outcome, _category_wrong_value(answer, gold), False, digits)
 
 
 def retry_message(check_name: str, answer: dict | None, question: dict, templates: dict[str, str]) -> str:
@@ -268,6 +272,9 @@ def summarize(rows: list[dict]) -> dict:
         good = "abstained_correctly" if s == "S8" else "correct"
         out["by_slice"][s] = _rate(sum(r["outcome"] == good for r in rs), len(rs))
     # coverage at zero confident-wrong: answering only when the checker passes, how much is answered correctly
+    out["accuracy_ignoring_scale"] = _rate(
+        sum(bool(r.get("right_ignoring_scale")) for r in answerable), len(answerable)
+    )
     passed = [r for r in answerable if r["outcome"] in ("correct", "confident_wrong")]
     out["checker_pass_precision"] = _rate(sum(r["outcome"] == "correct" for r in passed), len(passed))
     return out

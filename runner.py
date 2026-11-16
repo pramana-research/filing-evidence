@@ -209,7 +209,7 @@ def main() -> int:
     ap.add_argument("setup", choices=["C1", "C2", "C3"])
     ap.add_argument("--set", default="main", choices=list(SETS))
     ap.add_argument("--base-url", default="http://127.0.0.1:8000/v1")
-    ap.add_argument("--limit", type=int, default=None, help="first N questions only (load checks)")
+    ap.add_argument("--limit", type=int, default=None, help="N evenly spaced questions (load checks)")
     ap.add_argument("--workers", type=int, default=16)
     ap.add_argument("--regrade", action="store_true", help="re-grade stored replies; no model calls")
     args = ap.parse_args()
@@ -225,7 +225,7 @@ def main() -> int:
 
     qs, pages, fingerprint = load_set(args.set)
     if args.limit:
-        qs = qs[: args.limit]
+        qs = qs[:: max(1, len(qs) // args.limit)][: args.limit]  # evenly spaced: every slice is covered
     out = HERE / "results" / args.set / args.profile / args.setup
     if args.limit:
         out = out.with_name(f"{args.setup}-limit{args.limit}")
