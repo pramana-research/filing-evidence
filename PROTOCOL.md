@@ -51,7 +51,7 @@ Ten general instruct models, **each from a different company**, all run on one N
 
 ## 3 · Data
 
-### 3.1 Companies (40, nine sector groups)
+### 3.1 Companies (45: forty in nine sector groups, plus five added for segment coverage)
 
 | Group | Companies |
 |---|---|
@@ -64,6 +64,10 @@ Ten general instruct models, **each from a different company**, all run on one N
 | Healthcare | JNJ, UNH, PFE, LLY, TMO |
 | Consumer | WMT, COST, HD, MCD, KO |
 | Industrials, defence, energy, telecom, media | CAT, HON, UPS, LMT, CVX, VZ, DIS |
+
+**Added 2026-11-16 for segment coverage:** PEP, ABT, GD, CMCSA, MDT (45 companies, about 90 filings). Under the
+final wording rules S5 reached 123 of 125 questions from only 17 companies; per §4 companies are added rather than
+the bar lowered. Logged before any model result.
 
 ExxonMobil (XOM) was considered and replaced by Chevron (CVX) before any data was built: the SEC submissions record
 for XOM's ticker starts on 2026-07-01 and contains no 10-K (checked 2026-11-15). Lockheed Martin (LMT) completes the 40.
@@ -103,7 +107,7 @@ has to come with a verbatim quote from the provided pages, which the checker enf
 | **S3** 10-Q quarter vs year-to-date | 10-Q facts where the page shows both a 3-month and a year-to-date column; the question asks for one explicitly | "…for the three months ended September 30, 2026?" |
 | **S4** Notes | non-dimensional facts displayed on pages after the primary statements, in tables | "What was the fair value of long-term debt at December 31, 2025?" |
 | **S5** Segments | facts with a segment dimension (e.g. `StatementBusinessSegmentsAxis`) | "What was operating income for the Sam's Club U.S. segment…?" |
-| **S6** Numbers in prose | facts displayed inside a sentence (a line of ≥ 20 words), typically MD&A | "By how much did net sales increase…?" phrased as the tagged quantity |
+| **S6** Numbers in prose | facts displayed inside a sentence (a line of ≥ 20 words, not counting figures or currency signs), typically MD&A or notes | "By how much did net sales increase…?" phrased as the tagged quantity |
 | **S7** Units and per-share | per-share amounts, share counts, percentages, or values whose display scale differs from the page's headline scale | "What was diluted EPS…?" |
 | **S8** Not in the provided pages | an item or period that is **not** in the three pages given: (a) a period not shown, (b) an item the company doesn't report, (c) a quarter asked of a 10-K, (d) an item that exists elsewhere in the filing but not on the given pages | correct answer: `not_found` |
 
@@ -141,6 +145,21 @@ and fixed before results.
   where the displayed line carries a label (at least two words), so the evidence line identifies the item. In S5,
   only segment dimensions (axes ending in `SegmentsAxis`) are used. Equity-statement component columns are excluded
   as ambiguous even for a human reader.
+- **Answerability rules** (added after QC round 1, §11; all before any model result). A question is only built when
+  a careful reader of the shown pages could answer it without guessing:
+  - the figure is a column figure, not a number inside the row's wording ("…net of tax of $1 and $3…");
+  - its row is not *sparse* (fewer figures than the widest row of its table: blank columns can't be mapped in plain
+    text, e.g. Schedule III segment rows);
+  - its row does not show other items for the same period (e.g. a stock-option row with count, price, term and
+    intrinsic value), nor same-period figures split by category;
+  - the answer page shows the period's year (e.g. not "Fiscal 2025" columns for a year ending February 2026).
+- **Wording rules:** the item is named by its row label as printed, if that label is unique on the shown pages;
+  parentheticals with figures ("(Note 6)", "(includes $59,758…)"), unit suffixes ("(in shares)") and glued footnote
+  markers are removed. Labels of three words or fewer, and bare percentages, get their section heading
+  ("deposits (interest expense)"). Otherwise the filer's XBRL label is used, only if it isn't in the inverted
+  taxonomy style ("Premiums Written, Net") and most of its words appear in the evidence line. Segment questions use
+  the row label when the row is the item (segments as columns). Non-dollar units are stated ("(number of shares)",
+  "(per share)", "(%)"). Every question text is unique.
 - **Instructions (prompt v1):** fixed text in `prompts/v1.txt`, identical for all models. It asks for one JSON object:
 
 ```json
@@ -172,6 +191,10 @@ An answer **passes** when all hold:
 2. `page` is one of the three provided pages;
 3. `span`, with whitespace normalised, occurs verbatim on that page;
 4. the **answered** `value` appears in `span` as displayed (thousands separators, parentheses for negatives and `$` ignored).
+
+**Sign is not graded.** The filing's display convention and XBRL's sign often disagree (a cash-flow line shows
+"(6,716)" for a positive XBRL value, or "682" for a negative one), and the model reads the display. An answer is
+compared with the displayed magnitude; a sign the model adds or omits is neither rewarded nor penalised.
 
 C2's retry and the confident-wrong metric both use exactly this check.
 
@@ -235,6 +258,11 @@ A sample of 20 per model is reviewed by hand to confirm the coded category. Disa
 
 - **Hand check:** 100 questions (stratified across all eight slices) are checked by hand against the rendered filing
   (gold value, period, page, wording). **Acceptance: ≥ 98 correct.** Otherwise the builder is fixed and a new sample drawn.
+
+  | Round | Sample seed | Result | Outcome |
+  |---|---|---|---|
+  | 1 | 20261116 | **87 / 100**. Every gold *value* was correct; the 13 failures were wording or answerability: missing section context (5), sparse rows (3), parentheticals cut mid-label (2), a multi-measure row (1), misleading labels (2) | builder fixed (answerability and wording rules, §5); verdicts in `qc/handcheck_v1.jsonl` |
+  | 2 | 20261117 | **76 / 100**. Every gold *value* correct again (200 / 200 over both rounds). The round-1 section-context rule over-reached: headings attached to totals and below-the-line rows (12), labels cut at dates or dashes (4), labels needing their table's subject (4), a non-unique label falling back to an identical XBRL label, fiscal-year columns named by start year, a prose label not matching its sentence, an ambiguous "not reported" item | wording redesigned: printed row label only, unique on the shown pages, no XBRL fallback for rows; context only from a reliable heading (≤ 6 rows up, no summary row between, not a caption); summary rows never get context; bare totals, balance rows, month-ending and entity-name labels dropped; period month **and day** must be on the answer page; prose labels must match the figure's sentence; "not reported" items share no words with the shown pages. Capacity: in S5 each segment's figure counts as its own item; S8 kind (b) tries up to 8 concepts per filing. S5 still reached only 123 from 17 companies, so (per §4) five companies were added (§3.1) and two over-strict rules corrected: segment facts tagged with `ConsolidationItemsAxis = OperatingSegmentsMember` alongside the segment (common since ASU 2023-07) count as single-segment facts; the sparse-row test compares a row only with the rows of its own table. One-word XBRL labels are allowed for segment questions when they name a standard line item ("Goodwill", "Revenues"), never for change words ("Acquisitions", "Write-offs"). Verdicts in `qc/handcheck_v2.jsonl` |
 - **Smoke test:** Qwen3-8B on the 19 Walmart probe questions must reproduce the probe's results within the noise
   of the rendering change (§12 notes any difference).
 - **Freeze:** the dataset is frozen and fingerprinted (sha256 of the sorted question ids, gold values and page

@@ -1,0 +1,90 @@
+{
+  "seed": 20261115,
+  "questions": 1000,
+  "pages": 1871,
+  "slices": {
+    "S8": {
+      "pool": 583,
+      "chosen": 125,
+      "companies": 45,
+      "forms": {
+        "10-K": 74,
+        "10-Q": 51
+      },
+      "subtypes": {
+        "a": 32,
+        "d": 31,
+        "b": 31,
+        "c": 31
+      }
+    },
+    "S5": {
+      "pool": 745,
+      "chosen": 125,
+      "companies": 29,
+      "forms": {
+        "10-K": 64,
+        "10-Q": 61
+      }
+    },
+    "S6": {
+      "pool": 947,
+      "chosen": 125,
+      "companies": 43,
+      "forms": {
+        "10-K": 63,
+        "10-Q": 62
+      }
+    },
+    "S3": {
+      "pool": 1429,
+      "chosen": 125,
+      "companies": 36,
+      "forms": {
+        "10-Q": 125
+      }
+    },
+    "S7": {
+      "pool": 1503,
+      "chosen": 125,
+      "companies": 42,
+      "forms": {
+        "10-K": 63,
+        "10-Q": 62
+      }
+    },
+    "S1": {
+      "pool": 3321,
+      "chosen": 125,
+      "companies": 44,
+      "forms": {
+        "10-K": 63,
+        "10-Q": 62
+      }
+    },
+    "S4": {
+      "pool": 5312,
+      "chosen": 125,
+      "companies": 44,
+      "forms": {
+        "10-K": 63,
+        "10-Q": 62
+      }
+    },
+    "S2": {
+      "pool": 7680,
+      "chosen": 125,
+      "companies": 44,
+      "forms": {
+        "10-K": 63,
+        "10-Q": 62
+      }
+    }
+  },
+  "per_form": {
+    "10-K": 453,
+    "10-Q": 547
+  },
+  "draft_fingerprint": "ab03bcacd7df932c"
+}
+exit 0

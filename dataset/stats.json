@@ -1,0 +1,136 @@
+{
+  "seed": 20261115,
+  "questions": 1000,
+  "pages": 1871,
+  "slices": {
+    "S8": {
+      "pool": 583,
+      "chosen": 125,
+      "companies": 45,
+      "forms": {
+        "10-K": 74,
+        "10-Q": 51
+      },
+      "subtypes": {
+        "a": 32,
+        "d": 31,
+        "b": 31,
+        "c": 31
+      }
+    },
+    "S5": {
+      "pool": 745,
+      "chosen": 125,
+      "companies": 29,
+      "forms": {
+        "10-K": 64,
+        "10-Q": 61
+      }
+    },
+    "S6": {
+      "pool": 947,
+      "chosen": 125,
+      "companies": 43,
+      "forms": {
+        "10-K": 63,
+        "10-Q": 62
+      }
+    },
+    "S3": {
+      "pool": 1429,
+      "chosen": 125,
+      "companies": 36,
+      "forms": {
+        "10-Q": 125
+      }
+    },
+    "S7": {
+      "pool": 1503,
+      "chosen": 125,
+      "companies": 42,
+      "forms": {
+        "10-K": 63,
+        "10-Q": 62
+      }
+    },
+    "S1": {
+      "pool": 3321,
+      "chosen": 125,
+      "companies": 44,
+      "forms": {
+        "10-K": 63,
+        "10-Q": 62
+      }
+    },
+    "S4": {
+      "pool": 5312,
+      "chosen": 125,
+      "companies": 44,
+      "forms": {
+        "10-K": 63,
+        "10-Q": 62
+      }
+    },
+    "S2": {
+      "pool": 7680,
+      "chosen": 125,
+      "companies": 44,
+      "forms": {
+        "10-K": 63,
+        "10-Q": 62
+      }
+    }
+  },
+  "per_company": {
+    "JPM": 27,
+    "TMO": 27,
+    "ALL": 26,
+    "MCD": 26,
+    "MET": 26,
+    "NEE": 26,
+    "PFE": 26,
+    "UNH": 26,
+    "ADBE": 25,
+    "AXP": 25,
+    "DIS": 25,
+    "DUK": 25,
+    "LLY": 25,
+    "PNC": 25,
+    "CVX": 24,
+    "HD": 24,
+    "JNJ": 24,
+    "KO": 24,
+    "LMT": 24,
+    "SCHW": 24,
+    "UPS": 24,
+    "WMT": 24,
+    "BAC": 23,
+    "PEP": 23,
+    "USB": 23,
+    "ABT": 22,
+    "CAT": 22,
+    "TRV": 22,
+    "AAPL": 21,
+    "CMCSA": 21,
+    "HON": 21,
+    "MSFT": 21,
+    "NVDA": 21,
+    "PLD": 21,
+    "VZ": 21,
+    "WFC": 21,
+    "GD": 20,
+    "MDT": 20,
+    "SO": 20,
+    "PGR": 19,
+    "SPG": 19,
+    "O": 17,
+    "ORCL": 17,
+    "COST": 10,
+    "GS": 3
+  },
+  "per_form": {
+    "10-K": 453,
+    "10-Q": 547
+  },
+  "draft_fingerprint": "ab03bcacd7df932c"
+}

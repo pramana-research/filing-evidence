@@ -1,0 +1,100 @@
+{"n": 0, "id": "FE-0110", "correct": true, "gold_value_correct": true}
+{"n": 1, "id": "FE-0019", "correct": true, "gold_value_correct": true}
+{"n": 2, "id": "FE-0004", "correct": true, "gold_value_correct": true}
+{"n": 3, "id": "FE-0125", "correct": true, "gold_value_correct": true}
+{"n": 4, "id": "FE-0030", "correct": true, "gold_value_correct": true}
+{"n": 5, "id": "FE-0026", "correct": true, "gold_value_correct": true}
+{"n": 6, "id": "FE-0028", "correct": false, "gold_value_correct": true, "failure_class": "wrong context", "note": "'Total Assets (Other Noncurrent Assets)': context on a total suggests a different figure"}
+{"n": 7, "id": "FE-0044", "correct": true, "gold_value_correct": true}
+{"n": 8, "id": "FE-0039", "correct": true, "gold_value_correct": true}
+{"n": 9, "id": "FE-0045", "correct": true, "gold_value_correct": true}
+{"n": 10, "id": "FE-0060", "correct": true, "gold_value_correct": true}
+{"n": 11, "id": "FE-0008", "correct": true, "gold_value_correct": true}
+{"n": 12, "id": "FE-0002", "correct": true, "gold_value_correct": true}
+{"n": 13, "id": "FE-0240", "correct": true, "gold_value_correct": true}
+{"n": 14, "id": "FE-0221", "correct": false, "gold_value_correct": true, "failure_class": "wrong context", "note": "'currency translation adjustments (BASIC AND DILUTED EARNINGS PER COMMON SHARE)': heading from another block"}
+{"n": 15, "id": "FE-0171", "correct": true, "gold_value_correct": true}
+{"n": 16, "id": "FE-0163", "correct": true, "gold_value_correct": true}
+{"n": 17, "id": "FE-0162", "correct": false, "gold_value_correct": true, "failure_class": "wrong context", "note": "'comprehensive income (other comprehensive income (loss), net of tax)': total given its section as context"}
+{"n": 18, "id": "FE-0187", "correct": true, "gold_value_correct": true}
+{"n": 19, "id": "FE-0216", "correct": true, "gold_value_correct": true}
+{"n": 20, "id": "FE-0141", "correct": true, "gold_value_correct": true}
+{"n": 21, "id": "FE-0243", "correct": true, "gold_value_correct": true}
+{"n": 22, "id": "FE-0191", "correct": true, "gold_value_correct": true}
+{"n": 23, "id": "FE-0219", "correct": true, "gold_value_correct": true}
+{"n": 24, "id": "FE-0177", "correct": true, "gold_value_correct": true}
+{"n": 25, "id": "FE-0186", "correct": true, "gold_value_correct": true}
+{"n": 26, "id": "FE-0273", "correct": true, "gold_value_correct": true}
+{"n": 27, "id": "FE-0267", "correct": false, "gold_value_correct": true, "failure_class": "wrong context", "note": "'net income (noninterest expense)'"}
+{"n": 28, "id": "FE-0289", "correct": true, "gold_value_correct": true}
+{"n": 29, "id": "FE-0335", "correct": true, "gold_value_correct": true}
+{"n": 30, "id": "FE-0336", "correct": true, "gold_value_correct": true}
+{"n": 31, "id": "FE-0319", "correct": true, "gold_value_correct": true}
+{"n": 32, "id": "FE-0325", "correct": true, "gold_value_correct": true}
+{"n": 33, "id": "FE-0365", "correct": true, "gold_value_correct": true}
+{"n": 34, "id": "FE-0373", "correct": true, "gold_value_correct": true}
+{"n": 35, "id": "FE-0375", "correct": false, "gold_value_correct": true, "failure_class": "wrong context", "note": "'consolidated net income (interest)'"}
+{"n": 36, "id": "FE-0320", "correct": false, "gold_value_correct": true, "failure_class": "wrong context", "note": "'income tax expense (operating expenses)'"}
+{"n": 37, "id": "FE-0367", "correct": false, "gold_value_correct": true, "failure_class": "wrong context", "note": "'Net Income (Operating Expenses)'"}
+{"n": 38, "id": "FE-0268", "correct": true, "gold_value_correct": true}
+{"n": 39, "id": "FE-0454", "correct": false, "gold_value_correct": true, "failure_class": "wording", "note": "row label cut at the day: 'Total gross unrecognized tax benefits as of May as of May 31, 2026'"}
+{"n": 40, "id": "FE-0406", "correct": true, "gold_value_correct": true}
+{"n": 41, "id": "FE-0493", "correct": true, "gold_value_correct": true}
+{"n": 42, "id": "FE-0482", "correct": false, "gold_value_correct": true, "failure_class": "wording", "note": "label cut at an em dash taken for an empty cell: 'participating share-based awards (Basic and Diluted)'"}
+{"n": 43, "id": "FE-0447", "correct": true, "gold_value_correct": true}
+{"n": 44, "id": "FE-0397", "correct": true, "gold_value_correct": true}
+{"n": 45, "id": "FE-0450", "correct": true, "gold_value_correct": true}
+{"n": 46, "id": "FE-0455", "correct": true, "gold_value_correct": true}
+{"n": 47, "id": "FE-0464", "correct": false, "gold_value_correct": true, "failure_class": "wrong context", "note": "'total revenues (strategic capital segment)' on a total"}
+{"n": 48, "id": "FE-0465", "correct": false, "gold_value_correct": true, "failure_class": "context", "note": "'total deferred': bare total, meaningless without its table"}
+{"n": 49, "id": "FE-0460", "correct": false, "gold_value_correct": true, "failure_class": "wrong context", "note": "'net investment income (equity securities)' on a total"}
+{"n": 50, "id": "FE-0400", "correct": false, "gold_value_correct": true, "failure_class": "wording", "note": "roll-forward balance row: 'Balance at January (Amounts Before Tax)'"}
+{"n": 51, "id": "FE-0444", "correct": false, "gold_value_correct": true, "failure_class": "wording", "note": "label cut at an en dash; units caption taken as heading: 'NET INCOME ((millions, except per share amounts))'"}
+{"n": 52, "id": "FE-0513", "correct": true, "gold_value_correct": true}
+{"n": 53, "id": "FE-0517", "correct": false, "gold_value_correct": true, "failure_class": "context", "note": "'Other Adjustments' is a column header of a goodwill table; question never says goodwill"}
+{"n": 54, "id": "FE-0510", "correct": false, "gold_value_correct": true, "failure_class": "wording", "note": "date-cut balance row: 'Net balance as of January ... as of December 31, 2025'"}
+{"n": 55, "id": "FE-0579", "correct": false, "gold_value_correct": true, "failure_class": "context", "note": "'acquisitions' (goodwill acquired) without the table's subject"}
+{"n": 56, "id": "FE-0512", "correct": false, "gold_value_correct": true, "failure_class": "context", "note": "'write-offs' without saying of what"}
+{"n": 57, "id": "FE-0516", "correct": true, "gold_value_correct": true}
+{"n": 58, "id": "FE-0565", "correct": true, "gold_value_correct": true}
+{"n": 59, "id": "FE-0523", "correct": true, "gold_value_correct": true}
+{"n": 60, "id": "FE-0573", "correct": true, "gold_value_correct": true}
+{"n": 61, "id": "FE-0538", "correct": true, "gold_value_correct": true}
+{"n": 62, "id": "FE-0592", "correct": true, "gold_value_correct": true}
+{"n": 63, "id": "FE-0598", "correct": true, "gold_value_correct": true}
+{"n": 64, "id": "FE-0696", "correct": true, "gold_value_correct": true}
+{"n": 65, "id": "FE-0714", "correct": true, "gold_value_correct": true}
+{"n": 66, "id": "FE-0647", "correct": true, "gold_value_correct": true}
+{"n": 67, "id": "FE-0664", "correct": true, "gold_value_correct": true}
+{"n": 68, "id": "FE-0668", "correct": false, "gold_value_correct": true, "failure_class": "label mismatch", "note": "'increase in deferred income taxes' vs sentence 'one-time remeasurement cost'; nine-month period not in sentence"}
+{"n": 69, "id": "FE-0635", "correct": true, "gold_value_correct": true}
+{"n": 70, "id": "FE-0698", "correct": true, "gold_value_correct": true}
+{"n": 71, "id": "FE-0730", "correct": true, "gold_value_correct": true}
+{"n": 72, "id": "FE-0735", "correct": true, "gold_value_correct": true}
+{"n": 73, "id": "FE-0670", "correct": true, "gold_value_correct": true}
+{"n": 74, "id": "FE-0707", "correct": true, "gold_value_correct": true}
+{"n": 75, "id": "FE-0644", "correct": true, "gold_value_correct": true}
+{"n": 76, "id": "FE-0783", "correct": false, "gold_value_correct": true, "failure_class": "context", "note": "'Duke Energy (%)': row label is a registrant name"}
+{"n": 77, "id": "FE-0813", "correct": true, "gold_value_correct": true}
+{"n": 78, "id": "FE-0800", "correct": false, "gold_value_correct": true, "failure_class": "ambiguous", "note": "'net income per share' appears for basic and diluted; non-unique row label fell back to identical XBRL label"}
+{"n": 79, "id": "FE-0765", "correct": true, "gold_value_correct": true}
+{"n": 80, "id": "FE-0844", "correct": true, "gold_value_correct": true}
+{"n": 81, "id": "FE-0772", "correct": true, "gold_value_correct": true}
+{"n": 82, "id": "FE-0801", "correct": true, "gold_value_correct": true}
+{"n": 83, "id": "FE-0873", "correct": true, "gold_value_correct": true}
+{"n": 84, "id": "FE-0827", "correct": true, "gold_value_correct": true}
+{"n": 85, "id": "FE-0816", "correct": true, "gold_value_correct": true}
+{"n": 86, "id": "FE-0839", "correct": true, "gold_value_correct": true}
+{"n": 87, "id": "FE-0790", "correct": false, "gold_value_correct": true, "failure_class": "period", "note": "columns are fiscal years named by start year ('2025 2024 2023'); 'as of January 28, 2024' is the '2023' column"}
+{"n": 88, "id": "FE-0938", "correct": true, "gold_value_correct": true}
+{"n": 89, "id": "FE-0902", "correct": false, "gold_value_correct": true, "failure_class": "not-found ambiguous", "note": "'short-term borrowings': page shows commercial paper borrowings; a reader could reasonably answer it"}
+{"n": 90, "id": "FE-0919", "correct": true, "gold_value_correct": true}
+{"n": 91, "id": "FE-0991", "correct": true, "gold_value_correct": true}
+{"n": 92, "id": "FE-0946", "correct": true, "gold_value_correct": true}
+{"n": 93, "id": "FE-0948", "correct": true, "gold_value_correct": true}
+{"n": 94, "id": "FE-0999", "correct": true, "gold_value_correct": true}
+{"n": 95, "id": "FE-1000", "correct": true, "gold_value_correct": true}
+{"n": 96, "id": "FE-0877", "correct": true, "gold_value_correct": true}
+{"n": 97, "id": "FE-0981", "correct": true, "gold_value_correct": true}
+{"n": 98, "id": "FE-0925", "correct": false, "gold_value_correct": true, "failure_class": "wording", "note": "one-word label 'advisory'"}
+{"n": 99, "id": "FE-0923", "correct": true, "gold_value_correct": true}

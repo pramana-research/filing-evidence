@@ -11,3 +11,54 @@ groups:
   Healthcare: [JNJ, UNH, PFE, LLY, TMO]
   Consumer: [WMT, COST, HD, MCD, KO]
   Industrials, defence, energy, telecom, media: [CAT, HON, UPS, LMT, CVX, VZ, DIS]
+  # Added 2026-11-16, before any model result, because S5 (segments) reached only 123 of 125 questions from
+  # 17 companies (PROTOCOL.md §4: add companies, never lower the bar). Chosen for clear multi-segment reporting.
+  Added for segment coverage: [PEP, ABT, GD, CMCSA, MDT]
+# Display names used in question wording (the SEC record names are upper-case abbreviations such as
+# "COCA COLA CO"). A leading "The" is omitted so the possessive reads naturally ("Coca-Cola Company's").
+names:
+  AAPL: Apple Inc.
+  MSFT: Microsoft Corporation
+  NVDA: NVIDIA Corporation
+  ORCL: Oracle Corporation
+  ADBE: Adobe Inc.
+  JPM: JPMorgan Chase & Co.
+  BAC: Bank of America Corporation
+  WFC: Wells Fargo & Company
+  USB: U.S. Bancorp
+  PNC: PNC Financial Services Group, Inc.
+  GS: Goldman Sachs Group, Inc.
+  SCHW: Charles Schwab Corporation
+  AXP: American Express Company
+  PGR: Progressive Corporation
+  TRV: Travelers Companies, Inc.
+  ALL: Allstate Corporation
+  MET: MetLife, Inc.
+  PLD: Prologis, Inc.
+  O: Realty Income Corporation
+  SPG: Simon Property Group, Inc.
+  NEE: NextEra Energy, Inc.
+  DUK: Duke Energy Corporation
+  SO: Southern Company
+  JNJ: Johnson & Johnson
+  UNH: UnitedHealth Group Incorporated
+  PFE: Pfizer Inc.
+  LLY: Eli Lilly and Company
+  TMO: Thermo Fisher Scientific Inc.
+  WMT: Walmart Inc.
+  COST: Costco Wholesale Corporation
+  HD: Home Depot, Inc.
+  MCD: McDonald's Corporation
+  KO: Coca-Cola Company
+  CAT: Caterpillar Inc.
+  HON: Honeywell International Inc.
+  UPS: United Parcel Service, Inc.
+  LMT: Lockheed Martin Corporation
+  CVX: Chevron Corporation
+  VZ: Verizon Communications Inc.
+  DIS: Walt Disney Company
+  PEP: PepsiCo, Inc.
+  ABT: Abbott Laboratories
+  GD: General Dynamics Corporation
+  CMCSA: Comcast Corporation
+  MDT: Medtronic plc

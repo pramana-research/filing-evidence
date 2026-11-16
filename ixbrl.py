@@ -321,6 +321,7 @@ class _Reader(HTMLParser):
 MAX_PAGE_CHARS = 12_000
 SPLIT_PAGE_CHARS = 6_000
 _SPACES = re.compile(r"[ \t\r\f\v\xa0  ]+")  # incl. no-break and thin spaces
+_ZERO_WIDTH = re.compile("[\u200b\u200c\u200d\u2060\ufeff]")  # invisible; removed entirely
 
 
 def _render_page(raw: str) -> tuple[list[str], dict[int, int]]:
@@ -328,7 +329,7 @@ def _render_page(raw: str) -> tuple[list[str], dict[int, int]]:
     lines_out, where = [], {}
     for raw_line in raw.split("\n"):
         idxs = [int(m.group(1)) for m in _MARKER.finditer(raw_line) if m.group(1)]
-        clean = _SPACES.sub(" ", _MARKER.sub("", raw_line)).strip()
+        clean = _SPACES.sub(" ", _ZERO_WIDTH.sub("", _MARKER.sub("", raw_line))).strip()
         if not clean:
             continue
         for i in idxs:

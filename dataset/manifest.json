@@ -1,5 +1,5 @@
 {
-  "created": "2026-11-15T12:27:48+00:00",
+  "created": "2026-11-16T03:55:52+00:00",
   "cutoff": "2026-11-15",
   "source": "SEC EDGAR (sec.gov/Archives), public records",
   "filings": [
@@ -2658,6 +2658,336 @@
           "url": "https://www.sec.gov/Archives/edgar/data/1744489/000174448926000057/dis-20260627_lab.xml",
           "sha256": "ba0d3adbefdc63bdd51431691290a745f2565a233216c847be5630de6d8bc36b",
           "bytes": 756626
+        }
+      }
+    },
+    {
+      "ticker": "PEP",
+      "group": "Added for segment coverage",
+      "cik": 77476,
+      "company": "PEPSICO INC",
+      "form": "10-K",
+      "accession": "0000077476-26-000007",
+      "filed": "2026-02-03",
+      "report_date": "2025-12-27",
+      "primary_document": "pep-20251227.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/77476/000007747626000007/FilingSummary.xml",
+          "sha256": "55ed9bfeed7e03fccc57c98565ed183531c536103e1b5a7630f5ce937c082962",
+          "bytes": 74785
+        },
+        "documents": [
+          {
+            "name": "pep-20251227.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/77476/000007747626000007/pep-20251227.htm",
+            "sha256": "61e5e32d66848b66bc3ee54b7eae0edb9064c2ccc952b6835221dd53ae92ffd4",
+            "bytes": 3681605
+          }
+        ],
+        "labels": {
+          "name": "pep-20251227_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/77476/000007747626000007/pep-20251227_lab.xml",
+          "sha256": "9a4e75bfa583a79b3118502fa8779cc3a2054403268e4a27d33ef101317b8cd3",
+          "bytes": 1538979
+        }
+      }
+    },
+    {
+      "ticker": "PEP",
+      "group": "Added for segment coverage",
+      "cik": 77476,
+      "company": "PEPSICO INC",
+      "form": "10-Q",
+      "accession": "0000077476-26-000048",
+      "filed": "2026-10-08",
+      "report_date": "2026-09-05",
+      "primary_document": "pep-20260905.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/77476/000007747626000048/FilingSummary.xml",
+          "sha256": "99a24cb765009e653661ffeed638a1a3d2bd7b885adef7caf62725306fe27ec5",
+          "bytes": 43817
+        },
+        "documents": [
+          {
+            "name": "pep-20260905.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/77476/000007747626000048/pep-20260905.htm",
+            "sha256": "e6d7c8bd8fa095ef9320b6977f8450bc86f152da76ccc398c1f4bc2a2d4495f0",
+            "bytes": 2539881
+          }
+        ],
+        "labels": {
+          "name": "pep-20260905_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/77476/000007747626000048/pep-20260905_lab.xml",
+          "sha256": "a0026f9988f2d8b52c87220122dfb10a78f293b108527f4e95e1dbe6947b6bd0",
+          "bytes": 898150
+        }
+      }
+    },
+    {
+      "ticker": "ABT",
+      "group": "Added for segment coverage",
+      "cik": 1800,
+      "company": "ABBOTT LABORATORIES",
+      "form": "10-K",
+      "accession": "0001628280-26-010185",
+      "filed": "2026-02-20",
+      "report_date": "2025-12-31",
+      "primary_document": "abt-20251231.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1800/000162828026010185/FilingSummary.xml",
+          "sha256": "bc65fa6ead7622dedc2fd3a9fd33accc9b03adfda7fad1c0ac867179136536fe",
+          "bytes": 56914
+        },
+        "documents": [
+          {
+            "name": "abt-20251231.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/1800/000162828026010185/abt-20251231.htm",
+            "sha256": "7bb6be488756bbb82d51da18009f6864184276699641aed108e4433a0ce5e3ac",
+            "bytes": 2656141
+          }
+        ],
+        "labels": {
+          "name": "abt-20251231_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1800/000162828026010185/abt-20251231_lab.xml",
+          "sha256": "8f6335da8b4a480ad066f71bbf048cd7b5991afe08ac9b8728014fc5fbedce9b",
+          "bytes": 1136011
+        }
+      }
+    },
+    {
+      "ticker": "ABT",
+      "group": "Added for segment coverage",
+      "cik": 1800,
+      "company": "ABBOTT LABORATORIES",
+      "form": "10-Q",
+      "accession": "0001628280-26-070154",
+      "filed": "2026-11-04",
+      "report_date": "2026-09-30",
+      "primary_document": "abt-20260930.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1800/000162828026070154/FilingSummary.xml",
+          "sha256": "e07a610d01f1c9f15c52eed3873d6b0dda7a018beceaeca0cf8dbb914bbc7ab8",
+          "bytes": 40633
+        },
+        "documents": [
+          {
+            "name": "abt-20260930.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/1800/000162828026070154/abt-20260930.htm",
+            "sha256": "956cf1a611c1b63df36cbf55d0ac196b0a65ecf0000308d7727c8e1496ac19e8",
+            "bytes": 1597385
+          }
+        ],
+        "labels": {
+          "name": "abt-20260930_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1800/000162828026070154/abt-20260930_lab.xml",
+          "sha256": "eb6cd4017e2ff08a893b8b5187650eafda636e904d587b05c5fb822285734c8e",
+          "bytes": 679955
+        }
+      }
+    },
+    {
+      "ticker": "GD",
+      "group": "Added for segment coverage",
+      "cik": 40533,
+      "company": "GENERAL DYNAMICS CORP",
+      "form": "10-K",
+      "accession": "0000040533-26-000006",
+      "filed": "2026-01-30",
+      "report_date": "2025-12-31",
+      "primary_document": "gd-20251231.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/40533/000004053326000006/FilingSummary.xml",
+          "sha256": "afaf07dd052ff82a918030563d9aee3a3d85ed887f48c68877df7db930f34bc3",
+          "bytes": 73035
+        },
+        "documents": [
+          {
+            "name": "gd-20251231.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/40533/000004053326000006/gd-20251231.htm",
+            "sha256": "e8e8754a338c9c5582a7e3ef72156f41239c4d4c159847b1f98d7ce65259f1a3",
+            "bytes": 2454442
+          }
+        ],
+        "labels": {
+          "name": "gd-20251231_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/40533/000004053326000006/gd-20251231_lab.xml",
+          "sha256": "57db0f682b77f7b5a1e542b5f2901a26b1db7670ae6d5003fb4bad38ad387775",
+          "bytes": 1089929
+        }
+      }
+    },
+    {
+      "ticker": "GD",
+      "group": "Added for segment coverage",
+      "cik": 40533,
+      "company": "GENERAL DYNAMICS CORP",
+      "form": "10-Q",
+      "accession": "0000040533-26-000038",
+      "filed": "2026-10-30",
+      "report_date": "2026-10-04",
+      "primary_document": "gd-20261004.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/40533/000004053326000038/FilingSummary.xml",
+          "sha256": "483b7351e955521194bd623faca62f4e266fc63d4b7cb7830aa1c6a00fbaf89c",
+          "bytes": 39008
+        },
+        "documents": [
+          {
+            "name": "gd-20261004.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/40533/000004053326000038/gd-20261004.htm",
+            "sha256": "19c2d8623ea619fb09e3f8d529e303039d4f569868dd8ce2b9498437876283ee",
+            "bytes": 1552817
+          }
+        ],
+        "labels": {
+          "name": "gd-20261004_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/40533/000004053326000038/gd-20261004_lab.xml",
+          "sha256": "80572563714718465d040aabfbc2812cf5fe8708b0e61c904795ddb4e14acc58",
+          "bytes": 563679
+        }
+      }
+    },
+    {
+      "ticker": "CMCSA",
+      "group": "Added for segment coverage",
+      "cik": 1166691,
+      "company": "COMCAST CORP",
+      "form": "10-K",
+      "accession": "0001628280-26-004994",
+      "filed": "2026-02-03",
+      "report_date": "2025-12-31",
+      "primary_document": "cmcsa-20251231.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1166691/000162828026004994/FilingSummary.xml",
+          "sha256": "1bb305304e979257c1b4bd4f92f84bdceb44b7442fea5552512e7ac7a324b9c4",
+          "bytes": 56561
+        },
+        "documents": [
+          {
+            "name": "cmcsa-20251231.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/1166691/000162828026004994/cmcsa-20251231.htm",
+            "sha256": "8239c0eff41daa19d399be150774277e4a4082a0a2cf3d850cce1cce24a28c58",
+            "bytes": 2858141
+          }
+        ],
+        "labels": {
+          "name": "cmcsa-20251231_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1166691/000162828026004994/cmcsa-20251231_lab.xml",
+          "sha256": "3e00e76bf986936ca8a657f4f07136c530e6cc0466440d3694d5f66f3e897826",
+          "bytes": 1002750
+        }
+      }
+    },
+    {
+      "ticker": "CMCSA",
+      "group": "Added for segment coverage",
+      "cik": 1166691,
+      "company": "COMCAST CORP",
+      "form": "10-Q",
+      "accession": "0001628280-26-066863",
+      "filed": "2026-10-22",
+      "report_date": "2026-09-30",
+      "primary_document": "cmcsa-20260930.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1166691/000162828026066863/FilingSummary.xml",
+          "sha256": "a309254c89fe6ddb3b3d387d5f61552d46943a95c0c6e171d751ec880ab049af",
+          "bytes": 31325
+        },
+        "documents": [
+          {
+            "name": "cmcsa-20260930.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/1166691/000162828026066863/cmcsa-20260930.htm",
+            "sha256": "041886632e63b65f7d66e1b5debc30e706fe328f9dd659d3b739416e3f167bef",
+            "bytes": 1877510
+          }
+        ],
+        "labels": {
+          "name": "cmcsa-20260930_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1166691/000162828026066863/cmcsa-20260930_lab.xml",
+          "sha256": "de3c1f6f58fdc3cbafdc6f880f68c9b81a5838fc9ab82c078c940d3f8b96ae60",
+          "bytes": 589779
+        }
+      }
+    },
+    {
+      "ticker": "MDT",
+      "group": "Added for segment coverage",
+      "cik": 1613103,
+      "company": "Medtronic plc",
+      "form": "10-K",
+      "accession": "0001628280-26-044354",
+      "filed": "2026-06-18",
+      "report_date": "2026-04-24",
+      "primary_document": "mdt-20260424.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1613103/000162828026044354/FilingSummary.xml",
+          "sha256": "e63a9ac811dd3de18233d836916c712d5f6054c0870a874996a3288c9281c9cf",
+          "bytes": 81681
+        },
+        "documents": [
+          {
+            "name": "mdt-20260424.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/1613103/000162828026044354/mdt-20260424.htm",
+            "sha256": "24f7fb0775c2841e880ee72feb0aa825de7aa7a59682f21b44105d980f9c050e",
+            "bytes": 3732854
+          }
+        ],
+        "labels": {
+          "name": "mdt-20260424_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1613103/000162828026044354/mdt-20260424_lab.xml",
+          "sha256": "217951dbb594d50eb4b201c09c48f4a06dbcb51d8a840893cbea74ee4d0dc098",
+          "bytes": 1544963
+        }
+      }
+    },
+    {
+      "ticker": "MDT",
+      "group": "Added for segment coverage",
+      "cik": 1613103,
+      "company": "Medtronic plc",
+      "form": "10-Q",
+      "accession": "0001628280-26-060473",
+      "filed": "2026-09-03",
+      "report_date": "2026-07-31",
+      "primary_document": "mdt-20260731.htm",
+      "files": {
+        "filing_summary": {
+          "name": "FilingSummary.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1613103/000162828026060473/FilingSummary.xml",
+          "sha256": "a721fd2a81bee86ddc314bbbed450b97b00ed7e4017ea2730124ed9edd141c59",
+          "bytes": 54620
+        },
+        "documents": [
+          {
+            "name": "mdt-20260731.htm",
+            "url": "https://www.sec.gov/Archives/edgar/data/1613103/000162828026060473/mdt-20260731.htm",
+            "sha256": "1220dee1db3465c221513c5b86e2c3aa67d32342615f6f07f7cd0c5b0d9b23b2",
+            "bytes": 2047101
+          }
+        ],
+        "labels": {
+          "name": "mdt-20260731_lab.xml",
+          "url": "https://www.sec.gov/Archives/edgar/data/1613103/000162828026060473/mdt-20260731_lab.xml",
+          "sha256": "caab458b3f10496094be40a8d26d89240e38d412c1a4d44769e83de23cfbee28",
+          "bytes": 907316
         }
       }
     }

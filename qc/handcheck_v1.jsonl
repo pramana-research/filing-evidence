@@ -1,0 +1,100 @@
+{"n": 0, "id": "FE-0027", "correct": true, "gold_value_correct": true}
+{"n": 1, "id": "FE-0122", "correct": true, "gold_value_correct": true}
+{"n": 2, "id": "FE-0028", "correct": true, "gold_value_correct": true}
+{"n": 3, "id": "FE-0082", "correct": true, "gold_value_correct": true}
+{"n": 4, "id": "FE-0052", "correct": true, "gold_value_correct": true}
+{"n": 5, "id": "FE-0110", "correct": true, "gold_value_correct": true}
+{"n": 6, "id": "FE-0120", "correct": true, "gold_value_correct": true}
+{"n": 7, "id": "FE-0044", "correct": true, "gold_value_correct": true}
+{"n": 8, "id": "FE-0065", "correct": true, "gold_value_correct": true}
+{"n": 9, "id": "FE-0083", "correct": true, "gold_value_correct": true}
+{"n": 10, "id": "FE-0042", "correct": false, "gold_value_correct": true, "failure_class": "wording", "note": "row label cut at '(Note 6)': 'employee related obligations (Note'"}
+{"n": 11, "id": "FE-0074", "correct": true, "gold_value_correct": true}
+{"n": 12, "id": "FE-0002", "correct": true, "gold_value_correct": true}
+{"n": 13, "id": "FE-0190", "correct": true, "gold_value_correct": true}
+{"n": 14, "id": "FE-0150", "correct": true, "gold_value_correct": true}
+{"n": 15, "id": "FE-0214", "correct": true, "gold_value_correct": true}
+{"n": 16, "id": "FE-0126", "correct": true, "gold_value_correct": true}
+{"n": 17, "id": "FE-0223", "correct": true, "gold_value_correct": true, "note": "XBRL label '- Basic' slightly odd but identifies the row"}
+{"n": 18, "id": "FE-0192", "correct": true, "gold_value_correct": true}
+{"n": 19, "id": "FE-0206", "correct": true, "gold_value_correct": true}
+{"n": 20, "id": "FE-0199", "correct": true, "gold_value_correct": true}
+{"n": 21, "id": "FE-0172", "correct": true, "gold_value_correct": true}
+{"n": 22, "id": "FE-0246", "correct": true, "gold_value_correct": true}
+{"n": 23, "id": "FE-0157", "correct": false, "gold_value_correct": true, "failure_class": "wording", "note": "row label cut at a parenthetical with amounts: 'unsecured short-term borrowings (includes'"}
+{"n": 24, "id": "FE-0198", "correct": true, "gold_value_correct": true}
+{"n": 25, "id": "FE-0181", "correct": true, "gold_value_correct": true}
+{"n": 26, "id": "FE-0322", "correct": true, "gold_value_correct": true}
+{"n": 27, "id": "FE-0296", "correct": true, "gold_value_correct": true}
+{"n": 28, "id": "FE-0283", "correct": true, "gold_value_correct": true}
+{"n": 29, "id": "FE-0357", "correct": true, "gold_value_correct": true}
+{"n": 30, "id": "FE-0362", "correct": false, "gold_value_correct": true, "failure_class": "context", "note": "'deposits' is interest expense on deposits (sub-row under 'Interest expense'); reads like a balance"}
+{"n": 31, "id": "FE-0341", "correct": true, "gold_value_correct": true}
+{"n": 32, "id": "FE-0255", "correct": true, "gold_value_correct": true}
+{"n": 33, "id": "FE-0279", "correct": true, "gold_value_correct": true}
+{"n": 34, "id": "FE-0324", "correct": true, "gold_value_correct": true}
+{"n": 35, "id": "FE-0306", "correct": true, "gold_value_correct": true}
+{"n": 36, "id": "FE-0302", "correct": true, "gold_value_correct": true}
+{"n": 37, "id": "FE-0309", "correct": true, "gold_value_correct": true}
+{"n": 38, "id": "FE-0333", "correct": true, "gold_value_correct": true}
+{"n": 39, "id": "FE-0391", "correct": false, "gold_value_correct": true, "failure_class": "context", "note": "'debt securities' is interest income on debt securities (sub-row under 'Interest income')"}
+{"n": 40, "id": "FE-0476", "correct": true, "gold_value_correct": true}
+{"n": 41, "id": "FE-0435", "correct": true, "gold_value_correct": true}
+{"n": 42, "id": "FE-0490", "correct": false, "gold_value_correct": true, "failure_class": "context", "note": "'non-taxable' is meaningless without its section heading"}
+{"n": 43, "id": "FE-0402", "correct": false, "gold_value_correct": true, "failure_class": "context", "note": "'accrued liabilities' is a deferred-tax-asset component, not balance-sheet accrued liabilities"}
+{"n": 44, "id": "FE-0399", "correct": true, "gold_value_correct": true}
+{"n": 45, "id": "FE-0405", "correct": true, "gold_value_correct": true}
+{"n": 46, "id": "FE-0480", "correct": false, "gold_value_correct": true, "failure_class": "multi-measure row", "note": "row shows options, price, term and intrinsic value for the same date; question can't say which"}
+{"n": 47, "id": "FE-0450", "correct": true, "gold_value_correct": true}
+{"n": 48, "id": "FE-0376", "correct": true, "gold_value_correct": true}
+{"n": 49, "id": "FE-0496", "correct": true, "gold_value_correct": true}
+{"n": 50, "id": "FE-0403", "correct": true, "gold_value_correct": true}
+{"n": 51, "id": "FE-0426", "correct": true, "gold_value_correct": true}
+{"n": 52, "id": "FE-0563", "correct": true, "gold_value_correct": true}
+{"n": 53, "id": "FE-0592", "correct": false, "gold_value_correct": true, "failure_class": "sparse row", "note": "Schedule III segment row has 5 of 10 columns; column of '0' can't be determined from text"}
+{"n": 54, "id": "FE-0521", "correct": true, "gold_value_correct": true}
+{"n": 55, "id": "FE-0525", "correct": true, "gold_value_correct": true}
+{"n": 56, "id": "FE-0593", "correct": false, "gold_value_correct": true, "failure_class": "sparse row", "note": "Schedule III segment row, same problem"}
+{"n": 57, "id": "FE-0518", "correct": true, "gold_value_correct": true}
+{"n": 58, "id": "FE-0532", "correct": true, "gold_value_correct": true}
+{"n": 59, "id": "FE-0594", "correct": false, "gold_value_correct": true, "failure_class": "sparse row", "note": "Schedule III segment row, same problem"}
+{"n": 60, "id": "FE-0569", "correct": true, "gold_value_correct": true}
+{"n": 61, "id": "FE-0571", "correct": true, "gold_value_correct": true}
+{"n": 62, "id": "FE-0531", "correct": false, "gold_value_correct": true, "failure_class": "misleading label", "note": "asks 'Operating Revenues' for Gas; page shows Unaffiliated revenues 2,105 and Total operating revenues 2,172"}
+{"n": 63, "id": "FE-0600", "correct": true, "gold_value_correct": true}
+{"n": 64, "id": "FE-0676", "correct": true, "gold_value_correct": true}
+{"n": 65, "id": "FE-0640", "correct": true, "gold_value_correct": true, "note": "awkward XBRL wording, unambiguous"}
+{"n": 66, "id": "FE-0647", "correct": true, "gold_value_correct": true}
+{"n": 67, "id": "FE-0701", "correct": true, "gold_value_correct": true}
+{"n": 68, "id": "FE-0636", "correct": true, "gold_value_correct": true, "note": "awkward XBRL wording ('accrued interest available-for-sale debt securities'), unambiguous"}
+{"n": 69, "id": "FE-0652", "correct": true, "gold_value_correct": true}
+{"n": 70, "id": "FE-0683", "correct": true, "gold_value_correct": true}
+{"n": 71, "id": "FE-0689", "correct": true, "gold_value_correct": true}
+{"n": 72, "id": "FE-0706", "correct": true, "gold_value_correct": true}
+{"n": 73, "id": "FE-0626", "correct": true, "gold_value_correct": true}
+{"n": 74, "id": "FE-0679", "correct": true, "gold_value_correct": true, "note": "label 'capitalized contract cost' vs sentence 'pre-contract costs': borderline, accepted"}
+{"n": 75, "id": "FE-0730", "correct": true, "gold_value_correct": true}
+{"n": 76, "id": "FE-0766", "correct": true, "gold_value_correct": true}
+{"n": 77, "id": "FE-0868", "correct": true, "gold_value_correct": true, "note": "wording '(in shares) (number)' duplicated: cleanup"}
+{"n": 78, "id": "FE-0774", "correct": true, "gold_value_correct": true}
+{"n": 79, "id": "FE-0831", "correct": true, "gold_value_correct": true}
+{"n": 80, "id": "FE-0830", "correct": true, "gold_value_correct": true}
+{"n": 81, "id": "FE-0791", "correct": true, "gold_value_correct": true}
+{"n": 82, "id": "FE-0788", "correct": true, "gold_value_correct": true, "note": "footnote digit glued: 'common stock1': cleanup"}
+{"n": 83, "id": "FE-0805", "correct": false, "gold_value_correct": true, "failure_class": "context", "note": "'% of segment operating profit (loss)': percentage of what depends on the row above"}
+{"n": 84, "id": "FE-0858", "correct": true, "gold_value_correct": true}
+{"n": 85, "id": "FE-0782", "correct": true, "gold_value_correct": true}
+{"n": 86, "id": "FE-0800", "correct": true, "gold_value_correct": true}
+{"n": 87, "id": "FE-0848", "correct": true, "gold_value_correct": true}
+{"n": 88, "id": "FE-0891", "correct": true, "gold_value_correct": true}
+{"n": 89, "id": "FE-0935", "correct": true, "gold_value_correct": true}
+{"n": 90, "id": "FE-0946", "correct": true, "gold_value_correct": true, "note": "S8b flow item asked 'as of' a date: period-type mismatch, still not in pages"}
+{"n": 91, "id": "FE-0990", "correct": true, "gold_value_correct": true}
+{"n": 92, "id": "FE-0957", "correct": true, "gold_value_correct": true}
+{"n": 93, "id": "FE-0890", "correct": true, "gold_value_correct": true}
+{"n": 94, "id": "FE-0914", "correct": true, "gold_value_correct": true}
+{"n": 95, "id": "FE-0925", "correct": true, "gold_value_correct": true}
+{"n": 96, "id": "FE-0927", "correct": false, "gold_value_correct": true, "failure_class": "wording", "note": "S8b label 'exercised': one word, ungrammatical question"}
+{"n": 97, "id": "FE-0970", "correct": true, "gold_value_correct": true}
+{"n": 98, "id": "FE-1000", "correct": true, "gold_value_correct": true}
+{"n": 99, "id": "FE-0955", "correct": true, "gold_value_correct": true}

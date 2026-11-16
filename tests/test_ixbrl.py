@@ -198,3 +198,8 @@ def test_long_pages_are_split_at_line_boundaries_and_facts_follow():
     occ = f.facts[0].occurrences[0]
     assert occ.page == len(f.pages) - 1 and occ.line == "Total assets 42" and occ.line in f.pages[occ.page]
     assert "\n".join(f.pages).count("Filler line number") == 400          # nothing lost or duplicated
+
+
+def test_zero_width_characters_are_removed():
+    html = "<html><body><table><tr><td>Repayments of debt&#8203;</td><td>(3,278,469)&#8203;</td></tr></table></body></html>"
+    assert read_filing(html).pages[0] == "Repayments of debt (3,278,469)"
