@@ -1,10 +1,10 @@
 {
   "seed": 20261115,
   "questions": 1000,
-  "pages": 1871,
+  "pages": 1855,
   "slices": {
     "S8": {
-      "pool": 583,
+      "pool": 581,
       "chosen": 125,
       "companies": 45,
       "forms": {
@@ -28,7 +28,7 @@
       }
     },
     "S6": {
-      "pool": 947,
+      "pool": 841,
       "chosen": 125,
       "companies": 43,
       "forms": {
@@ -45,7 +45,7 @@
       }
     },
     "S7": {
-      "pool": 1503,
+      "pool": 1486,
       "chosen": 125,
       "companies": 42,
       "forms": {
@@ -63,7 +63,7 @@
       }
     },
     "S4": {
-      "pool": 5312,
+      "pool": 5305,
       "chosen": 125,
       "companies": 44,
       "forms": {
@@ -82,55 +82,55 @@
     }
   },
   "per_company": {
+    "DIS": 28,
+    "ADBE": 27,
     "JPM": 27,
-    "TMO": 27,
     "ALL": 26,
+    "CVX": 26,
     "MCD": 26,
-    "MET": 26,
-    "NEE": 26,
     "PFE": 26,
-    "UNH": 26,
-    "ADBE": 25,
-    "AXP": 25,
-    "DIS": 25,
-    "DUK": 25,
-    "LLY": 25,
-    "PNC": 25,
-    "CVX": 24,
-    "HD": 24,
+    "MET": 25,
+    "NEE": 25,
+    "TMO": 25,
+    "UNH": 25,
+    "AXP": 24,
+    "DUK": 24,
     "JNJ": 24,
     "KO": 24,
-    "LMT": 24,
+    "LLY": 24,
+    "PNC": 24,
     "SCHW": 24,
     "UPS": 24,
-    "WMT": 24,
-    "BAC": 23,
-    "PEP": 23,
+    "LMT": 23,
+    "NVDA": 23,
+    "TRV": 23,
     "USB": 23,
-    "ABT": 22,
+    "AAPL": 22,
+    "BAC": 22,
     "CAT": 22,
-    "TRV": 22,
-    "AAPL": 21,
-    "CMCSA": 21,
+    "CMCSA": 22,
+    "HD": 22,
+    "MSFT": 22,
+    "WMT": 22,
+    "ABT": 21,
+    "GD": 21,
     "HON": 21,
-    "MSFT": 21,
-    "NVDA": 21,
-    "PLD": 21,
-    "VZ": 21,
+    "MDT": 21,
+    "PEP": 21,
+    "PGR": 21,
     "WFC": 21,
-    "GD": 20,
-    "MDT": 20,
+    "PLD": 20,
     "SO": 20,
-    "PGR": 19,
-    "SPG": 19,
+    "SPG": 20,
+    "VZ": 20,
+    "ORCL": 18,
     "O": 17,
-    "ORCL": 17,
-    "COST": 10,
+    "COST": 11,
     "GS": 3
   },
   "per_form": {
-    "10-K": 453,
-    "10-Q": 547
+    "10-Q": 547,
+    "10-K": 453
   },
-  "draft_fingerprint": "ab03bcacd7df932c"
+  "draft_fingerprint": "88c0ce313bbcca1c"
 }

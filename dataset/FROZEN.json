@@ -1,0 +1,20 @@
+{
+  "fingerprint": "4fa8f252292167fb42efdc8ec1eed12c63eaf74cfdccd8f446cbe12b81323c0a",
+  "frozen_on": "2026-11-16",
+  "questions": 1000,
+  "draft_fingerprint": "88c0ce313bbcca1c",
+  "qc": {
+    "round": 4,
+    "seed": 20261119,
+    "correct": 98,
+    "of": 100,
+    "gold_values_correct": 100,
+    "verdicts": "qc/handcheck_v4.jsonl"
+  },
+  "files": {
+    "manifest.json": "ccf08f5de72bc119e789e7ec2fbe94311cabbfb9b7c0f1e30f5ac77284d95bdc",
+    "pages.jsonl": "30dee4ecc92c68e4dbe6a45e8d1ec6e43b9486f48090a09444abe6dd87a6e7d9",
+    "questions.jsonl": "88c0ce313bbcca1cb9b58b35ccf6ae723a619deae158f01e120a8d91dc1025ad",
+    "stats.json": "9ab13b54b2a0683f3dd5230db3825c69a8dad364440b6fdb22658ace1caf3e83"
+  }
+}

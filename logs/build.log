@@ -1,10 +1,10 @@
 {
   "seed": 20261115,
   "questions": 1000,
-  "pages": 1871,
+  "pages": 1855,
   "slices": {
     "S8": {
-      "pool": 583,
+      "pool": 581,
       "chosen": 125,
       "companies": 45,
       "forms": {
@@ -28,7 +28,7 @@
       }
     },
     "S6": {
-      "pool": 947,
+      "pool": 841,
       "chosen": 125,
       "companies": 43,
       "forms": {
@@ -45,7 +45,7 @@
       }
     },
     "S7": {
-      "pool": 1503,
+      "pool": 1486,
       "chosen": 125,
       "companies": 42,
       "forms": {
@@ -63,7 +63,7 @@
       }
     },
     "S4": {
-      "pool": 5312,
+      "pool": 5305,
       "chosen": 125,
       "companies": 44,
       "forms": {
@@ -82,9 +82,8 @@
     }
   },
   "per_form": {
-    "10-K": 453,
-    "10-Q": 547
+    "10-Q": 547,
+    "10-K": 453
   },
-  "draft_fingerprint": "ab03bcacd7df932c"
+  "draft_fingerprint": "88c0ce313bbcca1c"
 }
-exit 0

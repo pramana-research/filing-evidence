@@ -222,6 +222,14 @@ def sentence_case(text: str) -> str:
     """Lowercase the first letter only for sentence-case labels ("Total revenues" -> "total revenues"), so the
     question reads naturally; title-case labels and names ("Sam's Club U.S.") stay as the filer wrote them."""
     words = text.split()
+    long_words = [w for w in words if len(re.sub(r"[^A-Za-z]", "", w)) >= 4]
+    if len(long_words) >= 2 and all(w.isupper() for w in long_words):
+        # an all-capitals heading ("COMPREHENSIVE INCOME"): lower it, keeping short acronyms ("NEE", "U.S.");
+        # a single capitalised word is an acronym ("EBITDA") and stays
+        small = {"to", "of", "and", "net", "for", "in", "on", "the", "or", "by", "per", "at"}
+        return " ".join(
+            w.lower() if len(re.sub(r"[^A-Za-z]", "", w)) >= 4 or w.lower() in small else w for w in words
+        )
     later_caps = sum(w[0].isupper() for w in words[1:] if w[:1].isalpha())
     if words and words[0][:1].isupper() and words[0][1:2].islower() and later_caps == 0:
         return text[0].lower() + text[1:]
@@ -267,6 +275,7 @@ _MONTH_WORD = re.compile(
     r"jan|feb|mar|apr|jun|jul|aug|sep|sept|oct|nov|dec)\.?$",
     re.I,
 )
+_SENTENCE_START = re.compile(r"^(the|a|an|this|these|our|we)\b|.*\bregistrant", re.I)
 _ROLL_FORWARD = re.compile(r"^(net\s+)?(balance|beginning|ending|balances)\b", re.I)
 # Summary rows close a block: never given context, and the upward search for a heading stops at them.
 _SUMMARY = re.compile(
@@ -278,7 +287,8 @@ _SUMMARY = re.compile(
 # Lines that look like headings but are captions or column headers.
 _NOT_HEADING = re.compile(
     r"millions|thousands|billions|except per share|fiscal year|years? ended|months ended|"
-    r"quarters? ended|unaudited|\$ in|^\(|^as of\b|^at\b",
+    r"quarters? ended|unaudited|\$ in|^\(|^as of\b|^at\b|"
+    r"\btotal\b|\b(numerator|denominator)\b",  # column headers ("Segment Total All Other Total"), EPS parts
     re.I,
 )
 # Totals that name what they total ("Total assets", "Total revenues") stand on their own; "Total deferred"
@@ -315,10 +325,10 @@ def figure_start(line: str) -> int | None:
 
 
 def clean_label(text: str) -> str:
-    """Remove unit suffixes ("(in shares)"), glued footnote markers ("stock1", "costs*"), and leading or
-    trailing dashes and punctuation."""
+    """Remove unit suffixes ("(in shares)"), glued footnote markers ("stock1", "(loss)1", "costs*"), and
+    leading or trailing dashes and punctuation."""
     text = _UNIT_SUFFIX.sub("", text)
-    text = re.sub(r"(?<=[a-z])\d{1,2}$", "", text.strip())
+    text = re.sub(r"(?<=[a-z)])\d{1,2}$", "", text.strip())
     return text.strip(" *:,-–—").strip()
 
 
@@ -331,6 +341,7 @@ def row_label(line: str) -> str | None:
     head = line[:i] if i is not None else line
     head = re.sub(r"\(\s*(\d{1,2}|[a-z])\s*\)", " ", head)
     head = clean_label(re.sub(r"\s+", " ", head))
+    head = re.sub(r"^(numerator|denominator)\s*[–—:-]\s*", "", head, flags=re.I)  # "Numerator – net income"
     words = head.split()
     if sum(bool(re.search(r"[A-Za-z]{2,}", w)) for w in words) < 2 or len(words) > 16:
         return None
@@ -338,6 +349,8 @@ def row_label(line: str) -> str | None:
         return None
     if _MONTH_WORD.search(head) or _ROLL_FORWARD.search(head):
         return None
+    if _SENTENCE_START.match(head):
+        return None  # a sentence fragment ("The number of the registrant's Common Shares"), not a row name
     return head
 
 
@@ -408,7 +421,7 @@ def reliable_heading(page: str, line: str, max_rows: int = 6) -> str | None:
             or not re.search(r"[A-Za-z]{3,}", t)
         ):
             return None
-        return clean_label(t)
+        return clean_label(re.sub(r"\s*\(\s*(\d{1,2}|[a-z])\s*\)", "", t)) or None
     return None
 
 
@@ -499,7 +512,26 @@ def item_label(doc: Doc, fact, pages: list[int]) -> str | None:
     label = plain_label(doc.labels, fact.concept)
     if not label or len(re.findall(r"[A-Za-z]{2,}", label)) < 2:
         return None
-    return label if label_matches_line(label, sentence_with(line, fact.display)) else None
+    sentence = sentence_with(line, fact.display)
+    if not label_matches_line(label, sentence) or qualified_in_sentence(label, sentence):
+        return None
+    return label
+
+
+# After the item's name, a qualifier that narrows it ("depreciation and amortization expense for property,
+# plant and equipment"), as opposed to the period ("... for the three months ended").
+_QUALIFIER = re.compile(
+    r"^\s*(expenses?|costs?|charges?)?\s*(for|of|on|related to|attributable to|associated with|from)\s+"
+    r"(?!(the\s+)?(three|six|nine|twelve|fiscal|years?|quarters?|periods?|months|20\d\d)\b)",
+    re.I,
+)
+
+
+def qualified_in_sentence(label: str, sentence: str) -> bool:
+    """The sentence names a narrower item than the label: the label appears verbatim and is followed by a
+    qualifier, so a question using the label alone would read as the broader figure."""
+    i = sentence.lower().find(label.lower())
+    return i >= 0 and bool(_QUALIFIER.match(sentence[i + len(label) :]))
 
 
 def displayed_number(display: str) -> float | None:

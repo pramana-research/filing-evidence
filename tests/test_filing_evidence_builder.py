@@ -254,7 +254,7 @@ def test_multi_measure_row():                                                   
      "Participating share-based awards — allocated income"),                                       # v2 #42
     ("Balance at January 1, 2026 $ 683", None),                                                    # v2 #50
     ("Numerator – net income attributable to NEE $ 6,835 $ 6,946 $ 7,310",
-     "Numerator – net income attributable to NEE"),                                                # v2 #51
+     "net income attributable to NEE"),                     # prefix dropped after v3                                                # v2 #51
     ("Net balance as of January 1 33,067 33,315", None),                                           # v2 #54
     ("Purchases — — 33 14", None),                                                                  # one word
     ("-Accrued taxes (36) 206 23", "Accrued taxes"),                                                # leading dash
@@ -368,3 +368,54 @@ def test_segment_member_allows_the_operating_segments_marker():
                              "us-gaap:ConsolidationItemsAxis": "us-gaap:IntersegmentEliminationMember"}) is None
     assert B.segment_member({seg: "x:A", "srt:ProductOrServiceAxis": "x:Widgets"}) is None
     assert B.segment_member({"srt:StatementGeographicalAxis": "country:US"}) is None
+
+
+# --- QC round 3 (qc/handcheck_v3.jsonl) ---------------------------------------------------------------------
+
+def test_footnote_marker_after_a_parenthesis_is_removed():                                         # v3 #55
+    assert B.clean_label("Other income (loss)1") == "Other income (loss)"
+    assert B.row_label("Other income (loss)1 433 466 134 17 1,050 549 1,599") == "Other income (loss)"
+
+
+def test_column_header_lines_and_eps_parts_are_not_headings():                                    # v3 #55 #85
+    cvx = ("Upstream Downstream Segment Total All Other Total\n"
+           "Sales and Other Operating Revenues 19,608 33,844 65,331 65,545 184,328 104 184,432\n"
+           "Other income (loss)1 433 466 134 17 1,050 549 1,599")
+    assert B.reliable_heading(cvx, cvx.split("\n")[2]) is None
+    axp = ("Denominator: (b)\nBasic: Weighted-average common shares 673 692 678 697\n"
+           "Basic EPS $ 5.43 $ 4.14 $ 14.24 $ 11.87\nDiluted EPS $ 5.42 $ 4.14 $ 14.22 $ 11.85")
+    assert B.reliable_heading(axp, axp.split("\n")[3]) is None
+
+
+def test_footnote_markers_are_removed_from_headings():                                            # v3 #86
+    page = "Assumed health care cost trend rate (b)\nInitial trend 6.50 % 6.00 %\nUltimate trend 4.50 % 4.50 %"
+    assert B.reliable_heading(page, page.split("\n")[2]) == "Assumed health care cost trend rate"
+
+
+def test_sentence_fragments_are_not_row_labels():                                                 # v3 #79
+    line = ("The number of the registrant’s Common Shares, $1.00 par value, outstanding as of January 31, 2026: "
+            "585,906,353")
+    assert B.row_label(line) is None
+
+
+def test_prose_label_narrowed_by_its_sentence_is_dropped():                                       # v3 #70
+    ups = ("Depreciation and amortization expense for property, plant and equipment during both of the nine "
+           "months ended September 30, 2026 and 2025 was $2.3 billion.")
+    assert B.qualified_in_sentence("Depreciation and amortization", ups)
+    cat = "Amortization expense for the three and nine months ended September 30, 2026 was $21 million."
+    assert not B.qualified_in_sentence("Amortization expense", cat)
+    adbe = "Refund liabilities were $138 million and $137 million as of August 28, 2026 and November 28, 2025."
+    assert not B.qualified_in_sentence("Refund liabilities", adbe)
+
+
+def test_numerator_denominator_wording():                                                         # v3 rebuild scan
+    assert B.row_label("Numerator – net income attributable to NEE $ 6,835 $ 6,946") == \
+        "net income attributable to NEE"
+    page = "EPS Denominator\nWeighted-average shares 5,690 5,670\nCommon-share equivalents 30 26"
+    assert B.reliable_heading(page, page.split("\n")[2]) is None
+
+
+def test_all_capitals_labels_are_lowered():                                                       # v3 #98
+    assert B.sentence_case("COMPREHENSIVE INCOME") == "comprehensive income"
+    assert B.sentence_case("NET INCOME ATTRIBUTABLE TO NEE") == "net income attributable to NEE"
+    assert B.sentence_case("Sam's Club U.S.") == "Sam's Club U.S."

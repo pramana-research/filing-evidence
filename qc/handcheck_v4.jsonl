@@ -1,0 +1,100 @@
+{"n": 0, "id": "FE-0102", "correct": true, "gold_value_correct": true}
+{"n": 1, "id": "FE-0062", "correct": true, "gold_value_correct": true}
+{"n": 2, "id": "FE-0091", "correct": true, "gold_value_correct": true}
+{"n": 3, "id": "FE-0067", "correct": true, "gold_value_correct": true}
+{"n": 4, "id": "FE-0092", "correct": true, "gold_value_correct": true}
+{"n": 5, "id": "FE-0099", "correct": true, "gold_value_correct": true}
+{"n": 6, "id": "FE-0079", "correct": true, "gold_value_correct": true}
+{"n": 7, "id": "FE-0028", "correct": true, "gold_value_correct": true}
+{"n": 8, "id": "FE-0125", "correct": true, "gold_value_correct": true}
+{"n": 9, "id": "FE-0122", "correct": true, "gold_value_correct": true}
+{"n": 10, "id": "FE-0109", "correct": true, "gold_value_correct": true}
+{"n": 11, "id": "FE-0003", "correct": true, "gold_value_correct": true}
+{"n": 12, "id": "FE-0033", "correct": true, "gold_value_correct": true}
+{"n": 13, "id": "FE-0198", "correct": true, "gold_value_correct": true}
+{"n": 14, "id": "FE-0214", "correct": true, "gold_value_correct": true}
+{"n": 15, "id": "FE-0182", "correct": true, "gold_value_correct": true}
+{"n": 16, "id": "FE-0172", "correct": true, "gold_value_correct": true}
+{"n": 17, "id": "FE-0236", "correct": true, "gold_value_correct": true}
+{"n": 18, "id": "FE-0133", "correct": true, "gold_value_correct": true}
+{"n": 19, "id": "FE-0161", "correct": true, "gold_value_correct": true}
+{"n": 20, "id": "FE-0203", "correct": true, "gold_value_correct": true}
+{"n": 21, "id": "FE-0132", "correct": true, "gold_value_correct": true}
+{"n": 22, "id": "FE-0212", "correct": true, "gold_value_correct": true}
+{"n": 23, "id": "FE-0211", "correct": true, "gold_value_correct": true}
+{"n": 24, "id": "FE-0149", "correct": true, "gold_value_correct": true}
+{"n": 25, "id": "FE-0218", "correct": true, "gold_value_correct": true}
+{"n": 26, "id": "FE-0287", "correct": true, "gold_value_correct": true}
+{"n": 27, "id": "FE-0254", "correct": true, "gold_value_correct": true}
+{"n": 28, "id": "FE-0328", "correct": true, "gold_value_correct": true}
+{"n": 29, "id": "FE-0313", "correct": true, "gold_value_correct": true}
+{"n": 30, "id": "FE-0315", "correct": true, "gold_value_correct": true}
+{"n": 31, "id": "FE-0293", "correct": true, "gold_value_correct": true, "note": "minor: 'Less:' prefix kept in the item name"}
+{"n": 32, "id": "FE-0289", "correct": true, "gold_value_correct": true}
+{"n": 33, "id": "FE-0354", "correct": true, "gold_value_correct": true}
+{"n": 34, "id": "FE-0322", "correct": true, "gold_value_correct": true}
+{"n": 35, "id": "FE-0321", "correct": true, "gold_value_correct": true, "note": "minor: item name in capitals ('NET INCOME'): single long word, so the all-capitals rule did not lower it"}
+{"n": 36, "id": "FE-0278", "correct": true, "gold_value_correct": true}
+{"n": 37, "id": "FE-0258", "correct": true, "gold_value_correct": true}
+{"n": 38, "id": "FE-0251", "correct": true, "gold_value_correct": true}
+{"n": 39, "id": "FE-0405", "correct": true, "gold_value_correct": true}
+{"n": 40, "id": "FE-0404", "correct": true, "gold_value_correct": true}
+{"n": 41, "id": "FE-0437", "correct": true, "gold_value_correct": true}
+{"n": 42, "id": "FE-0383", "correct": true, "gold_value_correct": true}
+{"n": 43, "id": "FE-0494", "correct": true, "gold_value_correct": true}
+{"n": 44, "id": "FE-0499", "correct": true, "gold_value_correct": true}
+{"n": 45, "id": "FE-0397", "correct": false, "gold_value_correct": true, "failure_class": "label needs its table's subject", "note": "CMCSA 'in production and in development': a status column of capitalized film and television costs, not a nameable item"}
+{"n": 46, "id": "FE-0416", "correct": true, "gold_value_correct": true}
+{"n": 47, "id": "FE-0425", "correct": true, "gold_value_correct": true}
+{"n": 48, "id": "FE-0376", "correct": true, "gold_value_correct": true}
+{"n": 49, "id": "FE-0464", "correct": true, "gold_value_correct": true}
+{"n": 50, "id": "FE-0478", "correct": true, "gold_value_correct": true}
+{"n": 51, "id": "FE-0393", "correct": true, "gold_value_correct": true}
+{"n": 52, "id": "FE-0625", "correct": true, "gold_value_correct": true}
+{"n": 53, "id": "FE-0569", "correct": true, "gold_value_correct": true, "note": "borderline: member 'Reportable Segments' is the subtotal column of the three segments; answerable, the column is printed"}
+{"n": 54, "id": "FE-0541", "correct": true, "gold_value_correct": true}
+{"n": 55, "id": "FE-0528", "correct": true, "gold_value_correct": true}
+{"n": 56, "id": "FE-0527", "correct": true, "gold_value_correct": true}
+{"n": 57, "id": "FE-0574", "correct": true, "gold_value_correct": true, "note": "borderline: roll-forward row without the table's subject; unique on the shown pages"}
+{"n": 58, "id": "FE-0610", "correct": true, "gold_value_correct": true, "note": "borderline: Dec 31, 2023 shown as 'Balance at January 1, 2024'"}
+{"n": 59, "id": "FE-0534", "correct": true, "gold_value_correct": true}
+{"n": 60, "id": "FE-0512", "correct": true, "gold_value_correct": true}
+{"n": 61, "id": "FE-0555", "correct": true, "gold_value_correct": true, "note": "minor: 'its Reportable Segment' for a single-segment company"}
+{"n": 62, "id": "FE-0602", "correct": true, "gold_value_correct": true}
+{"n": 63, "id": "FE-0608", "correct": true, "gold_value_correct": true}
+{"n": 64, "id": "FE-0682", "correct": true, "gold_value_correct": true}
+{"n": 65, "id": "FE-0734", "correct": true, "gold_value_correct": true}
+{"n": 66, "id": "FE-0704", "correct": true, "gold_value_correct": true}
+{"n": 67, "id": "FE-0654", "correct": true, "gold_value_correct": true}
+{"n": 68, "id": "FE-0693", "correct": true, "gold_value_correct": true}
+{"n": 69, "id": "FE-0664", "correct": true, "gold_value_correct": true}
+{"n": 70, "id": "FE-0631", "correct": true, "gold_value_correct": true}
+{"n": 71, "id": "FE-0719", "correct": true, "gold_value_correct": true}
+{"n": 72, "id": "FE-0710", "correct": true, "gold_value_correct": true}
+{"n": 73, "id": "FE-0722", "correct": true, "gold_value_correct": true, "note": "minor: a coverage limit asked 'for the fiscal year'"}
+{"n": 74, "id": "FE-0736", "correct": true, "gold_value_correct": true}
+{"n": 75, "id": "FE-0671", "correct": true, "gold_value_correct": true}
+{"n": 76, "id": "FE-0754", "correct": true, "gold_value_correct": true}
+{"n": 77, "id": "FE-0761", "correct": true, "gold_value_correct": true}
+{"n": 78, "id": "FE-0867", "correct": true, "gold_value_correct": true}
+{"n": 79, "id": "FE-0763", "correct": true, "gold_value_correct": true}
+{"n": 80, "id": "FE-0810", "correct": true, "gold_value_correct": true}
+{"n": 81, "id": "FE-0773", "correct": true, "gold_value_correct": true}
+{"n": 82, "id": "FE-0803", "correct": true, "gold_value_correct": true}
+{"n": 83, "id": "FE-0832", "correct": true, "gold_value_correct": true}
+{"n": 84, "id": "FE-0802", "correct": true, "gold_value_correct": true}
+{"n": 85, "id": "FE-0757", "correct": true, "gold_value_correct": true}
+{"n": 86, "id": "FE-0813", "correct": true, "gold_value_correct": true}
+{"n": 87, "id": "FE-0857", "correct": true, "gold_value_correct": true}
+{"n": 88, "id": "FE-0994", "correct": true, "gold_value_correct": true}
+{"n": 89, "id": "FE-0976", "correct": true, "gold_value_correct": true}
+{"n": 90, "id": "FE-0949", "correct": false, "gold_value_correct": true, "failure_class": "not-found item is not an item", "note": "NVDA S8b 'due in 2028': a maturity bucket with no subject; answer not_found is right but the question names nothing"}
+{"n": 91, "id": "FE-0986", "correct": true, "gold_value_correct": true}
+{"n": 92, "id": "FE-0968", "correct": true, "gold_value_correct": true}
+{"n": 93, "id": "FE-0960", "correct": true, "gold_value_correct": true}
+{"n": 94, "id": "FE-0910", "correct": true, "gold_value_correct": true}
+{"n": 95, "id": "FE-0885", "correct": true, "gold_value_correct": true}
+{"n": 96, "id": "FE-0951", "correct": true, "gold_value_correct": true}
+{"n": 97, "id": "FE-0907", "correct": true, "gold_value_correct": true}
+{"n": 98, "id": "FE-0952", "correct": true, "gold_value_correct": true}
+{"n": 99, "id": "FE-0983", "correct": true, "gold_value_correct": true}
