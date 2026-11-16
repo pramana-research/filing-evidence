@@ -9,7 +9,10 @@ cd "$HERE/../../.."
 source .venv/bin/activate
 LOGS="$HERE/logs"
 
+LOCK="$HERE/results/.gpu.lock"                    # one vLLM server at a time (shared with run_all.sh)
+mkdir -p "$HERE/results"
 for p in "$@"; do
+  exec 9>"$LOCK"; flock 9
   echo "=== $p $(date -Is)"
   python3 "$HERE/serve.py" "$p" > "$LOGS/serve-$p.log" 2>&1 &
   pid=$!
@@ -21,12 +24,13 @@ for p in "$@"; do
   done
   if [ "$ready" -ne 1 ]; then
     echo "SERVE FAILED $p"; grep -E "Error|error|Traceback" "$LOGS/serve-$p.log" | tail -5
-    kill "$pid" 2>/dev/null; wait "$pid" 2>/dev/null; continue
+    kill "$pid" 2>/dev/null; wait "$pid" 2>/dev/null; flock -u 9; continue
   fi
   for s in C1 C3; do
     python3 "$HERE/runner.py" "$p" "$s" --limit 24 2>&1 | grep -E "^accuracy|n/a|Traceback|Error" | sed "s/^/  $s /"
   done
   kill "$pid" 2>/dev/null; wait "$pid" 2>/dev/null
   sleep 10                                        # let the GPU memory free before the next model
+  flock -u 9
 done
 echo "=== done $(date -Is)"
