@@ -1,0 +1,97 @@
+{
+  "n": 19,
+  "accuracy": {
+    "k": 13,
+    "n": 16,
+    "rate": 0.8125,
+    "ci95": [
+      0.5699111883245088,
+      0.9340840098021131
+    ]
+  },
+  "confident_wrong": {
+    "k": 0,
+    "n": 19,
+    "rate": 0.0,
+    "ci95": [
+      0.0,
+      0.16817922625956366
+    ]
+  },
+  "abstention_accuracy": {
+    "k": 3,
+    "n": 3,
+    "rate": 1.0,
+    "ci95": [
+      0.43850296436068037,
+      1.0
+    ]
+  },
+  "outcomes": {
+    "correct": 13,
+    "confident_wrong": 0,
+    "caught_wrong": 2,
+    "unverifiable_right": 1,
+    "missed": 0,
+    "abstained_correctly": 3,
+    "invented": 0,
+    "invalid": 0
+  },
+  "categories": {
+    "wrong_line_quoted": 1,
+    "wrong_page_cited": 0,
+    "span_not_verbatim": 0,
+    "scale_or_unit": 2,
+    "wrong_period_or_column": 0,
+    "wrong_item": 0,
+    "invented_on_s8": 0,
+    "missed": 0,
+    "invalid_format": 0
+  },
+  "by_slice": {
+    "S1": {
+      "k": 13,
+      "n": 16,
+      "rate": 0.8125,
+      "ci95": [
+        0.5699111883245088,
+        0.9340840098021131
+      ]
+    },
+    "S8": {
+      "k": 3,
+      "n": 3,
+      "rate": 1.0,
+      "ci95": [
+        0.43850296436068037,
+        1.0
+      ]
+    }
+  },
+  "retry_rate": {
+    "k": 0,
+    "n": 19,
+    "rate": 0.0,
+    "ci95": [
+      0.0,
+      0.16817922625956366
+    ]
+  },
+  "completion_tokens": {
+    "mean": 51.31578947368421,
+    "p95": 68
+  },
+  "seconds": {
+    "mean": 3.507631578947368,
+    "p95": 4.27
+  },
+  "checker_pass_precision": {
+    "k": 13,
+    "n": 13,
+    "rate": 1.0,
+    "ci95": [
+      0.7719046248681998,
+      1.0
+    ]
+  }
+}

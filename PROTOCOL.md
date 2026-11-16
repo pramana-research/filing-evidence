@@ -267,6 +267,11 @@ A sample of 20 per model is reviewed by hand to confirm the coded category. Disa
   | 4 | 20261119 | **98 / 100: accepted** (draft 88c0ce313bbcca1c; besides the round-3 fixes, a scan of all 1,000 questions before sampling found and fixed "Numerator –" prefixes on row labels, headings mentioning numerator/denominator, and item names in capitals). Every gold *value* correct (400 / 400 over four rounds). Failures: a status column used as an item without its table's subject (CMCSA "in production and in development"), and a not-found item that names no item (NVDA S8b "due in 2028") | dataset frozen (below). Known, accepted wording blemishes recorded in `qc/handcheck_v4.jsonl` notes: a kept "Less:" prefix; a one-word capitalised label ("NET INCOME"); a segment-subtotal member ("Reportable Segments"); a single-segment company's "Reportable Segment"; roll-forward rows without their table's subject; year-start balances answering a prior year-end date. None changes the correct answer. Verdicts in `qc/handcheck_v4.jsonl` |
 - **Smoke test:** Qwen3-8B on the 19 Walmart probe questions must reproduce the probe's results within the noise
   of the rendering change (§12 notes any difference).
+
+  **Passed 2026-11-16** (`smoke.py`, results in `results/smoke/qwen3-8b/`). Thinking off: probe 15 / 19, smoke C1
+  16 / 19; thinking on: probe 17 / 19, smoke C3 18 / 19; smoke C2 17 / 19. Zero confident-wrong in every setup, 3 / 3
+  traps in every setup. The same failure as the probe recurs (diluted EPS 2.73 answered as 273, caught by the
+  value check, not fixed by C2's retry); C2's retry fixed a quoted neighbouring line.
 - **Freeze:** the dataset is frozen and fingerprinted (sha256 of the sorted question ids, gold values and page
   texts). All results cite the fingerprint.
 
@@ -283,7 +288,9 @@ Any change to this protocol after the first model result is recorded here: date,
 
 | Date | Change | Reason |
 |---|---|---|
-| — | — | — |
+| 2026-11-16 (before any main result) | Served context 16,384 tokens, not 8,192 (§2); the precision rule applies at 16,384 | The longest prompt is ~6.2k tokens (pages ≤ 5,560 + instructions); C3 allows 8,192 new tokens. 8,192 would have truncated C3 |
+| 2026-11-16 (before any main result) | C2 reuses C1's first answer (same model, same prompt, temperature 0) and adds only the retry | C1 and C2 then differ only by the intervention, which makes the paired McNemar comparison exact; halves compute |
+| 2026-11-16 (smoke test, before any main result) | Error taxonomy: "scale or unit error" also covers a misplaced decimal point (the right digits times any power of ten, e.g. 273 for 2.73) | Seen in the smoke test; it had fallen into "wrong item", which misdescribes it |
 
 ---
 
