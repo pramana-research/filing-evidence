@@ -32,4 +32,4 @@ Source: SEC EDGAR filings (public records), most recent 10-K and 10-Q of 45 US c
 2026-11-15.
 
 Licence: CC BY 4.0, Copyright 2026 Pramana Research. Model outputs remain subject to
-the licence of the model that produced them. Paper: https://pramana-research.com/research/filing-evidence
+the licence of the model that produced them. Paper: https://pramana-research.com/research/filing-evidence (a community research report, not peer-reviewed)

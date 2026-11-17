@@ -14,7 +14,8 @@ Git holds the code, the protocol, the QC hand checks, the dataset fingerprint (`
 run's `summary.json` / `run.json`.
 
 **Paper:** [Show Your Work: Can Small Open Models Read SEC Filings with Evidence a Machine Can Check?](https://pramana-research.com/research/filing-evidence)
-(with a page per model and PDFs).
+(with a page per model and PDFs). An independent community research report: not peer-reviewed, and not submitted to
+or accepted by any conference or journal.
 
 ## Layout
 

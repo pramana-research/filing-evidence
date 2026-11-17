@@ -35,6 +35,7 @@
   <h1>{{ m | name }}</h1>
   <p class="subtitle">{{ run.company }} · {{ "%.1f" | format(run.meta.params / 1e9) }}B parameters · {{ run.precision }}{% if run.has_c3 %} · has a thinking mode{% endif %}</p>
   <div class="byline"><span><strong>Krishna Nandula</strong> · Pramana Research</span><span>{{ DATE }}</span><span>Filing-Evidence v{{ VERSION }}</span></div>
+  <p class="status"><b>Status:</b> part of an independent community research report, published by Pramana Research on {{ DATE }}. It has <b>not been peer-reviewed</b> and has not been submitted to or accepted by any conference or journal. Corrections and feedback are welcome on <a href="{{ GITHUB }}/issues">GitHub</a>.</p>
   <div class="actions">
     <a class="btn primary" href="/research/filing-evidence/pdf/{{ m | slug }}.pdf" download>Download PDF</a>
     <a class="btn" href="/research/filing-evidence">Read the paper</a>

@@ -33,7 +33,7 @@ BIBTEX = f"""@misc{{pramana2026filingevidence,
   organization = {{Pramana Research}},
   year   = {{2026}},
   month  = {{nov}},
-  note   = {{Filing-Evidence benchmark, version {VERSION}}},
+  note   = {{Community research report, not peer-reviewed. Filing-Evidence benchmark, version {VERSION}}},
   url    = {{{SITE}/research/filing-evidence}}
 }}"""
 
@@ -182,6 +182,7 @@ def build(out: Path) -> None:
         "encoding": {"@type": "MediaObject", "encodingFormat": "application/pdf",
                      "contentUrl": f"{SITE}/research/filing-evidence/pdf/filing-evidence.pdf"},
         "isAccessibleForFree": True,
+        "genre": "Community research report", "creativeWorkStatus": "Not peer-reviewed",
     }
     common["JSONLD_PAPER"] = json.dumps(paper_ld, ensure_ascii=False)
     base = out / "research"
