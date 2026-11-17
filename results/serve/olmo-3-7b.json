@@ -27,5 +27,5 @@
     "--chat-template",
     "research/benchmarks/filing-evidence/templates/olmo-3-7b.jinja"
   ],
-  "started": "2026-11-16T11:27:58+00:00"
+  "started": "2026-11-17T02:05:23+00:00"
 }

@@ -1,0 +1,44 @@
+main/nemotron-nano-9b-v2/C2: 1000 to run, 0 already done
+  25/1000
+  50/1000
+  75/1000
+  100/1000
+  125/1000
+  150/1000
+  175/1000
+  200/1000
+  225/1000
+  250/1000
+  275/1000
+  300/1000
+  325/1000
+  350/1000
+  375/1000
+  400/1000
+  425/1000
+  450/1000
+  475/1000
+  500/1000
+  525/1000
+  550/1000
+  575/1000
+  600/1000
+  625/1000
+  650/1000
+  675/1000
+  700/1000
+  725/1000
+  750/1000
+  775/1000
+  800/1000
+  825/1000
+  850/1000
+  875/1000
+  900/1000
+  925/1000
+  950/1000
+  975/1000
+  1000/1000
+accuracy 371/875  confident-wrong 105/1000  abstention 125/125  outcomes {'correct': 371, 'confident_wrong': 105, 'caught_wrong': 5, 'unverifiable_right': 22, 'missed': 372, 'abstained_correctly': 125, 'invented': 0, 'invalid': 0}
+🏃 View run main/nemotron-nano-9b-v2/C2 at: http://127.0.0.1:5000/#/experiments/3/runs/a917495a6ab34b69a0d0366c02625f59
+🧪 View experiment at: http://127.0.0.1:5000/#/experiments/3
