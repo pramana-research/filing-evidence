@@ -209,15 +209,11 @@ def build(out: Path) -> None:
         html = env.get_template("model.html.j2").render(**common, m=m, run=run, mf=mf, ex=d["examples"][m],
                                                         here="model", path=mpath,
                                                         jsonld_model=json.dumps(mld, ensure_ascii=False))
-        # a folder per model, so /research/filing-evidence/<slug> works on any static server (and on Vercel);
-        # <slug>.html is kept as a redirect for links made before the change
+        # a folder per model, so /research/filing-evidence/<slug> works on any static server and on Vercel. No
+        # <slug>.html next to it: with cleanUrls, Vercel would serve that file for /<slug> instead of the folder.
         (fe / charts.slug(m)).mkdir(exist_ok=True)
         (fe / charts.slug(m) / "index.html").write_text(html)
-        target = f"/research/filing-evidence/{charts.slug(m)}/"
-        (fe / f"{charts.slug(m)}.html").write_text(
-            f'<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex">'
-            f'<meta http-equiv="refresh" content="0; url={target}">'
-            f'<link rel="canonical" href="{target}"><title>Moved</title><a href="{target}">{target}</a>')
+        (fe / f"{charts.slug(m)}.html").unlink(missing_ok=True)
     # sitemap and robots for the whole site (the home page plus the research pages)
     urls = ["/", "/research", "/research/filing-evidence"] + [
         f"/research/filing-evidence/{charts.slug(m)}" for m in d["ten"] + d["supplementary"]]
