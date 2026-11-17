@@ -148,3 +148,9 @@ def test_right_ignoring_scale_is_secondary():                                   
     rows = [{"slice": "S1", "outcome": "confident_wrong", "category": "scale_or_unit", "right_ignoring_scale": True,
              "retried": False, "completion_tokens": 5, "seconds": 1}]
     assert C.summarize(rows)["accuracy_ignoring_scale"]["k"] == 1
+
+
+def test_value_restated_in_other_units_is_a_scale_issue():                                       # ministral load check
+    r = C.check(reply(value=275746000, scale="in thousands", page=4, span="Total liabilities 275,746 285,508"),
+                q(LIAB), PAGES)
+    assert (r.outcome, r.failed_check, r.category) == ("unverifiable_right", "value", "scale_or_unit")

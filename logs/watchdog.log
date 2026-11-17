@@ -1,0 +1,16 @@
+2026-11-16T22:20:43+05:30 start (temp max 85 C, power max 480 W)
+2026-11-16T22:20:43+05:30 ok 60 C 312 W 0x0000000000000000
+2026-11-16T22:23:19+05:30 stopped by user
+2026-11-16T22:25:02+05:30 start (temp max 85 C, power max 480 W)
+2026-11-16T22:25:02+05:30 ok 61 C 308 W 0x0000000000000000
+2026-11-16T22:31:31+05:30 restarted with power-off on trip
+2026-11-16T22:31:31+05:30 start (temp max 85 C, power max 480 W, power off after trip: 1, delay 120s)
+2026-11-16T22:31:31+05:30 ok 61 C 312 W 0x0000000000000000
+2026-11-16T22:41:32+05:30 ok 62 C 321 W 0x0000000000000000
+2026-11-16T22:51:32+05:30 ok 41 C 5 W 0x0000000000000001
+2026-11-16T23:01:33+05:30 ok 69 C 382 W 0x0000000000000000
+2026-11-16T23:05:33+05:30 TRIP: power 491 W -- stopping the benchmark
+2026-11-16T23:05:48+05:30 stopped. Resume later with the same run_all.sh command.
+2026-11-16T23:05:49+05:30 powering off in 120s (cancel: touch /home/krishna-nandula/forge/research/benchmarks/filing-evidence/results/.no-shutdown)
+2026-11-17T06:40:52+05:30 start (temp max 85 C, power max 520 W, power off after trip: 1, delay 120s)
+2026-11-17T06:40:52+05:30 ok 34 C 12 W 0x0000000000000001

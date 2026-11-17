@@ -1,0 +1,44 @@
+main/gpt-oss-20b/C2: 1000 to run, 0 already done
+  25/1000
+  50/1000
+  75/1000
+  100/1000
+  125/1000
+  150/1000
+  175/1000
+  200/1000
+  225/1000
+  250/1000
+  275/1000
+  300/1000
+  325/1000
+  350/1000
+  375/1000
+  400/1000
+  425/1000
+  450/1000
+  475/1000
+  500/1000
+  525/1000
+  550/1000
+  575/1000
+  600/1000
+  625/1000
+  650/1000
+  675/1000
+  700/1000
+  725/1000
+  750/1000
+  775/1000
+  800/1000
+  825/1000
+  850/1000
+  875/1000
+  900/1000
+  925/1000
+  950/1000
+  975/1000
+  1000/1000
+accuracy 677/875  confident-wrong 118/1000  abstention 112/125  outcomes {'correct': 677, 'confident_wrong': 118, 'caught_wrong': 18, 'unverifiable_right': 44, 'missed': 17, 'abstained_correctly': 112, 'invented': 13, 'invalid': 1}
+🏃 View run main/gpt-oss-20b/C2 at: http://127.0.0.1:5000/#/experiments/3/runs/a22d85f136a04c3f88fd83248c7f28b1
+🧪 View experiment at: http://127.0.0.1:5000/#/experiments/3

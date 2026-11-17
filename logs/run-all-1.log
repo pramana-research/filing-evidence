@@ -1,0 +1,32 @@
+=== qwen3.5-9b start 2026-11-16T17:12:20+05:30
+  C1 start 2026-11-16T17:13:20+05:30
+  C1 accuracy 724/875  confident-wrong 36/1000  abstention 124/125  outcomes {'correct': 724, 'confident_wrong': 36, 'caught_wrong': 4, 'unverifiable_right': 46, 'missed': 65, 'abstained_correctly': 124, '
+  C2 start 2026-11-16T17:18:58+05:30
+  C2 accuracy 739/875  confident-wrong 36/1000  abstention 124/125  outcomes {'correct': 739, 'confident_wrong': 36, 'caught_wrong': 2, 'unverifiable_right': 24, 'missed': 74, 'abstained_correctly': 124, '
+  C3 start 2026-11-16T17:19:21+05:30
+  C3 accuracy 653/875  confident-wrong 16/1000  abstention 122/125  outcomes {'correct': 653, 'confident_wrong': 16, 'caught_wrong': 46, 'unverifiable_right': 31, 'missed': 42, 'abstained_correctly': 122, 
+=== qwen3.5-9b done 2026-11-16T18:58:43+05:30
+=== granite-4.2-8b start 2026-11-16T19:01:09+05:30
+  C1 start 2026-11-16T19:02:04+05:30
+  C1 accuracy 641/875  confident-wrong 64/1000  abstention 121/125  outcomes {'correct': 641, 'confident_wrong': 64, 'caught_wrong': 69, 'unverifiable_right': 48, 'missed': 48, 'abstained_correctly': 121, 
+  C2 start 2026-11-16T19:07:38+05:30
+  C2 accuracy 667/875  confident-wrong 72/1000  abstention 121/125  outcomes {'correct': 667, 'confident_wrong': 72, 'caught_wrong': 44, 'unverifiable_right': 37, 'missed': 48, 'abstained_correctly': 121, 
+  C3 start 2026-11-16T19:08:33+05:30
+  C3 accuracy 711/875  confident-wrong 38/1000  abstention 123/125  outcomes {'correct': 711, 'confident_wrong': 38, 'caught_wrong': 85, 'unverifiable_right': 8, 'missed': 19, 'abstained_correctly': 123, '
+=== granite-4.2-8b done 2026-11-16T22:10:49+05:30
+=== gpt-oss-20b start 2026-11-16T22:13:48+05:30
+  C1 start 2026-11-16T22:15:03+05:30
+  C1 accuracy 651/875  confident-wrong 112/1000  abstention 112/125  outcomes {'correct': 651, 'confident_wrong': 112, 'caught_wrong': 33, 'unverifiable_right': 62, 'missed': 14, 'abstained_correctly': 112
+  C2 start 2026-11-16T22:18:22+05:30
+  C2 accuracy 677/875  confident-wrong 118/1000  abstention 112/125  outcomes {'correct': 677, 'confident_wrong': 118, 'caught_wrong': 18, 'unverifiable_right': 44, 'missed': 17, 'abstained_correctly': 112
+  C3 start 2026-11-16T22:18:47+05:30
+  C3 accuracy 706/875  confident-wrong 56/1000  abstention 106/125  outcomes {'correct': 706, 'confident_wrong': 56, 'caught_wrong': 4, 'unverifiable_right': 13, 'missed': 10, 'abstained_correctly': 106, '
+=== gpt-oss-20b done 2026-11-16T22:51:08+05:30
+=== phi-4 start 2026-11-16T22:52:52+05:30
+  C1 start 2026-11-16T22:53:57+05:30
+  C1 accuracy 501/875  confident-wrong 151/1000  abstention 116/125  outcomes {'correct': 501, 'confident_wrong': 151, 'caught_wrong': 69, 'unverifiable_right': 107, 'missed': 46, 'abstained_correctly': 11
+  C2 start 2026-11-16T23:00:16+05:30
+  C2 accuracy 532/875  confident-wrong 167/1000  abstention 116/125  outcomes {'correct': 532, 'confident_wrong': 167, 'caught_wrong': 44, 'unverifiable_right': 74, 'missed': 58, 'abstained_correctly': 116
+  C3 start 2026-11-16T23:01:50+05:30
+  C3 phi-4 has no reasoning mode: C3 is n/a (PROTOCOL §6)
+=== phi-4 done 2026-11-16T23:02:01+05:30
