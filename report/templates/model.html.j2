@@ -30,7 +30,7 @@
   <p class="eyebrow"><a href="/research/filing-evidence" style="text-decoration:none">Filing-Evidence</a> · Results per model{% if run.supplementary %} · supplementary baseline{% endif %}</p>
   <h1>{{ m | name }}</h1>
   <p class="subtitle">{{ run.company }} · {{ "%.1f" | format(run.meta.params / 1e9) }}B parameters · {{ run.precision }}{% if run.has_c3 %} · has a thinking mode{% endif %}</p>
-  <div class="byline"><span><strong>Pramana Research</strong></span><span>{{ DATE }}</span><span>Filing-Evidence v{{ VERSION }}</span></div>
+  <div class="byline"><span><strong>Krishna Nandula</strong> · Pramana Research</span><span>{{ DATE }}</span><span>Filing-Evidence v{{ VERSION }}</span></div>
   <div class="actions">
     <a class="btn primary" href="/research/filing-evidence/pdf/{{ m | slug }}.pdf" download>Download PDF</a>
     <a class="btn" href="/research/filing-evidence">Read the paper</a>

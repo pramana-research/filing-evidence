@@ -8,6 +8,7 @@
 <meta property="og:title" content="{{ self.title() }}">
 <meta property="og:description" content="{{ self.description() }}">
 <meta property="og:type" content="article">
+<meta name="author" content="Krishna Nandula, Pramana Research">
 <meta name="theme-color" content="#FAFAF7">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Crect x='1' y='1' width='26' height='26' rx='6' fill='%23FAFAF7' stroke='%232E3F9E' stroke-width='2'/%3E%3Cpath d='M8 14.5l4 4 8-9' fill='none' stroke='%232E3F9E' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,8 +26,7 @@
     </a>
     <nav class="site-nav" aria-label="Main">
       <a href="/">Home</a>
-      <a href="/research"{% if here == "index" %} aria-current="page"{% endif %}>Research</a>
-      <a href="/research/filing-evidence"{% if here in ("paper", "model") %} aria-current="page"{% endif %}>Filing-Evidence</a>
+      <a href="/research" aria-current="page">Research</a>
     </nav>
   </div>
 </header>
