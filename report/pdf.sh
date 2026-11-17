@@ -23,7 +23,7 @@ print() {  # page.html -> name.pdf
   echo "  $2 ($(du -h "$OUT/$2" | cut -f1))"
 }
 print index.html filing-evidence.pdf
-for f in "$TMP"/research/filing-evidence/*.html; do
-  b="$(basename "$f" .html)"
-  [ "$b" = index ] || print "$b.html" "$b.pdf"
+for d in "$TMP"/research/filing-evidence/*/; do
+  b="$(basename "$d")"
+  [ -f "$d/index.html" ] && print "$b/index.html" "$b.pdf"
 done

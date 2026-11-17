@@ -174,7 +174,7 @@ reported separately.</p>
   <tbody>
   {% for m in d.ten + d.supplementary %}
   {% set r = R[m] %}
-  <tr><td><a href="/research/filing-evidence/{{ m | slug }}.html">{{ m | name }}</a>{% if r.supplementary %} <span class="muted">(suppl.)</span>{% endif %}</td><td>{{ r.company }}</td><td class="n">{{ "%.1f" | format(r.meta.params / 1e9) }}B</td><td>{{ r.precision }}</td><td class="mono">{{ r.meta.created[:7] }}</td><td>{{ "yes" if r.has_c3 else "—" }}</td><td>{{ LICENCE[r.meta.license_name or r.meta.license] }}</td></tr>
+  <tr><td><a href="/research/filing-evidence/{{ m | slug }}/">{{ m | name }}</a>{% if r.supplementary %} <span class="muted">(suppl.)</span>{% endif %}</td><td>{{ r.company }}</td><td class="n">{{ "%.1f" | format(r.meta.params / 1e9) }}B</td><td>{{ r.precision }}</td><td class="mono">{{ r.meta.created[:7] }}</td><td>{{ "yes" if r.has_c3 else "—" }}</td><td>{{ LICENCE[r.meta.license_name or r.meta.license] }}</td></tr>
   {% endfor %}
   </tbody>
 </table></div>
@@ -374,7 +374,7 @@ and real examples of its correct and wrong answers.</p>
 <div class="cards">
 {% for m in H.c1_sorted + d.supplementary %}
 {% set r = R[m] %}
-<a class="card" href="/research/filing-evidence/{{ m | slug }}.html"><div class="n">{{ m | name }}</div><div class="c">{{ r.company }}{% if r.supplementary %} · supplementary{% endif %}</div>
+<a class="card" href="/research/filing-evidence/{{ m | slug }}/"><div class="n">{{ m | name }}</div><div class="c">{{ r.company }}{% if r.supplementary %} · supplementary{% endif %}</div>
 <div class="r"><span>Plain {{ r.setups.C1.summary.accuracy.rate | pct }}</span><span>Best {{ r.setups[r.best_setup].summary.accuracy.rate | pct }}</span></div></a>
 {% endfor %}
 </div>

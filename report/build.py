@@ -172,8 +172,16 @@ def build(out: Path) -> None:
         run = d["runs"][m]
         mf = {"outcomes": charts.outcome_bars(d, per_model_setups=True, run=run),
               "slices": charts.slice_profile(d, run)}
-        (fe / f"{charts.slug(m)}.html").write_text(env.get_template("model.html.j2").render(
-            **common, m=m, run=run, mf=mf, ex=d["examples"][m], here="model"))
+        html = env.get_template("model.html.j2").render(**common, m=m, run=run, mf=mf, ex=d["examples"][m],
+                                                        here="model")
+        # a folder per model, so /research/filing-evidence/<slug> works on any static server (and on Vercel);
+        # <slug>.html is kept as a redirect for links made before the change
+        (fe / charts.slug(m)).mkdir(exist_ok=True)
+        (fe / charts.slug(m) / "index.html").write_text(html)
+        target = f"/research/filing-evidence/{charts.slug(m)}/"
+        (fe / f"{charts.slug(m)}.html").write_text(
+            f'<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url={target}">'
+            f'<link rel="canonical" href="{target}"><title>Moved</title><a href="{target}">{target}</a>')
     print(f"wrote {base}")
 
 
