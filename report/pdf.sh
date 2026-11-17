@@ -27,3 +27,9 @@ for d in "$TMP"/research/filing-evidence/*/; do
   b="$(basename "$d")"
   [ -f "$d/index.html" ] && print "$b/index.html" "$b.pdf"
 done
+
+# social preview card (og:image), 1200 x 630; its HTML source is not published
+"$CHROME" --headless=new --disable-gpu --hide-scrollbars --window-size=1200,630 --virtual-time-budget=6000 \
+  --screenshot="$SRC/assets/og-filing-evidence.png" "file://$TMP/research/assets/og-card.html" 2>/dev/null
+rm -f "$SRC/assets/og-card.html"
+echo "  og-filing-evidence.png"

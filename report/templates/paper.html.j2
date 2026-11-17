@@ -5,8 +5,20 @@
 {% set top = H.c1_sorted[0] %}
 {% set bm, bs = H.best_any %}
 {% set sm, ss = H.safest %}
-{% block title %}Show Your Work: Can Small Open Models Read SEC Filings with Evidence a Machine Can Check? · Pramana Research{% endblock %}
+{% block title %}Show Your Work: Small Open Models Reading SEC Filings · Filing-Evidence{% endblock %}
 {% block description %}A pre-registered benchmark of ten open models on one consumer GPU: 1,000 questions over 90 SEC filings, every answer graded with a verbatim quote a machine can check.{% endblock %}
+{% block head %}
+<meta name="citation_title" content="Show Your Work: Can Small Open Models Read SEC Filings with Evidence a Machine Can Check?">
+<meta name="citation_author" content="Nandula, Krishna">
+<meta name="citation_author_institution" content="Pramana Research">
+<meta name="citation_publication_date" content="2026/11/17">
+<meta name="citation_technical_report_institution" content="Pramana Research">
+<meta name="citation_language" content="en">
+<meta name="citation_pdf_url" content="{{ SITE }}/research/filing-evidence/pdf/filing-evidence.pdf">
+<meta name="citation_abstract_html_url" content="{{ SITE }}/research/filing-evidence">
+<meta name="citation_keywords" content="large language models; SEC filings; XBRL; benchmark; evidence; verification; financial document extraction">
+<script type="application/ld+json">{{ JSONLD_PAPER | safe }}</script>
+{% endblock %}
 {% block main %}
 <div class="wrap">
 <div class="titleblock">
@@ -425,8 +437,7 @@ error categories was not carried out. All except the last were made before any m
 
 <h2 id="cite">How to cite</h2>
 <div class="cite">{{ BIBTEX }}</div>
-<p class="muted" style="margin-top:16px">Text, data and figures are licensed under CC BY-NC 4.0; the code under the PolyForm
-Noncommercial License 1.0.0. Model outputs remain subject to each model's licence. Nothing here is investment advice.</p>
+<p class="muted" style="margin-top:16px">Text, data and figures are licensed under CC BY 4.0 and the code under the Apache License 2.0. Model outputs remain subject to each model's licence. Nothing here is investment advice.</p>
 </article>
 </div>
 </div>

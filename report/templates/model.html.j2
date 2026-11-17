@@ -6,6 +6,10 @@
 {% block title %}{{ m | name }} on Filing-Evidence · Pramana Research{% endblock %}
 {% block description %}{{ m | name }} ({{ run.company }}) on the Filing-Evidence benchmark: {{ su1.accuracy.rate | pct }} accuracy with checkable evidence in the plain setup, {{ su1.confident_wrong.k }} confident-wrong answers per 1,000.{% endblock %}
 
+{% block head %}
+<script type="application/ld+json">{{ jsonld_model | safe }}</script>
+{% endblock %}
+
 {% macro example(e, kind) %}
 <div class="ex">
   <p class="meta">{{ e.company }} · {{ e.form }} · {{ e.slice }} {{ d.slices[e.slice] }} · {{ e.id }} <span class="tag {{ tag[e.outcome][0] }}" style="margin-left:6px">{{ tag[e.outcome][1] }}</span></p>

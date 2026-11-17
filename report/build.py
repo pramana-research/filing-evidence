@@ -9,6 +9,7 @@ Every number on the pages comes from stats.compute(); the prose is in the templa
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import shutil
 import sys
@@ -159,30 +160,75 @@ def build(out: Path) -> None:
         "heatmap": charts.heatmap(d, "C1"), "cwmix": charts.cw_mix(d, "C1"), "effects": charts.effects(d),
         "cost": charts.cost(d), "sig": charts.sig_matrix(d, "C1:acc"),
     }
+    org = {"@type": "Organization", "name": "Pramana Research", "url": SITE}
+    author = {"@type": "Person", "name": "Krishna Nandula", "affiliation": org}
+    dataset = {
+        "@type": "Dataset", "name": "Filing-Evidence",
+        "description": "1,000 questions over 90 SEC 10-K and 10-Q filings of 45 US companies, with gold answers from "
+                       "the filers' inline XBRL tags, the page texts shown to models, and every answer of eleven open "
+                       "models in three setups.",
+        "url": HF, "sameAs": GITHUB, "license": "https://creativecommons.org/licenses/by/4.0/",
+        "creator": author, "publisher": org, "datePublished": "2026-11-17", "isAccessibleForFree": True,
+        "keywords": ["SEC filings", "XBRL", "financial question answering", "LLM evaluation", "evidence"],
+        "distribution": [{"@type": "DataDownload", "encodingFormat": "application/jsonl", "contentUrl": HF}],
+    }
+    paper_ld = {
+        "@context": "https://schema.org", "@type": "ScholarlyArticle",
+        "headline": "Show Your Work: Can Small Open Models Read SEC Filings with Evidence a Machine Can Check?",
+        "alternativeHeadline": "Filing-Evidence: a pre-registered benchmark of ten open models on one consumer GPU",
+        "author": author, "publisher": org, "datePublished": "2026-11-17", "version": VERSION,
+        "url": f"{SITE}/research/filing-evidence", "license": "https://creativecommons.org/licenses/by/4.0/",
+        "image": f"{SITE}/research/assets/og-filing-evidence.png", "isBasedOn": dataset,
+        "encoding": {"@type": "MediaObject", "encodingFormat": "application/pdf",
+                     "contentUrl": f"{SITE}/research/filing-evidence/pdf/filing-evidence.pdf"},
+        "isAccessibleForFree": True,
+    }
+    common["JSONLD_PAPER"] = json.dumps(paper_ld, ensure_ascii=False)
     base = out / "research"
     fe = base / "filing-evidence"
     fe.mkdir(parents=True, exist_ok=True)
     (base / "assets").mkdir(exist_ok=True)
     shutil.copy(HERE / "templates" / "research.css", base / "assets" / "research.css")
 
-    (base / "index.html").write_text(env.get_template("index.html.j2").render(**common, here="index"))
+    (base / "index.html").write_text(env.get_template("index.html.j2").render(**common, here="index",
+                                                                               path="/research"))
     (fe / "index.html").write_text(env.get_template("paper.html.j2").render(
-        **common, figs=figs, ex=annotated(d, qs, pages), here="paper"))
+        **common, figs=figs, ex=annotated(d, qs, pages), here="paper", path="/research/filing-evidence"))
+    (base / "assets" / "og-card.html").write_text(env.get_template("og.html.j2").render(**common))
     for m in d["ten"] + d["supplementary"]:
         run = d["runs"][m]
         mf = {"outcomes": charts.outcome_bars(d, per_model_setups=True, run=run),
               "slices": charts.slice_profile(d, run)}
+        mpath = f"/research/filing-evidence/{charts.slug(m)}"
+        mld = {"@context": "https://schema.org", "@type": "Article",
+               "headline": f"{charts.NAMES[m]} on the Filing-Evidence benchmark", "author": author, "publisher": org,
+               "datePublished": "2026-11-17", "url": SITE + mpath, "isPartOf": {"@type": "ScholarlyArticle",
+               "url": f"{SITE}/research/filing-evidence"}, "license": "https://creativecommons.org/licenses/by/4.0/",
+               "about": {"@type": "SoftwareApplication", "name": run["repo"],
+                         "url": f"https://huggingface.co/{run['repo']}"}}
         html = env.get_template("model.html.j2").render(**common, m=m, run=run, mf=mf, ex=d["examples"][m],
-                                                        here="model")
+                                                        here="model", path=mpath,
+                                                        jsonld_model=json.dumps(mld, ensure_ascii=False))
         # a folder per model, so /research/filing-evidence/<slug> works on any static server (and on Vercel);
         # <slug>.html is kept as a redirect for links made before the change
         (fe / charts.slug(m)).mkdir(exist_ok=True)
         (fe / charts.slug(m) / "index.html").write_text(html)
         target = f"/research/filing-evidence/{charts.slug(m)}/"
         (fe / f"{charts.slug(m)}.html").write_text(
-            f'<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url={target}">'
+            f'<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex">'
+            f'<meta http-equiv="refresh" content="0; url={target}">'
             f'<link rel="canonical" href="{target}"><title>Moved</title><a href="{target}">{target}</a>')
-    print(f"wrote {base}")
+    # sitemap and robots for the whole site (the home page plus the research pages)
+    urls = ["/", "/research", "/research/filing-evidence"] + [
+        f"/research/filing-evidence/{charts.slug(m)}" for m in d["ten"] + d["supplementary"]]
+    urls += ["/research/filing-evidence/pdf/filing-evidence.pdf"] + [
+        f"/research/filing-evidence/pdf/{charts.slug(m)}.pdf" for m in d["ten"] + d["supplementary"]]
+    (out / "sitemap.xml").write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        + "".join(f"  <url><loc>{SITE}{u}</loc><lastmod>2026-11-17</lastmod></url>\n" for u in urls)
+        + "</urlset>\n")
+    (out / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
+    print(f"wrote {base}, sitemap.xml, robots.txt")
 
 
 if __name__ == "__main__":

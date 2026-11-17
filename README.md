@@ -58,12 +58,11 @@ is checked against the same fingerprint.
 
 ## Licence
 
-Source-available for **non-commercial use only**; this is not an open-source licence.
+Open source.
 
-- **Code:** [PolyForm Noncommercial 1.0.0](LICENSE.md). Personal use, research, education and use by non-profit
-  and public bodies are allowed; commercial use is not.
-- **Text, figures, questions, answer key and model outputs:** [CC BY-NC 4.0](LICENSE-DATA.txt). Share and adapt
-  with attribution, not for commercial purposes. Model outputs remain subject to each model's own licence.
+- **Code:** [Apache License 2.0](LICENSE).
+- **Text, figures, questions, answer key and model outputs:** [CC BY 4.0](LICENSE-DATA.txt): share and adapt for
+  any purpose, with attribution. Model outputs remain subject to each model's own licence.
 - SEC filings are public records.
 
-For commercial licensing, contact Pramana Research. Copyright 2026 Pramana Research.
+Copyright 2026 Pramana Research. See [NOTICE](NOTICE).
