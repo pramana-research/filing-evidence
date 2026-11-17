@@ -67,3 +67,7 @@ Open source.
 - SEC filings are public records.
 
 Copyright 2026 Pramana Research. See [NOTICE](NOTICE).
+
+## Disclaimer
+
+This is an independent community research report, written in a personal capacity; it does not represent the views of any employer or other organisation. It is not affiliated with, sponsored or endorsed by any company or model developer named here; all names and trademarks belong to their owners. Results describe specific model versions under one fixed setup and are not a general judgement of any model. The data, results and code are provided as is, without warranty, and may contain errors; check any figure against the original filing. Nothing here is financial, investment or legal advice.
