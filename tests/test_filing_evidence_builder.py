@@ -1,4 +1,4 @@
-"""Rules of the Filing-Evidence question builder (research/benchmarks/filing-evidence/builder.py).
+"""Rules of the Filing-Evidence question builder (builder.py).
 
 The page texts below are the real first lines of filings seen while calibrating (Apple, Microsoft, JPMorgan).
 """
@@ -9,7 +9,7 @@ from pathlib import Path
 
 import pytest
 
-_PATH = Path(__file__).parents[1] / "research" / "benchmarks" / "filing-evidence" / "builder.py"
+_PATH = Path(__file__).parents[1] / "builder.py"
 _spec = importlib.util.spec_from_file_location("fe_builder", _PATH)
 B = importlib.util.module_from_spec(_spec)
 sys.modules["fe_builder"] = B          # dataclasses look the module up while it loads

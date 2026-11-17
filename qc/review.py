@@ -1,8 +1,8 @@
 """Hand-check support (PROTOCOL.md §11): draw the stratified sample and print what a reviewer
 needs.
 
-    python research/benchmarks/filing-evidence/qc/review.py sample 2      # -> qc/handcheck_sample_v2.json
-    python research/benchmarks/filing-evidence/qc/review.py show 2 0 25   # round 2, items 0..24
+    python qc/review.py sample 2      # -> qc/handcheck_sample_v2.json
+    python qc/review.py show 2 0 25   # round 2, items 0..24
 
 For an answerable question it shows: the question, the gold answer, the answer page's heading lines, the
 column-header lines above the answer's row (lines naming years or periods), and the row itself.

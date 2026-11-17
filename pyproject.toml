@@ -1,0 +1,40 @@
+[project]
+name = "filing-evidence"
+version = "1.0.0"
+description = "Filing-Evidence: can open ~8B models extract numbers from SEC filings with checkable evidence?"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "httpx>=0.27",
+    "pyyaml>=6.0",
+    "python-dotenv>=1.0",
+    "huggingface_hub>=0.28",
+]
+
+[project.optional-dependencies]
+run = ["mlflow>=3.0"]                    # runner.py logs finished runs to MLflow when MLFLOW_TRACKING_URI is set
+build = ["transformers>=5.0"]            # builder.py / smoke.py count prompt tokens
+serve = ["vllm==0.33.0"]                 # the version every reported run used
+
+[dependency-groups]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+# The 2026-11-15 probe is kept exactly as it was run (research record): no style changes.
+"experiments/**" = ["E", "F", "I", "B", "UP"]
+# Fixtures embed realistic filing markup (HTML / XBRL) whose lines are long by nature.
+"tests/test_ixbrl.py" = ["E501"]
+"tests/test_filing_evidence_builder.py" = ["E501"]
+"tests/test_filing_evidence_checker.py" = ["E501"]

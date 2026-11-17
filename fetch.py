@@ -10,7 +10,7 @@ dataset/manifest.json (committed to the repo).
 
 Polite: identifying User-Agent (SEC_USER_AGENT), at most 5 requests per second, each file fetched once.
 
-    uv run python research/benchmarks/filing-evidence/fetch.py
+    uv run python fetch.py
 """
 
 from __future__ import annotations
@@ -25,8 +25,8 @@ from pathlib import Path
 import yaml
 from dotenv import load_dotenv
 
-from forge.core.utils.paths import data_dir
-from forge.domains.finance.data.edgar import EdgarClient
+from edgar import EdgarClient
+from paths import data_dir
 
 HERE = Path(__file__).parent
 SOURCE = "SEC EDGAR (sec.gov/Archives), public records"
@@ -70,7 +70,7 @@ def fetch_file(client: EdgarClient, cik: int, accession: str, folder: Path, name
 
 
 def main() -> int:
-    load_dotenv(HERE.parents[2] / ".env")
+    load_dotenv(HERE / ".env")
     spec = yaml.safe_load((HERE / "companies.yaml").read_text())
     cutoff = spec["filed_on_or_before"]
     client = EdgarClient(cache_dir=data_dir() / "finance" / "raw", min_interval=0.2)   # <= 5 req/s

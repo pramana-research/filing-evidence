@@ -12,7 +12,7 @@ Everything is deterministic given SEED. Rules (each one is a function below, so 
   - ambiguity: dropped if the shown pages display a different value for the same item and period
   - S8 (not in the pages): checked against page text, not just tags (untagged tables exist)
 
-    uv run python research/benchmarks/filing-evidence/builder.py
+    uv run python builder.py
 """
 
 from __future__ import annotations
@@ -580,8 +580,8 @@ class Doc:
 
 
 def load_docs(tok) -> list[Doc]:
-    from forge.core.utils.paths import data_dir
-    from forge.domains.finance.data.ixbrl import read_document_set, read_labels
+    from ixbrl import read_document_set, read_labels
+    from paths import data_dir
 
     manifest = json.loads((HERE / "dataset" / "manifest.json").read_text())
     names = yaml.safe_load((HERE / "companies.yaml").read_text())["names"]
@@ -1149,7 +1149,7 @@ def main() -> int:
     from dotenv import load_dotenv
     from transformers import AutoTokenizer
 
-    load_dotenv(HERE.parents[2] / ".env")
+    load_dotenv(HERE / ".env")
     tok = AutoTokenizer.from_pretrained("Qwen/Qwen3-8B", local_files_only=True)
     rnd = random.Random(SEED)
     docs = load_docs(tok)

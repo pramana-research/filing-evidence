@@ -1,8 +1,8 @@
-from pathlib import Path
 
 import pytest
 
-from forge.domains.finance.data.ixbrl import parse_number, read_document_set, read_filing, read_labels
+from ixbrl import parse_number, read_document_set, read_filing, read_labels
+from paths import data_dir
 
 FILING = """<html><body>
 <ix:header><ix:hidden>
@@ -123,7 +123,7 @@ def test_read_labels():
     assert labels["us-gaap:Revenues"] == {"label": "Revenues", "totalLabel": "Total revenues"}
 
 
-WALMART = Path("/home/krishna-nandula/forge-data/data/finance/filings/WMT/0000104169-26-000055/wmt-20260131.htm")
+WALMART = data_dir() / "finance" / "filings" / "WMT" / "0000104169-26-000055" / "wmt-20260131.htm"
 
 
 @pytest.mark.skipif(not WALMART.exists(), reason="real filing not present (fetched by the benchmark)")
@@ -183,7 +183,7 @@ def test_cells_wrapping_content_in_blocks_stay_on_one_row_line():
 
 def test_long_pages_are_split_at_line_boundaries_and_facts_follow():
     """A document with no page-break markup (position-based layout) must not become one giant page."""
-    from forge.domains.finance.data import ixbrl
+    import ixbrl
     rows = "".join(f"<p>Filler line number {i} with some words to take up space in the rendered text.</p>"
                    for i in range(400))
     html = """<html><body><ix:header><ix:resources>

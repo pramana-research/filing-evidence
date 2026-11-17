@@ -1,7 +1,7 @@
 """Serve one benchmark model with vLLM, exactly as its profile says (models.yaml), and record the command.
 
-    python research/benchmarks/filing-evidence/serve.py qwen3-8b            # OpenAI-compatible API on :8000
-    python research/benchmarks/filing-evidence/serve.py qwen3-8b --print    # only print the command
+    python serve.py qwen3-8b            # OpenAI-compatible API on :8000
+    python serve.py qwen3-8b --print    # only print the command
 
 The served model name is the profile name. The command, the pinned HF revision and the vLLM version are
 written to results/serve/<profile>.json, which runner.py copies into every run's record (PROTOCOL §2, §6).
@@ -58,7 +58,7 @@ def command(name: str) -> list[str]:
 def main() -> None:
     from dotenv import load_dotenv
 
-    load_dotenv(HERE.parents[2] / ".env")  # HF_TOKEN (gated models, faster downloads) and EVAL_API_KEY
+    load_dotenv(HERE / ".env")  # HF_TOKEN (gated models, faster downloads) and EVAL_API_KEY
     name = sys.argv[1]
     cmd = command(name)
     m, _ = profile(name)
@@ -79,7 +79,7 @@ def main() -> None:
     if "--print" in sys.argv:
         return
     out.write_text(json.dumps(record, indent=2) + "\n")
-    os.environ.setdefault("VLLM_USE_FLASHINFER_SAMPLER", "0")  # see src/forge/core/serve/serve.sh
+    os.environ.setdefault("VLLM_USE_FLASHINFER_SAMPLER", "0")  # as in forge's serve script
     os.execvp(cmd[0], cmd)
 
 

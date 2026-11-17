@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ruff_cache/
+
+# Secrets
+.env
+
+# Data lives on Hugging Face (hf_data.py pull / push), never in git
+dataset/questions.jsonl
+dataset/pages.jsonl
+results/**/answers.jsonl
+logs/serve-*.log
+/data/
+/hf/.cache/
+
+# GPU lock and watchdog cancel file
+results/.gpu.lock
+results/.no-shutdown

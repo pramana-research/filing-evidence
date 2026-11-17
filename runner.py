@@ -1,7 +1,7 @@
 """Run one model in one setup over the Filing-Evidence questions (PROTOCOL.md §5-§8) and record everything.
 
-    python research/benchmarks/filing-evidence/serve.py qwen3-8b &                 # vLLM on :8000
-    python research/benchmarks/filing-evidence/runner.py qwen3-8b C1 [--set smoke] [--limit 20]
+    python serve.py qwen3-8b &                 # vLLM on :8000
+    python runner.py qwen3-8b C1 [--set smoke] [--limit 20]
 
 Sets: `main` (the frozen 1,000; the fingerprint is verified first) or `smoke` (the 19 Walmart probe questions,
 smoke/; see smoke.py). Output, per set / profile / setup, under results/:
@@ -216,7 +216,7 @@ def main() -> int:
 
     from dotenv import load_dotenv
 
-    load_dotenv(HERE.parents[2] / ".env")
+    load_dotenv(HERE / ".env")
     cfg = yaml.safe_load((HERE / "models.yaml").read_text())
     prof, defaults = cfg["models"][args.profile], cfg["defaults"]
     if args.setup == "C3" and (prof.get("request") or {}).get("C3") is None:

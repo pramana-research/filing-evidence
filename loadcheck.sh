@@ -2,10 +2,10 @@
 # Load check (PROTOCOL §2): serve each profile on the 4090, answer 24 evenly spaced questions in C1 (and C3 when
 # the model has a reasoning mode), stop the server. Results: results/main/<profile>/C*-limit24/.
 #
-#   bash research/benchmarks/filing-evidence/loadcheck.sh qwen3.5-9b granite-4.2-8b ...
+#   bash loadcheck.sh qwen3.5-9b granite-4.2-8b ...
 set -uo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
-cd "$HERE/../../.."
+cd "$HERE"
 source .venv/bin/activate
 LOGS="$HERE/logs"
 

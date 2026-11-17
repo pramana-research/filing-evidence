@@ -59,7 +59,7 @@ models:
     precision: bf16
     # The model's own template with `tools is none` also accepting an undefined `tools`: vLLM 0.33's startup
     # probe renders it with tools undefined and crashes. Renders identically for our requests (tools=None).
-    vllm_args: [--chat-template, research/benchmarks/filing-evidence/templates/olmo-3-7b.jinja]
+    vllm_args: [--chat-template, templates/olmo-3-7b.jinja]
     request: {C1: {}, C3: null}
     verified: false
 

@@ -4,10 +4,10 @@
 # Runs resume (runner.py skips answered questions), so re-running this script after an interruption continues.
 # Takes the same GPU lock as loadcheck.sh, so the two never serve at once.
 #
-#   bash research/benchmarks/filing-evidence/run_all.sh qwen3.5-9b granite-4.2-8b ...
+#   bash run_all.sh qwen3.5-9b granite-4.2-8b ...
 set -uo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
-cd "$HERE/../../.."
+cd "$HERE"
 source .venv/bin/activate
 LOGS="$HERE/logs"
 LOCK="$HERE/results/.gpu.lock"

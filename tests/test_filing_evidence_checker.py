@@ -1,4 +1,4 @@
-"""The Filing-Evidence checker (research/benchmarks/filing-evidence/checker.py): PROTOCOL §7-§8 on hand-made
+"""The Filing-Evidence checker (checker.py): PROTOCOL §7-§8 on hand-made
 questions shaped like the dataset's."""
 
 import importlib.util
@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-_DIR = Path(__file__).parents[1] / "research" / "benchmarks" / "filing-evidence"
+_DIR = Path(__file__).parents[1]
 _spec = importlib.util.spec_from_file_location("fe_checker", _DIR / "checker.py")
 C = importlib.util.module_from_spec(_spec)
 sys.modules["fe_checker"] = C

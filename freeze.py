@@ -1,6 +1,6 @@
 """Freeze the Filing-Evidence dataset (PROTOCOL.md §11) once a hand-check round has passed.
 
-    python research/benchmarks/filing-evidence/freeze.py 4      # the passing QC round
+    python freeze.py 4      # the passing QC round
 
 Writes dataset/FROZEN.json with:
 - `fingerprint`: sha256 over the questions sorted by id, each contributing its id, its gold (status, value,

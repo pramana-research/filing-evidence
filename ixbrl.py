@@ -4,7 +4,7 @@ Each displayed `ix:nonFraction` fact carries its concept, its value (after the `
 `format` attributes), unit, period, dimensions, and every place it's displayed: page number and
 rendered line. That gives an answer key with exact locations, straight from the filer.
 
-Rendering rules (fixed, documented in research/benchmarks/filing-evidence/PROTOCOL.md §5):
+Rendering rules (fixed, documented in PROTOCOL.md §5):
   - page breaks: CSS `page-break-before/after: always` or `break-before/after: page` on any element;
   - block elements end a line, except inside a table cell (cell contents wrapped in <div>/<p> stay on
     the row's line); table rows end a line; table cells are separated by two spaces;

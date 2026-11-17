@@ -80,7 +80,7 @@ unlike industrial companies (e.g. "Statement of Financial Condition", net premiu
 For each company: the **most recent 10-K and the most recent 10-Q filed on or before 2026-11-15**, as listed by
 the SEC submissions API: about 80 filings. The primary document (inline XBRL HTML) is downloaded once from
 `sec.gov/Archives` with an identifying User-Agent, at most 5 requests per second. It's stored with its accession
-number and sha256 in forge-data, and listed in `dataset/manifest.json`.
+number and sha256 in the data directory (`DATA_DIR`), and listed in `dataset/manifest.json`.
 
 ### 3.3 Answer key
 
@@ -130,7 +130,7 @@ and fixed before results.
 - **Pages:** each question comes with **three pages** of the same filing: the page displaying the answer, an adjacent
   page, and a random distractor page. For S8, three pages that don't contain the answer. Pages are numbered
   as in the document's page breaks. Page order is randomised per question with the fixed seed.
-- **Page text:** derived from the HTML by one fixed rendering (`src/forge/domains/finance/data/ixbrl.py`):
+- **Page text:** derived from the HTML by one fixed rendering (`ixbrl.py`):
   - pages follow the document's page-break markup;
   - block elements end a line, **except inside a table cell**, so a table row renders as one line even when the
     filer wraps each cell's content in `<div>`/`<p>`;
@@ -294,12 +294,14 @@ Any change to this protocol after the first model result is recorded here: date,
 | 2026-11-16 (before any main result) | gpt-oss-20b has no non-reasoning mode: C1 and C2 use reasoning effort "low", C3 "high" | The closest equivalent of a plain answer; stated wherever gpt-oss C1 is reported |
 | 2026-11-16 (load check, before any main result) | Added a **secondary** metric, *accuracy ignoring scale*: the checks pass and the digits equal the gold as displayed, whatever scale the model states. The headline accuracy is unchanged | In the Phi-4 load check 4 of 6 confident-wrong answers had the right digits but stated "scale: none". Those are genuine errors for any consumer of the value, but reporting them separately shows how much of a gap is reading the units header rather than finding the number |
 | 2026-11-16 (smoke test, before any main result) | Error taxonomy: "scale or unit error" also covers a misplaced decimal point (the right digits times any power of ten, e.g. 273 for 2.73), and a right value restated in other units than the quoted line shows ("8,600" "in thousands" quoting "$8.6 million"), which had fallen into "wrong line quoted" | Seen in the smoke test; it had fallen into "wrong item", which misdescribes it |
+| 2026-11-17 (after all main results; no change to method) | The benchmark moved from the private `forge` repo to its own repo, `github.com/pramana-research/filing-evidence`, with its git history. `ixbrl.py` and `edgar.py` are copies of forge's modules with their history; only import paths changed. The data (questions, pages, every model reply, server logs) moved to the Hugging Face dataset `pramana-research/filing-evidence`; `hf_data.py pull` verifies it against `dataset/FROZEN.json` | So the benchmark can be published without the factory code. Re-grading every stored reply in the new repo reproduces every reported number exactly |
 
 ---
 
 ## 13 · Publication
 
-Everything is published under pramana-research:
+Everything is published under pramana-research: the code and record on GitHub
+(`pramana-research/filing-evidence`), the data on Hugging Face (dataset `pramana-research/filing-evidence`):
 - this protocol;
 - the code;
 - the frozen dataset (questions, gold, page texts, manifest of SEC sources);

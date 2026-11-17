@@ -12,9 +12,9 @@
 #   - the driver logs a GPU fault (an "NVRM: Xid" line in the kernel log since the watchdog started)
 #
 # After a trip it waits SHUTDOWN_DELAY seconds (default 120) and powers the machine off. To cancel during the
-# wait: touch research/benchmarks/filing-evidence/results/.no-shutdown. To never power off: SHUTDOWN=0.
+# wait: touch results/.no-shutdown. To never power off: SHUTDOWN=0.
 #
-#   bash research/benchmarks/filing-evidence/watchdog.sh        # log: logs/watchdog.log
+#   bash watchdog.sh        # log: logs/watchdog.log
 set -uo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
 LOG="$HERE/logs/watchdog.log"
@@ -34,7 +34,7 @@ stop_run() {
   sleep 15
   pkill -9 -f "[v]llm serve"
   log "stopped. Resume later with the same run_all.sh command."
-  command -v notify-send >/dev/null && notify-send -u critical "forge watchdog" \
+  command -v notify-send >/dev/null && notify-send -u critical "filing-evidence watchdog" \
     "Benchmark stopped: $1. Powering off in ${SHUTDOWN_DELAY}s unless $CANCEL exists."
   if [ "$SHUTDOWN" = 1 ]; then
     log "powering off in ${SHUTDOWN_DELAY}s (cancel: touch $CANCEL)"

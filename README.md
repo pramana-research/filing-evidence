@@ -1,0 +1,51 @@
+# Filing-Evidence
+
+Can open ~8B models pull a number out of an SEC filing **with evidence a machine can check** (the page and the
+verbatim line), and say "not found" when it isn't there?
+
+1,000 questions over 90 recent 10-K / 10-Q filings of 45 US companies, with gold answers taken from the filings'
+own inline XBRL tags. Ten open models from ten companies, each run on one RTX 4090 with vLLM, in three setups:
+plain (C1), check + retry (C2) and thinking (C3). Everything was pre-registered in [PROTOCOL.md](PROTOCOL.md)
+before any model ran; later changes are logged in its §12.
+
+**Code and record here, data on Hugging Face.** Questions, page texts, every model reply and the server logs are in
+the Hugging Face dataset [`pramana-research/filing-evidence`](https://huggingface.co/datasets/pramana-research/filing-evidence).
+Git holds the code, the protocol, the QC hand checks, the dataset fingerprint (`dataset/FROZEN.json`) and each
+run's `summary.json` / `run.json`.
+
+## Layout
+
+| Path | What |
+|---|---|
+| `PROTOCOL.md` | the pre-registration: questions, data, setups, checks, metrics, statistics, deviations |
+| `fetch.py`, `builder.py`, `ixbrl.py`, `edgar.py` | download the filings from SEC EDGAR and build the questions |
+| `qc/`, `freeze.py`, `dataset/FROZEN.json` | hand checks of 100 questions per round, then the frozen fingerprint |
+| `checker.py` | the automatic checks (§7), outcomes (§8), error categories (§9), metrics |
+| `prompts/`, `models.yaml`, `templates/` | the prompt, the retry messages, how each model is served and asked |
+| `serve.py`, `runner.py`, `run_all.sh`, `loadcheck.sh` | serve a model with vLLM, run a setup, run everything |
+| `watchdog.sh` | GPU guard rail for unattended runs |
+| `results/<set>/<model>/<setup>/` | `summary.json`, `run.json` (answers on Hugging Face) |
+| `smoke/`, `experiments/` | the 19-question smoke set; the 2026-11-15 probe that motivated the benchmark |
+
+## Reproduce
+
+```bash
+uv sync --all-extras                      # Python 3.12; vLLM 0.33.0 for serving
+cp .env.example .env                      # HF_TOKEN for gated models
+uv run python hf_data.py pull             # questions, pages, all replies; verified against dataset/FROZEN.json
+uv run pytest                             # checker, builder and reader tests
+
+# re-grade every stored reply (no GPU)
+uv run python runner.py qwen3.5-9b C1 --regrade
+
+# run a model yourself (one 24 GB GPU)
+bash run_all.sh qwen3.5-9b
+```
+
+Rebuilding the dataset from SEC EDGAR (`fetch.py`, then `builder.py`) needs `SEC_USER_AGENT` in `.env`; the result
+is checked against the same fingerprint.
+
+## Licence
+
+SEC filings are public records. Model outputs are released with each model's licence noted. Code: to be decided
+before publication.

@@ -1,7 +1,7 @@
 """Build the smoke-test set (PROTOCOL.md §11): the 19 questions of the 2026-11-15 Walmart probe
 (research/experiments/2026-11-15-qwen3-8b-walmart-probe), rebuilt with the benchmark's reader and schema.
 
-    python research/benchmarks/filing-evidence/smoke.py      # -> smoke/questions.jsonl, smoke/pages.jsonl
+    python smoke.py      # -> smoke/questions.jsonl, smoke/pages.jsonl
 
 Same items as the probe: 8 line items x the two latest fiscal years (16 answerable), plus three "not found"
 traps (an absent year, an item Walmart doesn't report, a quarter asked of a 10-K). Same page rule: the
@@ -37,8 +37,8 @@ WANT = [  # (concept, label in plain words): the probe's list
 def main() -> int:
     from transformers import AutoTokenizer
 
-    from forge.core.utils.paths import data_dir
-    from forge.domains.finance.data.ixbrl import read_document_set, read_labels
+    from ixbrl import read_document_set, read_labels
+    from paths import data_dir
 
     tok = AutoTokenizer.from_pretrained("Qwen/Qwen3-8B", local_files_only=True)
     manifest = json.loads((HERE / "dataset" / "manifest.json").read_text())
