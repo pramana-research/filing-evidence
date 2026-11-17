@@ -14,7 +14,7 @@ dataset/pages.jsonl
 results/**/answers.jsonl
 logs/serve-*.log
 /data/
-/hf/.cache/
+/.cache/                       # huggingface_hub download metadata (hf_data.py pull)
 
 # GPU lock and watchdog cancel file
 results/.gpu.lock
