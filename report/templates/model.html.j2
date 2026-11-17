@@ -1,0 +1,208 @@
+{% extends "base.html.j2" %}
+{% set su1 = run.setups.C1.summary %}
+{% set best = run.best_setup %}
+{% set sub = run.setups[best].summary %}
+{% set tests = d.setup_tests | selectattr("model", "equalto", m) | list %}
+{% block title %}{{ m | name }} on Filing-Evidence · Pramana Research{% endblock %}
+{% block description %}{{ m | name }} ({{ run.company }}) on the Filing-Evidence benchmark: {{ su1.accuracy.rate | pct }} accuracy with checkable evidence in the plain setup, {{ su1.confident_wrong.k }} confident-wrong answers per 1,000.{% endblock %}
+
+{% macro example(e, kind) %}
+<div class="ex">
+  <p class="meta">{{ e.company }} · {{ e.form }} · {{ e.slice }} {{ d.slices[e.slice] }} · {{ e.id }} <span class="tag {{ tag[e.outcome][0] }}" style="margin-left:6px">{{ tag[e.outcome][1] }}</span></p>
+  <p class="q">“{{ e.question }}”</p>
+  <dl>
+    {% if e.answer_status == "not_found" %}
+    <dt>Answer</dt><dd>not found</dd>
+    {% else %}
+    <dt>Answer</dt><dd><span class="line">{{ e.answer_value }}</span> {{ e.answer_scale or "" }}, page {{ e.answer_page }}</dd>
+    <dt>Its quote</dt><dd><span class="line">{{ e.answer_span }}</span></dd>
+    {% endif %}
+    <dt>Answer key</dt><dd><span class="line">{{ e.gold_display }}</span>{% if e.gold_unit != "pure" and e.gold_scale in (3, 6, 9) %} {{ {3: "thousand", 6: "million", 9: "billion"}[e.gold_scale] }}{% endif %} · from <span class="line">{{ e.gold_line }}</span></dd>
+    {% if e.failed_check %}<dt>Checker</dt><dd>failed the {{ e.failed_check }} check</dd>{% endif %}
+    {% if e.category %}<dt>Error type</dt><dd>{{ d.category_label[e.category] }}</dd>{% endif %}
+  </dl>
+</div>
+{% endmacro %}
+
+{% block main %}
+<div class="wrap">
+<div class="titleblock">
+  <p class="eyebrow"><a href="/research/filing-evidence" style="text-decoration:none">Filing-Evidence</a> · Results per model{% if run.supplementary %} · supplementary baseline{% endif %}</p>
+  <h1>{{ m | name }}</h1>
+  <p class="subtitle">{{ run.company }} · {{ "%.1f" | format(run.meta.params / 1e9) }}B parameters · {{ run.precision }}{% if run.has_c3 %} · has a thinking mode{% endif %}</p>
+  <div class="byline"><span><strong>Pramana Research</strong></span><span>{{ DATE }}</span><span>Filing-Evidence v{{ VERSION }}</span></div>
+  <div class="actions">
+    <a class="btn primary" href="/research/filing-evidence/pdf/{{ m | slug }}.pdf" download>Download PDF</a>
+    <a class="btn" href="/research/filing-evidence">Read the paper</a>
+    <a class="btn" href="{{ HF }}/tree/main/results/main/{{ m }}">Every answer</a>
+  </div>
+</div>
+
+<div class="paper">
+<nav class="toc" aria-label="Contents">
+  <p>On this page</p>
+  <ol>
+    <li><a href="#scorecard">Scorecard</a></li>
+    <li><a href="#outcomes">Where the answers go</a></li>
+    <li><a href="#content">By kind of content</a></li>
+    <li><a href="#setups">Retry and thinking</a></li>
+    <li><a href="#notes">What stands out</a></li>
+    <li><a href="#examples">Real answers</a></li>
+    <li><a href="#run">How it was run</a></li>
+  </ol>
+</nav>
+<article class="body">
+
+<section class="brief" aria-labelledby="sc" style="margin-bottom:8px">
+  <h2 id="sc" style="margin-top:0">In brief</h2>
+  <div class="stats">
+    <div class="stat"><div class="v">{{ su1.accuracy.rate | pct }}</div><div class="l">accuracy with checkable evidence, plain setup (rank {{ (H.c1_sorted.index(m) + 1) if m in H.c1_sorted else "—" }} of 10{% if run.supplementary %}; not ranked{% endif %})</div></div>
+    <div class="stat"><div class="v">{{ sub.accuracy.rate | pct }}</div><div class="l">best setup: {{ best | setup | lower }}</div></div>
+    <div class="stat"><div class="v bad">{{ su1.confident_wrong.k }}</div><div class="l">wrong answers per 1,000 that passed every check (plain)</div></div>
+    <div class="stat"><div class="v">{{ su1.abstention_accuracy.k }}/125</div><div class="l">correct "not found" when the answer wasn't on the pages</div></div>
+  </div>
+</section>
+
+<h2 id="scorecard">Scorecard</h2>
+<div class="tablewrap"><table>
+  <thead><tr><th>Setup</th><th class="n">Accuracy</th><th class="n">Conf.-wrong</th><th class="n">Abstention</th><th class="n">Ign. scale</th><th class="n">Tokens</th><th class="n">Time</th></tr></thead>
+  <tbody>
+  {% for s in ["C1", "C2", "C3"] %}
+  {% if s in run.setups %}{% set x = run.setups[s] %}
+  <tr><td>{{ s }} · {{ s | setup }}</td>
+    <td class="n">{{ x.summary.accuracy.rate | pct }}<br><span class="ci">{{ x.summary.accuracy | ci }}</span></td>
+    <td class="n">{{ x.summary.confident_wrong.k }}<br><span class="ci">{{ x.summary.confident_wrong | ci }}</span></td>
+    <td class="n">{{ x.summary.abstention_accuracy.k }}</td>
+    <td class="n">{{ x.summary.accuracy_ignoring_scale.rate | pct }}</td>
+    <td class="n">{{ x.tokens.mean | round(0) | int | thou }}</td>
+    <td class="n">{{ x.wall_minutes | round(1) }} min</td></tr>
+  {% else %}
+  <tr><td>{{ s }} · {{ s | setup }}</td><td class="n" colspan="6">n/a: this model has no reasoning mode</td></tr>
+  {% endif %}
+  {% endfor %}
+  </tbody>
+</table></div>
+<p class="muted">Accuracy over the 875 answerable questions; confident-wrong per 1,000 answers; abstention out of 125; tokens are generated tokens per answer (mean). Intervals are 95% Wilson intervals. "Ign. scale" (ignoring scale) counts answers with the right digits and valid evidence whatever scale was stated (a secondary metric). C2 tokens include the retry; C2 run time counts only the retries, because C2 reuses C1's first answers.</p>
+
+<h2 id="outcomes">Where the answers go</h2>
+<figure>
+  <div class="canvas">{{ mf.outcomes | safe }}</div>
+  <figcaption><b>Figure 1.</b> Outcomes of the 875 answerable questions in each setup.</figcaption>
+  <details><summary>Show the data</summary>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Outcome</th>{% for s in run.setups %}<th class="n">{{ s }}</th>{% endfor %}</tr></thead>
+    <tbody>
+    {% for o in ["correct", "unverifiable_right", "missed", "invalid", "caught_wrong", "confident_wrong", "abstained_correctly", "invented"] %}
+    <tr><td>{{ d.outcome_label[o] }}</td>{% for s in run.setups %}<td class="n">{{ run.setups[s].summary.outcomes[o] }}</td>{% endfor %}</tr>
+    {% endfor %}
+    </tbody>
+  </table></div>
+  </details>
+</figure>
+{% set cws = d.cw_split[m ~ ":C1"] %}
+<p>In the plain setup, {{ su1.outcomes.correct }} answers were correct and {{ su1.outcomes.confident_wrong }} were
+wrong while passing every check{% if su1.outcomes.confident_wrong %}: {% for k, lab in [("scale_or_unit", "scale or unit"), ("wrong_period_or_column", "another period or column of the right line"), ("wrong_item", "a different item")] %}{% if cws.get(k) %}{{ cws[k] }} {{ lab }}{{ "; " if not loop.last else "" }}{% endif %}{% endfor %}{% endif %}.
+A further {{ su1.outcomes.unverifiable_right }} had the right value with evidence the checker could not accept, and
+{{ su1.outcomes.caught_wrong }} wrong answers were rejected by the checker.</p>
+
+<h2 id="content">By kind of content</h2>
+<figure>
+  <div class="canvas">{{ mf.slices | safe }}</div>
+  <figcaption><b>Figure 2.</b> Accuracy per slice and setup (S8: correct "not found").</figcaption>
+</figure>
+{% set sl = su1.by_slice.items() | rejectattr("0", "equalto", "S8") | sort(attribute="1.rate") | list %}
+<p>Plain setup: strongest on {{ d.slices[sl[-1][0]] | lcfirst }} ({{ sl[-1][1].rate | pct }}) and {{ d.slices[sl[-2][0]] | lcfirst }}
+({{ sl[-2][1].rate | pct }}); weakest on {{ d.slices[sl[0][0]] | lcfirst }} ({{ sl[0][1].rate | pct }}) and
+{{ d.slices[sl[1][0]] | lcfirst }} ({{ sl[1][1].rate | pct }}).</p>
+
+<h2 id="setups">Retry and thinking</h2>
+<div class="tablewrap"><table>
+  <thead><tr><th>Comparison</th><th class="n">Accuracy change</th><th class="n">Holm p</th><th class="n">Confident-wrong change</th><th class="n">Holm p</th></tr></thead>
+  <tbody>
+  {% for t in tests %}
+  {% set da = 100 * (run.setups[t.b].summary.accuracy.rate - run.setups[t.a].summary.accuracy.rate) %}
+  {% set dc = run.setups[t.b].summary.confident_wrong.k - run.setups[t.a].summary.confident_wrong.k %}
+  <tr><td>{{ t.b | setup }} vs {{ t.a | setup | lower }}</td><td class="n">{{ "%+.1f" | format(da) }} pts</td><td class="n {{ 'sig' if t.acc.sig else 'ns' }}">{{ "%.3g" | format(t.acc.p_holm) }}</td><td class="n">{{ "%+d" | format(dc) }}</td><td class="n {{ 'sig' if t.cw.sig else 'ns' }}">{{ "%.3g" | format(t.cw.p_holm) }}</td></tr>
+  {% endfor %}
+  </tbody>
+</table></div>
+<p class="muted">Paired exact McNemar tests on the same questions; Holm-corrected over every within-model comparison in the study. Blue: significant at α = 0.05.</p>
+{% set mv = d.retry[m] %}
+<p>Check + retry asked {{ H.retry_to[m].total }} answers again. Of those,
+{{ H.retry_to[m].correct }} became correct,
+{{ H.retry_to[m].confident_wrong }} became confident-wrong,
+{{ H.retry_to[m].missed }} turned into "not found", and the
+rest still failed a check.</p>
+
+<h2 id="notes">What stands out</h2>
+{% set r1 = run.setups.C1 %}
+<ul>
+{% if m == "qwen3.5-9b" %}
+  <li>The most accurate model in the plain and check + retry setups, and significantly ahead of every other model in both.</li>
+  <li>The fewest confident-wrong answers in every setup it was compared in; with thinking, {{ run.setups.C3.summary.confident_wrong.k }} in 1,000, the lowest in the study.</li>
+  <li>Thinking lowered its accuracy to {{ run.setups.C3.summary.accuracy.rate | pct }} because it often reasoned past the pre-registered 8,192-token limit: {{ run.setups.C3.tokens.truncated }} truncated answers, {{ run.setups.C3.truncated_outcomes.invalid }} of them unparseable. On the questions it finished, accuracy was {{ run.setups.C3.acc_untruncated.rate | pct }}.</li>
+{% elif m == "olmo-3-7b" %}
+  <li>It usually finds the right number but rarely quotes the line exactly: it inserts dollar signs the page doesn't have ("26,873 $ 24,248"), repeats figures or joins lines. {{ su1.outcomes.unverifiable_right }} answers had the right value with a quote the checker could not accept.</li>
+  <li>Retry hardly helps ({{ run.setups.C2.summary.accuracy.rate | pct }}): asked again, it repeats the same kind of quote.</li>
+{% elif m == "nemotron-nano-9b-v2" %}
+  <li>When told that a check failed, it almost always gives up: of {{ H.retry_to[m].total }} retried answers, {{ H.retry_to[m].missed }} became "not found". Retry therefore changes accuracy by only {{ "%+.1f" | format(100 * (run.setups.C2.summary.accuracy.rate - su1.accuracy.rate)) }} points.</li>
+  <li>Thinking is where it improves most: {{ "%+.1f" | format(H.think_gain[m]) }} points of accuracy, from {{ su1.accuracy.rate | pct }} to {{ run.setups.C3.summary.accuracy.rate | pct }}.</li>
+  <li>It never invented an answer for a question whose answer was not on the pages in the plain setup ({{ su1.abstention_accuracy.k }} of 125).</li>
+{% elif m == "gpt-oss-20b" %}
+  <li>It has no non-reasoning mode, so its plain and check + retry setups use the lowest reasoning effort ("low") and its thinking setup the highest ("high"). Its plain-setup numbers are not directly comparable with models answering without reasoning.</li>
+  <li>High effort halves its confident-wrong answers ({{ su1.confident_wrong.k }} → {{ run.setups.C3.summary.confident_wrong.k }}) but hit the 8,192-token limit on {{ run.setups.C3.tokens.truncated }} questions.</li>
+  <li>The largest model in the study ({{ "%.1f" | format(run.meta.params / 1e9) }}B, mixture of experts), run in its native MXFP4 weights.</li>
+{% elif m == "phi-4" %}
+  <li>The most confident-wrong answers of the ten ({{ su1.confident_wrong.k }} in the plain setup), and {{ d.cw_split["phi-4:C1"].scale_or_unit }} of them are scale or unit errors: right line, right digits, but "scale: none" for a table in millions. Ignoring the stated scale its accuracy would be {{ su1.accuracy_ignoring_scale.rate | pct }}.</li>
+  <li>Retry makes this worse: {{ H.caught_to_cw[m] }} answers went from caught to confident-wrong after the retry.</li>
+  <li>Run with FP8 weights (14.7B parameters do not fit in 24 GB in bf16).</li>
+{% elif m == "gemma-3-12b" %}
+  <li>The weakest of the ten at saying "not found" ({{ su1.abstention_accuracy.k }} of 125): it most often answers a quarterly figure asked of an annual report, where the correct answer is "not found" ({{ d.s8[m ~ ":C1"].c[0] }} of {{ d.s8[m ~ ":C1"].c[1] }} correct).</li>
+  <li>Run with FP8 weights; retry raised its confident-wrong answers from {{ su1.confident_wrong.k }} to {{ run.setups.C2.summary.confident_wrong.k }}.</li>
+{% elif m == "glm-4.6v-flash" %}
+  <li>The largest gain from thinking in the study ({{ "%+.1f" | format(H.think_gain[m]) }} points, to {{ run.setups.C3.summary.accuracy.rate | pct }}, the highest thinking-mode accuracy), with short reasoning: {{ run.setups.C3.tokens.mean | round(0) | int }} tokens per answer on average.</li>
+  <li>Thinking also cut its confident-wrong answers from {{ su1.confident_wrong.k }} to {{ run.setups.C3.summary.confident_wrong.k }}.</li>
+  <li>A vision-language model, run text-only (the vision encoder was not loaded).</li>
+{% elif m == "granite-4.2-8b" %}
+  <li>Second-fewest confident-wrong answers among the ten in the plain setup ({{ su1.confident_wrong.k }}), and {{ run.setups.C3.summary.confident_wrong.k }} with thinking.</li>
+  <li>Thinking raises accuracy to {{ run.setups.C3.summary.accuracy.rate | pct }}, statistically level with the best thinking-mode results, at about {{ "%.0f" | format(H.tok_mult[m]) }} times the tokens.</li>
+  <li>It thinks by default; the plain setup switches thinking off through its chat template.</li>
+{% elif m == "ministral-3-8b" %}
+  <li>Among the best at saying "not found" ({{ su1.abstention_accuracy.k }} of 125).</li>
+  <li>No reasoning mode. Retry adds {{ "%.1f" | format(100 * (run.setups.C2.summary.accuracy.rate - su1.accuracy.rate)) }} points of accuracy but also {{ run.setups.C2.summary.confident_wrong.k - su1.confident_wrong.k }} confident-wrong answers.</li>
+{% elif m == "llama-3.1-8b" %}
+  <li>The oldest model in the study (released {{ run.meta.created[:7] }}), statistically level with Gemma-3-12B and Phi-4.</li>
+  <li>Retry raised its confident-wrong answers the most of any model, from {{ su1.confident_wrong.k }} to {{ run.setups.C2.summary.confident_wrong.k }}.</li>
+{% elif m == "qwen3-8b" %}
+  <li>The model of the pilot study that motivated the benchmark, reported as a supplementary baseline outside the ten-model comparison (Qwen3.5-9B is the Alibaba entry).</li>
+  <li>Weak at "not found" in the plain setup ({{ su1.abstention_accuracy.k }} of 125): asked for a quarter of an annual report, it answered "not found" only {{ d.s8[m ~ ":C1"].c[0] }} times in {{ d.s8[m ~ ":C1"].c[1] }}.</li>
+  <li>Thinking brings it to {{ run.setups.C3.summary.accuracy.rate | pct }} and cuts confident-wrong answers from {{ su1.confident_wrong.k }} to {{ run.setups.C3.summary.confident_wrong.k }}.</li>
+{% endif %}
+</ul>
+
+<h2 id="examples">Real answers</h2>
+<p>Chosen by a fixed rule (evenly spaced over question ids) from its best setup ({{ ex.setup | setup | lower }}), not
+picked by hand.</p>
+{% if ex.correct %}<h3>Correct</h3>{% for e in ex.correct %}{{ example(e, "correct") }}{% endfor %}{% endif %}
+{% if ex.confident_wrong %}<h3>Confident-wrong: passed every check, still wrong</h3>{% for e in ex.confident_wrong %}{{ example(e, "cw") }}{% endfor %}{% endif %}
+{% if ex.unverifiable_right %}<h3>Right value, unusable evidence</h3>{% for e in ex.unverifiable_right %}{{ example(e, "ur") }}{% endfor %}{% endif %}
+{% if ex.caught_wrong %}<h3>Wrong, caught by the checker</h3>{% for e in ex.caught_wrong %}{{ example(e, "cg") }}{% endfor %}{% endif %}
+
+<h2 id="run">How it was run</h2>
+<div class="facts">
+  <div><span>Hugging Face repository</span><b><a href="https://huggingface.co/{{ run.repo }}">{{ run.repo }}</a></b></div>
+  <div><span>Pinned revision</span><b class="mono">{{ run.revision[:12] }}</b>{% if run.revision_reconstructed %}<b style="display:block;font-size:12px;color:#5B6472;font-weight:400">reconstructed from the local cache: the server was started without the pin (PROTOCOL §12)</b>{% endif %}</div>
+  <div><span>Licence</span><b>{{ LICENCE[run.meta.license_name or run.meta.license] }}</b></div>
+  <div><span>Released (repository created)</span><b>{{ run.meta.created }}</b></div>
+  <div><span>Precision</span><b>{{ run.precision }}</b></div>
+  <div><span>Thinking switch</span><b class="mono">{{ run.setups.C3.request_extra if run.has_c3 else "none (C3 n/a)" }}{% if run.has_c3 and run.setups.C3.system %} system: {{ run.setups.C3.system }}{% endif %}</b></div>
+</div>
+<pre><code>{{ run.serve_command | join(" ") }}</code></pre>
+<pre><code>uv run python hf_data.py pull
+bash run_all.sh {{ m }}                              # serve, then C1, C2{{ ", C3" if run.has_c3 else "" }}
+uv run python runner.py {{ m }} C1 --regrade          # re-grade the stored replies</code></pre>
+<a class="backlink" href="/research/filing-evidence#models">← All models</a>
+</article>
+</div>
+</div>
+{% endblock %}

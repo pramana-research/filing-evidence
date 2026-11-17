@@ -1,0 +1,88 @@
+{
+ "source": "Hugging Face model_info (card licence, repo creation date, safetensors parameter total)",
+ "fetched": "2026-11-17",
+ "models": {
+  "qwen3-8b": {
+   "repo": "Qwen/Qwen3-8B",
+   "license": "apache-2.0",
+   "license_name": null,
+   "created": "2025-04-27",
+   "params": 8190735360
+  },
+  "qwen3.5-9b": {
+   "repo": "Qwen/Qwen3.5-9B",
+   "license": "apache-2.0",
+   "license_name": null,
+   "created": "2026-02-27",
+   "params": 9653104368
+  },
+  "granite-4.2-8b": {
+   "repo": "ibm-granite/granite-4.2-8b",
+   "license": "apache-2.0",
+   "license_name": null,
+   "created": "2026-08-07",
+   "params": 8791592960
+  },
+  "ministral-3-8b": {
+   "repo": "mistralai/Ministral-3-8B-Instruct-2512",
+   "license": "apache-2.0",
+   "license_name": null,
+   "created": "2025-10-31",
+   "params": 8918026240
+  },
+  "olmo-3-7b": {
+   "repo": "allenai/Olmo-3-7B-Instruct",
+   "license": "apache-2.0",
+   "license_name": null,
+   "created": "2025-11-19",
+   "params": 7298011136
+  },
+  "nemotron-nano-9b-v2": {
+   "repo": "nvidia/NVIDIA-Nemotron-Nano-9B-v2",
+   "license": "other",
+   "license_name": "nvidia-open-model-license",
+   "created": "2025-08-12",
+   "params": 8888227328
+  },
+  "gpt-oss-20b": {
+   "repo": "openai/gpt-oss-20b",
+   "license": "apache-2.0",
+   "license_name": null,
+   "created": "2025-08-04",
+   "params": 20914757184
+  },
+  "phi-4": {
+   "repo": "microsoft/phi-4",
+   "license": "mit",
+   "license_name": null,
+   "created": "2024-12-11",
+   "params": 14659507200
+  },
+  "gemma-3-12b": {
+   "repo": "google/gemma-3-12b-it",
+   "license": "gemma",
+   "license_name": null,
+   "created": "2025-03-01",
+   "params": 12187325040
+  },
+  "glm-4.6v-flash": {
+   "repo": "zai-org/GLM-4.6V-Flash",
+   "license": "mit",
+   "license_name": null,
+   "created": "2025-12-07",
+   "params": 10292777472
+  },
+  "llama-3.1-8b": {
+   "repo": "meta-llama/Llama-3.1-8B-Instruct",
+   "license": "llama3.1",
+   "license_name": null,
+   "created": "2024-07-18",
+   "params": 8030261248
+  }
+ },
+ "revision_reconstructed": {
+  "note": "serve.py did not pass --revision for these two models (vLLM resolved 'main'). The local Hugging Face cache holds exactly one snapshot for each, refs/main points to it, and no other snapshot was ever downloaded, so this is the revision that ran.",
+  "gpt-oss-20b": "6cee5e81ee83917806bbde320786a8fb61efebee",
+  "llama-3.1-8b": "0e9e39f249a16976918f6564b8830bc894c89659"
+ }
+}

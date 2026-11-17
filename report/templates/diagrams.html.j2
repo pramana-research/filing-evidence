@@ -1,0 +1,106 @@
+{# Hand-drawn diagrams (static SVG). Colours: ink #12161C, secondary #3D4452, muted #5B6472, line #E3E5E0,
+   accent #2E3F9E, accent wash #EEF0FA, bad #B3302A, bad wash #FBEEEA. #}
+
+{% macro box(x, y, w, h, title, sub1="", sub2="", fill="#FFFFFF", stroke="#D5D8D0", tcol="#12161C") %}
+<rect x="{{ x }}" y="{{ y }}" width="{{ w }}" height="{{ h }}" rx="10" fill="{{ fill }}" stroke="{{ stroke }}"/>
+<text x="{{ x + 14 }}" y="{{ y + 26 }}" font-size="14" font-weight="600" fill="{{ tcol }}">{{ title }}</text>
+{% if sub1 %}<text x="{{ x + 14 }}" y="{{ y + 46 }}" font-size="12" fill="#3D4452">{{ sub1 }}</text>{% endif %}
+{% if sub2 %}<text x="{{ x + 14 }}" y="{{ y + 63 }}" font-size="12" fill="#3D4452">{{ sub2 }}</text>{% endif %}
+{% endmacro %}
+
+{% macro arrow(x1, y1, x2, y2, col="#9AA1AE") %}
+<line x1="{{ x1 }}" y1="{{ y1 }}" x2="{{ x2 }}" y2="{{ y2 }}" stroke="{{ col }}" stroke-width="1.5" marker-end="url(#ah)"/>
+{% endmacro %}
+
+{% macro defs() %}
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9AA1AE"/></marker></defs>
+{% endmacro %}
+
+{% macro pipeline() %}
+<svg class="diagram" viewBox="0 0 760 250" role="img" aria-labelledby="pt pd" xmlns="http://www.w3.org/2000/svg">
+<title id="pt">How the benchmark is built and run</title>
+<desc id="pd">Filings from SEC EDGAR; gold answers from the filers' own inline XBRL tags; 1,000 questions, hand-checked and frozen; ten models served on one GPU in three setups; an automatic checker grades every answer.</desc>
+{{ defs() }}
+<text x="0" y="16" font-size="11" font-weight="600" fill="#5B6472" letter-spacing="1">BUILD THE BENCHMARK (BEFORE ANY MODEL RUNS)</text>
+{{ box(0, 30, 170, 86, "SEC EDGAR", "90 filings, 45 companies", "latest 10-K and 10-Q") }}
+{{ arrow(172, 73, 192, 73) }}
+{{ box(194, 30, 182, 86, "Inline XBRL answer key", "the filer's own tags give", "value, unit, period, line") }}
+{{ arrow(378, 73, 398, 73) }}
+{{ box(400, 30, 170, 86, "1,000 questions", "8 kinds of content", "3 pages shown per question") }}
+{{ arrow(572, 73, 592, 73) }}
+{{ box(594, 30, 166, 86, "Hand check, freeze", "98 of 100 correct", "sha256 fingerprint", fill="#EEF0FA", stroke="#C4CBEA") }}
+<text x="0" y="152" font-size="11" font-weight="600" fill="#5B6472" letter-spacing="1">RUN AND GRADE</text>
+{{ box(0, 166, 248, 74, "10 open models, one RTX 4090", "7–21B parameters, served with vLLM", "") }}
+{{ arrow(250, 203, 270, 203) }}
+{{ box(272, 166, 230, 74, "3 setups", "plain · check + retry · thinking", "") }}
+{{ arrow(504, 203, 524, 203) }}
+{{ box(526, 166, 234, 74, "Automatic checker", "page, verbatim line, value", "→ one outcome per answer", fill="#EEF0FA", stroke="#C4CBEA") }}
+<path d="M677,118 C677,140 640,146 640,164" fill="none" stroke="#C4CBEA" stroke-width="1.5" stroke-dasharray="0"/>
+</svg>
+{% endmacro %}
+
+{% macro checker() %}
+<svg class="diagram" viewBox="0 0 760 330" role="img" aria-labelledby="ct cd" xmlns="http://www.w3.org/2000/svg">
+<title id="ct">The checker: four automatic checks, then comparison with the answer key</title>
+<desc id="cd">An answer that passes all four checks is either correct or confident-wrong. An answer that fails a check is rejected automatically: it is either a right value with unusable evidence or a wrong value caught by the checker.</desc>
+{{ defs() }}
+{{ box(0, 20, 120, 64, "Answer", "value, scale,", "page, quote") }}
+{% set checks = [("1  Parses", "valid JSON"), ("2  Page", "one of the 3 shown"), ("3  Quote", "verbatim on page"), ("4  Value", "appears in the quote")] %}
+{% for title, sub in checks %}
+{% set x = 140 + loop.index0 * 128 %}
+{{ arrow(x - 18, 52, x - 2, 52) }}
+{{ box(x, 20, 112, 64, title, sub) }}
+<line x1="{{ x + 56 }}" y1="86" x2="{{ x + 56 }}" y2="128" stroke="#E5A898" stroke-width="1.5" marker-end="url(#ah)"/>
+<text x="{{ x + 62 }}" y="110" font-size="11" fill="#B3302A">fails</text>
+{% endfor %}
+{{ arrow(652, 52, 668, 52) }}
+<text x="672" y="48" font-size="12.5" font-weight="600" fill="#2E3F9E">passes</text>
+<text x="672" y="64" font-size="12" fill="#3D4452">all four</text>
+<rect x="140" y="132" width="496" height="40" rx="10" fill="#FBEEEA" stroke="#F0C9BD"/>
+<text x="156" y="157" font-size="13" font-weight="600" fill="#B3302A">Rejected automatically</text>
+<text x="330" y="157" font-size="12" fill="#3D4452">a system using the model would not accept this answer</text>
+<line x1="702" y1="72" x2="702" y2="212" stroke="#9AA1AE" stroke-width="1.5"/>
+<text x="0" y="214" font-size="11" font-weight="600" fill="#5B6472" letter-spacing="1">THEN COMPARE THE VALUE WITH THE ANSWER KEY</text>
+<line x1="388" y1="174" x2="388" y2="230" stroke="#9AA1AE" stroke-width="1.5"/>
+<line x1="388" y1="230" x2="238" y2="244" stroke="#9AA1AE" stroke-width="1.5" marker-end="url(#ah)"/>
+<line x1="388" y1="230" x2="413" y2="244" stroke="#9AA1AE" stroke-width="1.5" marker-end="url(#ah)"/>
+<text x="300" y="234" font-size="11" fill="#5B6472">= key</text>
+<text x="398" y="234" font-size="11" fill="#5B6472">≠ key</text>
+<line x1="702" y1="212" x2="702" y2="230" stroke="#9AA1AE" stroke-width="1.5"/>
+<line x1="702" y1="230" x2="566" y2="244" stroke="#9AA1AE" stroke-width="1.5" marker-end="url(#ah)"/>
+<line x1="702" y1="230" x2="694" y2="244" stroke="#9AA1AE" stroke-width="1.5" marker-end="url(#ah)"/>
+<text x="618" y="234" font-size="11" fill="#5B6472">= key</text>
+<text x="708" y="240" font-size="11" fill="#5B6472">≠ key</text>
+{{ box(150, 246, 176, 74, "Right value,", "unusable evidence", "(fixable: quote again)", fill="#F2F3FB", stroke="#D3D8F1") }}
+{{ box(338, 246, 150, 74, "Caught wrong", "wrong, but the", "checker stops it", fill="#FDF3F0", stroke="#F0C9BD", tcol="#B3302A") }}
+{{ box(512, 246, 104, 74, "Correct", "right value,", "checkable", fill="#EEF0FA", stroke="#2E3F9E", tcol="#2E3F9E") }}
+{{ box(624, 246, 136, 74, "Confident-wrong", "passes every", "check, wrong", fill="#FBEEEA", stroke="#B3302A", tcol="#B3302A") }}
+<text x="0" y="264" font-size="11.5" fill="#5B6472">"not found" answers:</text>
+<text x="0" y="282" font-size="11.5" fill="#5B6472">missed, or correctly</text>
+<text x="0" y="300" font-size="11.5" fill="#5B6472">abstained (S8)</text>
+</svg>
+{% endmacro %}
+
+{% macro setups() %}
+<svg class="diagram" viewBox="0 0 760 210" role="img" aria-labelledby="st sd" xmlns="http://www.w3.org/2000/svg">
+<title id="st">The three setups</title>
+<desc id="sd">Plain: one answer. Check and retry: if the answer fails a check, the model is told which check failed and answers once more. Thinking: the model reasons before answering, up to 8,192 tokens.</desc>
+{{ defs() }}
+{% for x, title, l1, l2, l3 in [(0, "C1  Plain", "Question + 3 pages", "→ one answer", "up to 512 tokens"),
+                                (258, "C2  Check + retry", "C1's answer → checker", "fails? the model is told which", "check failed, answers once more"),
+                                (516, "C3  Thinking", "the model's own reasoning", "mode, then one answer", "up to 8,192 tokens")] %}
+<rect x="{{ x }}" y="10" width="244" height="190" rx="12" fill="#FFFFFF" stroke="#D5D8D0"/>
+<rect x="{{ x }}" y="10" width="244" height="44" rx="12" fill="{{ ['#F2F3FB', '#E6E9F7', '#E0E3F3'][loop.index0] }}"/>
+<rect x="{{ x }}" y="40" width="244" height="14" fill="{{ ['#F2F3FB', '#E6E9F7', '#E0E3F3'][loop.index0] }}"/>
+<text x="{{ x + 16 }}" y="38" font-size="15" font-weight="600" fill="#12161C">{{ title }}</text>
+<text x="{{ x + 16 }}" y="86" font-size="13" fill="#3D4452">{{ l1 }}</text>
+<text x="{{ x + 16 }}" y="108" font-size="13" fill="#3D4452">{{ l2 }}</text>
+<text x="{{ x + 16 }}" y="130" font-size="13" fill="#3D4452">{{ l3 }}</text>
+{% endfor %}
+<text x="16" y="178" font-size="12" fill="#5B6472">every model, same prompt</text>
+<text x="274" y="160" font-size="12" fill="#5B6472">the message names the check,</text>
+<text x="274" y="178" font-size="12" fill="#5B6472">never the answer</text>
+<text x="532" y="160" font-size="12" fill="#5B6472">only models that have one:</text>
+<text x="532" y="178" font-size="12" fill="#5B6472">6 of 11 (n/a for the rest)</text>
+</svg>
+{% endmacro %}

@@ -1,0 +1,433 @@
+{% extends "base.html.j2" %}
+{% import "diagrams.html.j2" as dg %}
+{% set R = d.runs %}
+{% set q35 = R["qwen3.5-9b"] %}
+{% set top = H.c1_sorted[0] %}
+{% set bm, bs = H.best_any %}
+{% set sm, ss = H.safest %}
+{% block title %}Show Your Work: Can Small Open Models Read SEC Filings with Evidence a Machine Can Check? · Pramana Research{% endblock %}
+{% block description %}A pre-registered benchmark of ten open models on one consumer GPU: 1,000 questions over 90 SEC filings, every answer graded with a verbatim quote a machine can check.{% endblock %}
+{% block main %}
+<div class="wrap">
+<div class="titleblock">
+  <p class="eyebrow">Research · Benchmark · v{{ VERSION }}</p>
+  <h1>Show Your Work: Can Small Open Models Read SEC Filings with Evidence a Machine Can Check?</h1>
+  <p class="subtitle">Filing-Evidence: a pre-registered benchmark of ten open models on one consumer GPU</p>
+  <div class="byline"><span><strong>Pramana Research</strong></span><span>{{ DATE }}</span><span>Version {{ VERSION }}</span></div>
+  <div class="actions">
+    <a class="btn primary" href="/research/filing-evidence/pdf/filing-evidence.pdf" download>Download PDF</a>
+    <a class="btn" href="{{ GITHUB }}">Code and protocol</a>
+    <a class="btn" href="{{ HF }}">Dataset and every answer</a>
+    <a class="btn" href="#models">Results per model</a>
+  </div>
+</div>
+
+<section class="brief" aria-labelledby="inbrief">
+  <h2 id="inbrief">In brief</h2>
+  <p class="lead">We asked ten openly available AI models, small enough to run on one gaming graphics card, to find
+  1,000 numbers in recent SEC filings. Every answer had to come with the page and the exact line it was read from, so a
+  computer could check it, or to say "not found" when the number wasn't there.</p>
+  <div class="stats">
+    <div class="stat"><div class="v">{{ R[bm].setups[bs].summary.accuracy.rate | pct }}</div><div class="l">answered correctly with a checkable quote by the best model ({{ bm | name }}, {{ bs | setup | lower }})</div></div>
+    <div class="stat"><div class="v bad">{{ (R[sm].setups[ss].summary.confident_wrong.k) }} in 1,000</div><div class="l">wrong answers that still passed every automatic check, at best ({{ sm | name }}, thinking). Most models: {{ R["granite-4.2-8b"].setups.C1.summary.confident_wrong.k }}–{{ R["phi-4"].setups.C2.summary.confident_wrong.k }}</div></div>
+    <div class="stat"><div class="v">{{ "%.0f" | format(100 * H.cw_share.scale_or_unit) }}%</div><div class="l">of those wrong-but-passing answers had the right digits in the wrong units ("thousands" vs "millions")</div></div>
+    <div class="stat"><div class="v">{{ H.think_cw_sig | length }} of {{ H.with_c3 | length }}</div><div class="l">models with a thinking mode made significantly fewer wrong-but-passing answers with it</div></div>
+  </div>
+  <ol class="findings">
+    <li><b>Small open models can do much of this job, and the gap between them is large.</b> In the plain setup accuracy ranges from {{ H.acc_c1_bottom.rate | pct }} to {{ H.acc_c1_top.rate | pct }}. {{ top | name }} is ahead of every other model by a statistically clear margin.</li>
+    <li><b>Demanding a checkable quote works, but it isn't enough on its own.</b> The checker stops most wrong answers. Yet the answers that pass every check include {{ (100 * (1 - H.passp_max)) | round(1) }}–{{ (100 * (1 - H.passp_min)) | round(1) }}% wrong ones, depending on model and setup. Those are the dangerous errors: correct-looking evidence, wrong number.</li>
+    <li><b>Those errors are specific and fixable.</b> They are almost all units read wrongly or the neighbouring column (another year or quarter) of the right line, not invented numbers.</li>
+    <li><b>Letting the model think helps more than letting it retry.</b> Thinking cut wrong-but-passing answers for every model that has the mode, at {{ "%.0f" | format(H.tok_mult.values() | min) }}–{{ "%.0f" | format(H.tok_mult.values() | max) }} times the generation cost. Telling a model which check failed and letting it retry adds {{ "%.1f" | format(H.retry_gain_min) }}–{{ "%.1f" | format(H.retry_gain_max) }} points of accuracy but never reduces the dangerous errors, and for {{ H.retry_cw_up | length }} models it increases them: told that its quote failed, a model often finds a line that contains its wrong number.</li>
+  </ol>
+</section>
+
+<div class="paper">
+<nav class="toc" aria-label="Contents">
+  <p>Contents</p>
+  <ol>
+    <li><a href="#abstract">Abstract</a></li>
+    <li><a href="#intro">1 · Introduction</a></li>
+    <li><a href="#design">2 · Benchmark design</a></li>
+    <li><a href="#setup">3 · Models and setups</a></li>
+    <li><a href="#rq1">4 · How reliable are they?</a></li>
+    <li><a href="#rq2">5 · Where do they fail?</a></li>
+    <li><a href="#rq3">6 · Retry or think?</a></li>
+    <li><a href="#discussion">7 · Discussion</a></li>
+    <li><a href="#limits">8 · Limitations</a></li>
+    <li><a href="#repro">9 · Reproducibility</a></li>
+    <li><a href="#models">Results per model</a></li>
+    <li><a href="#refs">References</a></li>
+    <li><a href="#appendix">Appendix</a></li>
+    <li><a href="#cite">How to cite</a></li>
+  </ol>
+</nav>
+
+<article class="body">
+
+<h2 id="abstract">Abstract</h2>
+<div class="abstract">
+<p>Language models are increasingly used to read financial documents, but a fluent answer is not a verified one. We
+ask whether small open models, the kind that run on a single consumer GPU, can extract numbers from SEC filings
+<em>with evidence a machine can check</em>: the page and the verbatim line the number was read from. We built
+Filing-Evidence, 1,000 questions over 90 recent 10-K and 10-Q filings of 45 US companies, with gold answers taken
+from the filers' own inline XBRL tags, in eight kinds of content including segment tables, numbers in prose and
+questions whose answer is not on the pages shown. The protocol, metrics and statistics were registered before any
+model ran. We evaluated ten instruct models from ten companies (7–21B parameters) on one RTX 4090 in three setups:
+plain, check-and-retry, and the model's own thinking mode. Accuracy with checkable evidence ranges from
+{{ H.acc_c1_bottom.rate | pct }} to {{ H.acc_c1_top.rate | pct }} in the plain setup; the best result is
+{{ R[bm].setups[bs].summary.accuracy.rate | pct }} ({{ bm | name }}). An automatic checker rejects most wrong
+answers, yet {{ R[sm].setups[ss].summary.confident_wrong.k }} to {{ R["phi-4"].setups.C2.summary.confident_wrong.k }}
+answers per 1,000 pass every check and are still wrong; across the ten models {{ "%.0f" | format(100 * H.cw_share.scale_or_unit) }}%
+of these are scale errors and {{ "%.0f" | format(100 * H.cw_share.wrong_period_or_column) }}% the wrong column
+of the right line. Thinking reduces such errors significantly for {{ H.think_cw_sig | length }} of
+{{ H.with_c3 | length }} models; retrying after a failed check raises accuracy by up to
+{{ "%.1f" | format(H.retry_gain_max) }} points but never reduces them. We release the questions, every model answer,
+the code and the protocol.</p>
+</div>
+
+<h2 id="intro">1 · Introduction</h2>
+<p>An analyst who copies a number from a filing can show where it came from. A language model that does the same job
+usually can't, or it gives a citation nobody checks. For a model to be trusted with this work its answers have to be
+<em>auditable</em>: each number should come with evidence that can be verified quickly, preferably by software.</p>
+<p>The question is simple to state. If every answer must name the page and quote the exact line containing the number,
+how often are small open models right, how often are they wrong in a way the quote doesn't reveal, and do two cheap,
+training-free interventions help: checking the answer automatically and letting the model try again, or switching on
+the model's own reasoning mode? We ask it of models that fit on one 24&nbsp;GB consumer GPU, because those are the
+models an organisation can run on its own hardware, with its own documents, at low cost.</p>
+<p>We registered three research questions before running any model (the full protocol is in the repository):</p>
+<ul>
+  <li><b>RQ1.</b> How reliably do ~10B-parameter open instruct models extract a requested number from an SEC filing with evidence that can be checked automatically, and answer "not found" when the number isn't on the pages provided?</li>
+  <li><b>RQ2.</b> Where do they fail: in which kinds of filing content, and with which kinds of error?</li>
+  <li><b>RQ3.</b> How much do (a) automatic checking with one retry and (b) the model's own thinking mode help, and at what cost in tokens and time?</li>
+</ul>
+<p>Our working thesis was that a small open model on one consumer GPU can be a trustworthy reader of SEC filings
+<em>if</em> every answer must carry evidence a machine can check. The results support the first half of that
+sentence more than the second: requiring checkable evidence makes most errors visible, but a specific class of
+errors passes through it. Section 7 discusses what closes that gap.</p>
+
+<h2 id="design">2 · Benchmark design</h2>
+<figure>
+  <div class="canvas">{{ dg.pipeline() }}</div>
+  <figcaption><b>Figure 1.</b> How the benchmark was built and run. Everything above the line was finished, hand-checked and fingerprinted before any model saw a question.</figcaption>
+</figure>
+
+<h3>2.1 Filings and answer key</h3>
+<p>We took the most recent 10-K and 10-Q filed on or before 15 November 2026 by 45 large US companies (90 filings):
+forty in nine sector groups chosen to cover different statement layouts (technology, banks, other financials,
+insurers, REITs, utilities, healthcare, consumer, industrials and others), plus five added for segment coverage.
+Banks, insurers, REITs and utilities are included deliberately, because their statements use line items and layouts
+unlike an industrial company's.</p>
+<p>Gold answers come from the filings' own <b>inline XBRL</b> tags: the machine-readable layer that filers embed in the
+document to label each number with its concept, period, unit, scale and dimensions. We use only tags whose number is
+<em>displayed</em> on a page, and record the page and the line where it is shown. The answer key is therefore the
+filer's own statement, not our annotation.</p>
+
+<h3>2.2 Questions</h3>
+<p>Each question names an item, a company and a period in words ("What was Apple Inc.'s total liabilities as of June 27,
+2026?") and comes with three pages of the filing: the page that shows the answer, an adjacent page and a random
+distractor, in random order. Questions fall into eight <b>slices</b> of 125 each:</p>
+<div class="tablewrap"><table>
+  <thead><tr><th>Slice</th><th>What it tests</th><th class="n">Companies</th></tr></thead>
+  <tbody>
+  {% for s, label in d.slices.items() %}
+  <tr><td><b>{{ s }}</b></td><td>{{ label }}</td><td class="n">{{ d.dataset.slices[s].companies }}</td></tr>
+  {% endfor %}
+  </tbody>
+</table></div>
+<p>S8 asks for something that is <em>not</em> on the pages provided: a period not shown, an item the company doesn't
+report, a quarter asked of an annual report, or an item that is elsewhere in the filing but not on these pages. The
+correct answer is "not found". Strict rules decide which facts can become questions: the number must be a column
+figure on a row with a printed label, the row must be fully populated, the period's year must be visible on the page,
+and the question names the item by its printed row label when that label is unique on the shown pages.</p>
+
+<h3>2.3 Quality control and freeze</h3>
+<p>Before any model ran, 100 questions (stratified across slices) were checked by hand against the rendered filing in
+each round; the protocol required at least 98 correct. Rounds one to three failed on wording (87, 76 and 96 of 100),
+never on gold values: all 400 hand-checked gold values across the four rounds were right. Round four passed with 98 of
+100, and the dataset was frozen with a SHA-256 fingerprint
+(<code>{{ d.frozen.fingerprint[:16] }}…</code>). Every result cites it, and the published data verifies against it.</p>
+
+<h3>2.4 The checker</h3>
+<p>Models answer in a fixed JSON format: the value, its scale ("in millions"), the page number and the line quoted from
+the page, or <code>{"status": "not_found"}</code>. The checker then applies four automatic tests (Figure 2) and
+compares the value with the answer key. The sign is not graded, because filers display negative numbers in
+inconsistent ways; values are compared after scale, and per-share amounts and percentages as displayed.</p>
+<figure>
+  <div class="canvas">{{ dg.checker() }}</div>
+  <figcaption><b>Figure 2.</b> Four checks, then the answer key. The checker sees only the answer and the pages, never the gold, so it could run in production. Its most important outcome is the one it can't detect: <b>confident-wrong</b>, a wrong value whose evidence passes every check.</figcaption>
+</figure>
+<p>Every answer receives exactly one outcome. <b>Accuracy</b> is the share of the 875 answerable questions (S1–S7) answered
+correctly <em>with evidence that passes the checks</em>: a right number with an unusable quote does not count.
+<b>Confident-wrong rate</b> is the share of all 1,000 answers that pass every check but are wrong, and is the metric
+that matters most for a system that would act on answers the checker accepts. <b>Abstention accuracy</b> is the share
+of S8 questions answered "not found". Every rate carries a 95% Wilson interval; differences are tested with paired
+exact McNemar tests on the same questions and Holm-corrected within each family of comparisons.</p>
+
+<h2 id="setup">3 · Models and setups</h2>
+<p>Ten general instruct models, each from a different company, all served with vLLM 0.33.0 on one NVIDIA RTX 4090 (24&nbsp;GB) at temperature 0, with
+each model's own chat template and its exact Hugging Face revision pinned. Models are used as published: no
+fine-tuning, no finance-specific models, no prompt tuning per model; the prompt is identical for every model.
+Qwen3-8B, the model of the pilot study that motivated the benchmark, was run as a supplementary baseline and is
+reported separately.</p>
+<div class="tablewrap"><table>
+  <thead><tr><th>Model</th><th>Company</th><th class="n">Params</th><th>Precision</th><th>Released</th><th>Thinking mode</th><th>Licence</th></tr></thead>
+  <tbody>
+  {% for m in d.ten + d.supplementary %}
+  {% set r = R[m] %}
+  <tr><td><a href="/research/filing-evidence/{{ m | slug }}">{{ m | name }}</a>{% if r.supplementary %} <span class="muted">(suppl.)</span>{% endif %}</td><td>{{ r.company }}</td><td class="n">{{ "%.1f" | format(r.meta.params / 1e9) }}B</td><td>{{ r.precision }}</td><td class="mono">{{ r.meta.created[:7] }}</td><td>{{ "yes" if r.has_c3 else "—" }}</td><td>{{ LICENCE[r.meta.license_name or r.meta.license] }}</td></tr>
+  {% endfor %}
+  </tbody>
+</table></div>
+<p class="muted">Parameters as published (Qwen3.5-9B and GLM-4.6V-Flash include a vision encoder that was not loaded;
+gpt-oss-20b is a mixture-of-experts model with about 3.6B parameters active per token). "Released" is the month
+the Hugging Face repository was created. FP8 is weight quantisation by vLLM at load, used where bf16 weights would
+not fit; gpt-oss-20b uses its native MXFP4 weights.</p>
+<figure>
+  <div class="canvas">{{ dg.setups() }}</div>
+  <figcaption><b>Figure 3.</b> The three setups. C2 reuses C1's first answer, so the two differ only by the retry. gpt-oss-20b has no non-reasoning mode; its C1 and C2 use the lowest reasoning effort, C3 the highest.</figcaption>
+</figure>
+
+<h2 id="rq1">4 · RQ1: How reliable are they?</h2>
+<figure>
+  <div class="canvas">{{ figs.frontier | safe }}</div>
+  <figcaption><b>Figure 4.</b> Accuracy against confident-wrong rate for each model in each of its setups (pale: plain; mid: check + retry; dark: thinking). The ideal model sits in the top-left corner. Hover a point for its values.</figcaption>
+</figure>
+<p>Accuracy in the plain setup spans a wide range, from {{ H.acc_c1_bottom.rate | pct }} for {{ H.c1_sorted[-1] | name }}
+to {{ H.acc_c1_top.rate | pct }} ({{ H.acc_c1_top | ci }}) for {{ top | name }}. The paired tests separate the ten
+models into clear tiers (Figure 6): {{ top | name }} is significantly more accurate than every other model; gpt-oss-20b,
+Granite-4.2-8B and GLM-4.6V-Flash cannot be told apart from each other; then come Ministral-3-8B, a group of
+Gemma-3-12B, Llama-3.1-8B and Phi-4, and finally Nemotron-Nano-9B-v2 and OLMo-3-7B. The best single result is
+{{ R[bm].setups[bs].summary.accuracy.rate | pct }} ({{ bm | name }}, {{ bs | setup | lower }}).</p>
+<figure>
+  <div class="canvas">{{ figs.leader | safe }}</div>
+  <figcaption><b>Figure 5.</b> Accuracy with 95% Wilson intervals, per model and setup, ordered by the plain setup.</figcaption>
+  <details><summary>Show the data</summary>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Model</th>{% for s in ["C1", "C2", "C3"] %}<th class="n">{{ s }} accuracy</th><th class="n">{{ s }} conf.-wrong</th>{% endfor %}<th class="n">Abstention (C1)</th></tr></thead>
+    <tbody>
+    {% for m in H.c1_sorted %}
+    <tr><td>{{ m | name }}</td>
+    {% for s in ["C1", "C2", "C3"] %}
+      {% if s in R[m].setups %}{% set su = R[m].setups[s].summary %}
+      <td class="n">{{ su.accuracy.rate | pct }} <span class="ci">{{ su.accuracy | ci }}</span></td><td class="n">{{ su.confident_wrong.k }}</td>
+      {% else %}<td class="n">n/a</td><td class="n">n/a</td>{% endif %}
+    {% endfor %}
+    <td class="n">{{ R[m].setups.C1.summary.abstention_accuracy.k }}/125</td></tr>
+    {% endfor %}
+    </tbody>
+  </table></div>
+  </details>
+</figure>
+<figure>
+  <div class="canvas">{{ figs.sig | safe }}</div>
+  <figcaption><b>Figure 6.</b> Which differences in plain-setup accuracy are real. Each cell compares the row model with the column model on the same 875 questions (paired exact McNemar, Holm-corrected over 45 pairs). Grey cells: the data cannot separate the two.</figcaption>
+</figure>
+<p><b>The checker is the reason these accuracy figures mean something.</b> An answer only counts when its quote is on the
+cited page and contains the number. Without that requirement the figures would be higher for every model: a right
+number with an unusable quote is common for weaker models (Figure 7). For a reader of the output that difference is
+the whole point: a right number you can't verify is not much more useful than a wrong one.</p>
+<figure>
+  <div class="canvas">{{ figs.outcomes | safe }}</div>
+  <figcaption><b>Figure 7.</b> What happens to the 875 answerable questions in the plain setup. Left of the grey band, the model was right; right of it, wrong. The dark red segment is the one that matters most: wrong answers that pass every check.</figcaption>
+</figure>
+<p><b>"Not found" is handled well by most models.</b> Abstention accuracy in the plain setup ranges from
+{{ H.abst_min | pct }} to {{ H.abst_max | pct }}: models rarely invent a number for something that isn't on the
+page. Most invented answers come from one kind of trap: a <b>quarterly figure asked of an annual report</b>, which
+the filing can't contain. Gemma-3-12B, the weakest abstainer among the ten
+({{ R["gemma-3-12b"].setups.C1.summary.abstention_accuracy.rate | pct }}), answered
+{{ d.s8["gemma-3-12b:C1"].c[0] }} of those {{ d.s8["gemma-3-12b:C1"].c[1] }} correctly, and the supplementary
+Qwen3-8B only {{ d.s8["qwen3-8b:C1"].c[0] }}.</p>
+
+<h2 id="rq2">5 · RQ2: Where do they fail?</h2>
+<h3>5.1 By kind of content</h3>
+<figure>
+  <div class="canvas">{{ figs.heatmap | safe }}</div>
+  <figcaption><b>Figure 8.</b> Plain-setup accuracy by slice (S8: correct "not found"). Darker is better.</figcaption>
+</figure>
+<p>The main statements are the easiest content: pooled over the ten models, {{ H.slices_c1.S1 | pct }} of current-period
+questions are answered correctly. Accuracy falls on prior-period columns ({{ H.slices_c1.S2 | pct }}), in notes
+({{ H.slices_c1.S4 | pct }}), and most of all for <b>segments</b> ({{ H.slices_c1.S5 | pct }}), <b>numbers in prose</b>
+({{ H.slices_c1.S6 | pct }}) and <b>units and per-share</b> figures ({{ H.slices_c1.S7 | pct }}). Even
+{{ top | name }}, strong everywhere else, answers only {{ R[top].setups.C1.summary.by_slice.S6.rate | pct }} of prose
+questions correctly. These are the places where a filing's layout stops doing the work: a segment table's columns are
+business lines rather than years, and a number in a sentence has no column header at all.</p>
+
+<h3>5.2 What the dangerous errors are</h3>
+<figure>
+  <div class="canvas">{{ figs.cwmix | safe }}</div>
+  <figcaption><b>Figure 9.</b> The confident-wrong answers of each model in the plain setup, by kind of error. Scale or unit: the right digits with the wrong multiplier. Wrong period or column: another figure from the right line. Wrong item: a different line.</figcaption>
+</figure>
+<p>Across the ten models there are {{ H.cw_total_c1 | thou }} confident-wrong answers in the plain setup. Only
+{{ "%.0f" | format(100 * H.cw_share.wrong_item) }}% are a wrong item. The rest are near misses on the right line:</p>
+<ul>
+  <li><b>Scale or unit ({{ "%.0f" | format(100 * H.cw_share.scale_or_unit) }}%).</b> The model quotes the correct line and gives the correct digits, but states the wrong scale, most often "none" for a table headed "(In millions)", or reads a share count as shares rather than millions of shares. The checker can't catch this, because the quote is genuine and contains the number; the units are stated once, at the top of the table.</li>
+  <li><b>Wrong period or column ({{ "%.0f" | format(100 * H.cw_share.wrong_period_or_column) }}%).</b> The model quotes the right line and takes the figure for another year, quarter or year-to-date column. The quote again contains the number, so it passes.</li>
+</ul>
+<p>Scale errors are concentrated in a few models: they are {{ d.cw_split["phi-4:C1"].scale_or_unit }} of Phi-4's
+{{ R["phi-4"].setups.C1.summary.confident_wrong.k }} confident-wrong answers, but {{ d.cw_split["qwen3.5-9b:C1"].get("scale_or_unit", 0) }}
+of {{ top | name }}'s {{ R[top].setups.C1.summary.confident_wrong.k }}. The secondary metric <em>accuracy ignoring
+scale</em> shows how much of each gap is units rather than finding the number: for Phi-4 it is
+{{ R["phi-4"].setups.C1.summary.accuracy_ignoring_scale.rate | pct }} against an accuracy of
+{{ R["phi-4"].setups.C1.summary.accuracy.rate | pct }}.</p>
+
+<figure>
+  <div class="canvas" style="padding:22px">
+    <p class="meta muted" style="margin:0 0 8px;font-size:13px">{{ ex.row.company }} · {{ ex.row.form }} · slice {{ ex.row.slice }} · page {{ ex.excerpt.page_label }} (excerpt)</p>
+    <p style="margin:0 0 14px;font-weight:600">“{{ ex.row.question }}”</p>
+    <p class="muted" style="margin:0 0 6px;font-size:13px">The line on page {{ ex.excerpt.page_label }}, as the model saw it:</p>
+    <p class="line" style="display:block;padding:10px 12px;margin:0 0 14px;line-height:1.7">{{ ex.marked | safe }}</p>
+    <dl class="ex" style="border:0;padding:0;margin:0;display:grid;grid-template-columns:150px minmax(0,1fr);gap:6px 12px;font-size:14px">
+      <dt class="muted">Model's answer</dt><dd><span class="line">{{ ex.row.answer_value }}</span> {{ ex.row.answer_scale }}, page {{ ex.row.answer_page }}</dd>
+      <dt class="muted">Its quote</dt><dd><span class="line">{{ ex.row.answer_span }}</span></dd>
+      <dt class="muted">Checks</dt><dd>parses ✓ · page shown ✓ · quote verbatim ✓ · value in quote ✓</dd>
+      <dt class="muted">Answer key</dt><dd><span class="line">{{ ex.row.gold_display }}</span></dd>
+      <dt class="muted">Outcome</dt><dd><span class="tag bad">Confident-wrong</span> the right line, another column (<span style="color:#B3302A;font-weight:600">model</span> vs <span style="color:#2E3F9E;font-weight:600">answer key</span>)</dd>
+    </dl>
+  </div>
+  <figcaption><b>Figure 10.</b> A real confident-wrong answer from the strongest model in the plain setup. Every check passes, because the quoted line is genuine and contains the number; only the column is wrong. Of the ten models on this question, {{ ex.others.values() | select("equalto", "correct") | list | length }} answered correctly.</figcaption>
+</figure>
+
+<h2 id="rq3">6 · RQ3: Retry or think?</h2>
+<figure>
+  <div class="canvas">{{ figs.effects | safe }}</div>
+  <figcaption><b>Figure 11.</b> Change from the plain setup, per model. Left: accuracy (points). Right: confident-wrong answers per 1,000 (negative is better). Filled: significant after Holm correction across all within-model comparisons.</figcaption>
+</figure>
+<h3>6.1 Check + retry</h3>
+<p>When an answer fails a check, the model is told which one ("the quoted line does not appear on page 54") and answers
+once more; it is never told the answer. This raises accuracy by {{ "%.1f" | format(H.retry_gain_min) }} to
+{{ "%.1f" | format(H.retry_gain_max) }} points, significantly for {{ H.retry_sig | length }} of the ten models, at
+little cost: only answers that fail a check are asked again ({{ (100 * R["qwen3.5-9b"].setups.C2.summary.retry_rate.rate) | round(0) | int }}–{{ (100 * R["olmo-3-7b"].setups.C2.summary.retry_rate.rate) | round(0) | int }}% of answers, depending on the model).</p>
+<p>But retrying <b>never reduces</b> confident-wrong answers, and for {{ H.retry_cw_up | length }} models
+({{ H.retry_cw_up | map("name") | join(", ") }}) it significantly increases them. The mechanism is visible in the
+answers: told that its quote failed, a model often keeps its wrong number and finds a line that contains it, which
+now passes. For Phi-4, {{ H.caught_to_cw["phi-4"] }} of {{ H.retried["phi-4"] }} retried answers moved from
+"caught" to "confident-wrong" in this way. A retry teaches the model to satisfy the checker, not to be right.
+Nemotron-Nano-9B-v2 shows the opposite failure: asked to retry, it answered "not found" almost every time.</p>
+
+<h3>6.2 Thinking</h3>
+<p>Five of the ten models have a reasoning mode (as does the supplementary Qwen3-8B). Thinking improved accuracy for {{ H.think_gain.values() | select("gt", 0) | list | length }} of them, by up to
+{{ "%.1f" | format(H.think_gain["glm-4.6v-flash"]) }} points (GLM-4.6V-Flash), and reduced confident-wrong answers for
+{{ ("all " ~ (H.with_c3 | length)) if H.think_cw_all_down else "most" }}: {% for m in H.with_c3 %}{{ m | name }} {{ H.think_cw[m][0] }}→{{ H.think_cw[m][1] }}{{ ", " if not loop.last else "" }}{% endfor %} answers per 1,000 ({{ H.think_cw_sig | length }} of these reductions are significant). The lowest confident-wrong rate in
+the study is {{ sm | name }} with thinking: {{ R[sm].setups[ss].summary.confident_wrong.k }} in 1,000.</p>
+<p>The exception is {{ "qwen3.5-9b" | name }}, the strongest plain model, whose accuracy fell from
+{{ q35.setups.C1.summary.accuracy.rate | pct }} to {{ q35.setups.C3.summary.accuracy.rate | pct }} with thinking. The
+cause is the token budget, not the reasoning: it reasoned at length (mean {{ q35.setups.C3.tokens.mean | round(0) | int | thou }}
+tokens) and hit the pre-registered 8,192-token limit on {{ q35.setups.C3.tokens.truncated }} questions, leaving
+{{ q35.setups.C3.truncated_outcomes.invalid }} with no parseable answer. On the questions it finished, its accuracy was
+{{ q35.setups.C3.acc_untruncated.rate | pct }}.</p>
+<figure>
+  <div class="canvas">{{ figs.cost | safe }}</div>
+  <figcaption><b>Figure 12.</b> The cost of thinking: mean generated tokens per answer (log scale) against accuracy. * supplementary baseline.</figcaption>
+</figure>
+<p>Thinking is expensive. It multiplies generated tokens by {% for m in H.with_c3 %}{{ "%.0f" | format(H.tok_mult[m]) }}×{{ " (" ~ (m | name) ~ ")" }}{{ ", " if not loop.last else "" }}{% endfor %}.
+On one RTX 4090 with 16 concurrent requests, a full 1,000-question run took
+{{ R["glm-4.6v-flash"].setups.C3.wall_minutes | round(0) | int }} minutes for GLM-4.6V-Flash with thinking and
+{{ R["granite-4.2-8b"].setups.C3.wall_minutes | round(0) | int }} for Granite-4.2-8B, against 3–7 minutes in the plain setup.</p>
+
+<h2 id="discussion">7 · Discussion</h2>
+<p><b>Checkable evidence is necessary, not sufficient.</b> Requiring a verbatim quote turned most errors into visible,
+rejectable ones: the checker is cheap, needs no model and no gold answer, and could run in any system that uses these
+models. What it cannot do is check that the number is the <em>right</em> figure on the line, or that its units are
+right. The residue is small for the best configurations ({{ R[sm].setups[ss].summary.confident_wrong.rate | pct }} of
+answers at best) and substantial for most (up to {{ R["phi-4"].setups.C2.summary.confident_wrong.rate | pct }}).</p>
+<p><b>The residue is structured.</b> {{ "%.0f" | format(100 * (H.cw_share.scale_or_unit + H.cw_share.wrong_period_or_column)) }}% of confident-wrong answers are the right line read wrongly: the
+units header misapplied, or the neighbouring column taken. Both are checkable in principle. A stronger checker could
+require the model to quote the column header and the units statement as well as the line, and verify that the chosen
+figure sits under the quoted header; a units check could compare the stated scale with the table's own heading.
+These are engineering steps, not research problems, and they are the natural next version of the benchmark.</p>
+<p><b>Retrying is not a free win.</b> Feeding a model the name of the failed check improves accuracy a little, but it
+also turns some caught errors into uncaught ones. A system that retries should treat a passed retry with more
+suspicion than a passed first answer, or re-verify it more strictly.</p>
+<p><b>Model choice matters more than setup.</b> The spread between the best and worst model in the plain setup is
+{{ "%.0f" | format(100 * (H.acc_c1_top.rate - H.acc_c1_bottom.rate)) }} points; the largest gain from any setup is about
+{{ "%.0f" | format(H.think_gain["glm-4.6v-flash"]) }}. And the strongest model in the plain setup,
+{{ top | name }}, reaches {{ R[top].setups.C2.summary.accuracy.rate | pct }} with no reasoning at all.</p>
+
+<h2 id="limits">8 · Limitations</h2>
+<ul>
+  <li><b>One prompt, temperature 0, one run.</b> Results are for a single fixed prompt shared by all models; a prompt tuned per model could change rankings. Each configuration was run once.</li>
+  <li><b>US large-cap filings, text only.</b> 45 companies, recent 10-K and 10-Q filings. No small caps, foreign filers, scanned documents, charts or images.</li>
+  <li><b>Three pages per question.</b> The model is shown the right page plus two others; finding the page in a whole filing is a harder, separate task.</li>
+  <li><b>Units stated off-page.</b> After the results we found {{ H.n_noheader }} answerable questions (2.7%) whose page shows no units statement, because the filer states it once on an earlier page. The frozen dataset was not changed. Excluding them moves no model's accuracy by more than {{ "%.1f" | format(100 * H.sens_max) }} points and changes no ranking (Appendix A).</li>
+  <li><b>Error categories were not reviewed by hand.</b> The protocol planned a hand review of 20 answers per model to confirm the automatic error categories; it was not carried out (recorded as a deviation). Outcomes themselves are exact, by construction; the categories are rule-based.</li>
+  <li><b>Thinking budget.</b> The 8,192-token reasoning limit was fixed in advance; it truncated {{ q35.setups.C3.tokens.truncated }} of {{ "qwen3.5-9b" | name }}'s and {{ R["gpt-oss-20b"].setups.C3.tokens.truncated }} of gpt-oss-20b's answers. A larger budget would likely raise their thinking-mode results.</li>
+  <li><b>Contamination.</b> Models may have seen older filings in training. 89 of the 90 filings were filed in 2026, and eight of the ten models were released before 2026. A memorised answer must still come with a verbatim quote from the pages shown.</li>
+  <li><b>Precision.</b> Phi-4 and Gemma-3-12B were run with FP8 weights to fit in 24&nbsp;GB, and gpt-oss-20b in its native MXFP4; results at full precision may differ slightly.</li>
+</ul>
+
+<h2 id="repro">9 · Reproducibility</h2>
+<p>Everything needed to check or repeat this study is public. The code, the protocol (with its deviations log) and
+each run's summary are on <a href="{{ GITHUB }}">GitHub</a>; the questions, page texts, every model reply including
+its reasoning, and the server logs are on <a href="{{ HF }}">Hugging Face</a>. Each run records the model revision,
+the exact vLLM command, the prompt hash and the dataset fingerprint.</p>
+<pre><code>git clone {{ GITHUB }}.git && cd filing-evidence
+uv sync --all-extras
+uv run python hf_data.py pull                       # data, verified against the frozen fingerprint
+uv run python runner.py qwen3.5-9b C1 --regrade     # re-grade stored replies (no GPU)
+bash run_all.sh qwen3.5-9b                          # rerun a model (one 24 GB GPU)</code></pre>
+<p>Re-grading every stored reply reproduces every number on this page. These pages are generated from the stored
+results by <code>report/build.py</code> in the same repository.</p>
+
+<h2 id="models">Results per model</h2>
+<p>Each model has its own page with its scorecard, its profile by kind of content, what retry and thinking changed,
+and real examples of its correct and wrong answers.</p>
+<div class="cards">
+{% for m in H.c1_sorted + d.supplementary %}
+{% set r = R[m] %}
+<a class="card" href="/research/filing-evidence/{{ m | slug }}"><div class="n">{{ m | name }}</div><div class="c">{{ r.company }}{% if r.supplementary %} · supplementary{% endif %}</div>
+<div class="r"><span>Plain {{ r.setups.C1.summary.accuracy.rate | pct }}</span><span>Best {{ r.setups[r.best_setup].summary.accuracy.rate | pct }}</span></div></a>
+{% endfor %}
+</div>
+
+<h2 id="refs">References</h2>
+<ol class="refs">
+  <li>U.S. Securities and Exchange Commission. EDGAR full-text and submissions APIs. <a href="https://www.sec.gov/edgar">sec.gov/edgar</a>.</li>
+  <li>XBRL International. Inline XBRL Specification 1.1. <a href="https://www.xbrl.org/specification/inlinexbrl-part1/rec-2013-11-18/inlinexbrl-part1-rec-2013-11-18.html">xbrl.org</a>.</li>
+  <li>E. B. Wilson (1927). Probable inference, the law of succession, and statistical inference. <i>Journal of the American Statistical Association</i> 22(158), 209–212.</li>
+  <li>Q. McNemar (1947). Note on the sampling error of the difference between correlated proportions or percentages. <i>Psychometrika</i> 12(2), 153–157.</li>
+  <li>S. Holm (1979). A simple sequentially rejective multiple test procedure. <i>Scandinavian Journal of Statistics</i> 6(2), 65–70.</li>
+  <li>W. Kwon et al. (2023). Efficient memory management for large language model serving with PagedAttention. <i>SOSP '23</i>. (vLLM)</li>
+  <li>Model cards of the eleven models evaluated, on Hugging Face, at the pinned revisions listed on each model page.</li>
+</ol>
+
+<h2 id="appendix">Appendix</h2>
+<h3>A · Sensitivity: questions without an on-page units statement</h3>
+<div class="tablewrap"><table>
+  <thead><tr><th>Model</th>{% for s in ["C1", "C2", "C3"] %}<th class="n">{{ s }} all 875</th><th class="n">{{ s }} without {{ H.n_noheader }}</th>{% endfor %}</tr></thead>
+  <tbody>
+  {% for m in H.c1_sorted %}
+  <tr><td>{{ m | name }}</td>{% for s in ["C1", "C2", "C3"] %}{% if s in R[m].setups %}<td class="n">{{ R[m].setups[s].summary.accuracy.rate | pct }}</td><td class="n">{{ R[m].setups[s].acc_without_noheader.rate | pct }}</td>{% else %}<td class="n">n/a</td><td class="n">n/a</td>{% endif %}{% endfor %}</tr>
+  {% endfor %}
+  </tbody>
+</table></div>
+<h3>B · Within-model comparisons</h3>
+<div class="tablewrap"><table>
+  <thead><tr><th>Model</th><th>Comparison</th><th class="n">Accuracy: only A / only B</th><th class="n">Holm p</th><th class="n">Conf.-wrong: only A / only B</th><th class="n">Holm p</th></tr></thead>
+  <tbody>
+  {% for t in d.setup_tests %}
+  <tr><td>{{ t.model | name }}</td><td>{{ t.a }} vs {{ t.b }}</td><td class="n">{{ t.acc.a_only }} / {{ t.acc.b_only }}</td><td class="n {{ 'sig' if t.acc.sig else 'ns' }}">{{ "%.3g" | format(t.acc.p_holm) }}</td><td class="n">{{ t.cw.a_only }} / {{ t.cw.b_only }}</td><td class="n {{ 'sig' if t.cw.sig else 'ns' }}">{{ "%.3g" | format(t.cw.p_holm) }}</td></tr>
+  {% endfor %}
+  </tbody>
+</table></div>
+<p class="muted">"Only A": questions right (or, for confident-wrong, wrong-but-passing) in the first setup only. Blue p-values are significant at α = 0.05 after Holm correction within each family.</p>
+<h3>C · Confident-wrong rate</h3>
+<figure>
+  <div class="canvas">{{ figs.leader_cw | safe }}</div>
+  <figcaption><b>Figure 13.</b> Confident-wrong rate with 95% Wilson intervals, per model and setup.</figcaption>
+</figure>
+<h3>D · Deviations from the protocol</h3>
+<p>All changes made after the protocol was registered are logged with their date and reason in
+<a href="{{ GITHUB }}/blob/main/PROTOCOL.md">PROTOCOL.md §12</a>. The ones that affect how results are read: the served
+context is 16,384 tokens (8,192 would have truncated thinking); C2 reuses C1's first answer; Qwen3-8B is a
+supplementary baseline; gpt-oss-20b's plain setup uses its lowest reasoning effort; a secondary accuracy-ignoring-scale
+metric was added; the error taxonomy counts a misplaced decimal point as a scale error; and the planned hand review of
+error categories was not carried out. All except the last were made before any main result.</p>
+
+<h2 id="cite">How to cite</h2>
+<div class="cite">{{ BIBTEX }}</div>
+<p class="muted" style="margin-top:16px">Text, data and figures are licensed under CC BY-NC 4.0; the code under the PolyForm
+Noncommercial License 1.0.0. Model outputs remain subject to each model's licence. Nothing here is investment advice.</p>
+</article>
+</div>
+</div>
+{% endblock %}

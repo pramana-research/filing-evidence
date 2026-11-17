@@ -1,6 +1,6 @@
 ---
 pretty_name: Filing-Evidence
-license: other
+license: cc-by-nc-4.0
 language: [en]
 task_categories: [question-answering]
 tags: [finance, sec-filings, xbrl, evidence, benchmark]
@@ -29,4 +29,7 @@ The questions and pages are frozen: their fingerprint is
 any model ran. `python hf_data.py pull` in the code repo downloads this dataset and verifies it.
 
 Source: SEC EDGAR filings (public records), most recent 10-K and 10-Q of 45 US companies filed on or before
-2026-11-15. Model outputs are released with each model's licence noted.
+2026-11-15.
+
+Licence: CC BY-NC 4.0 (non-commercial use only), Copyright 2026 Pramana Research. Model outputs remain subject to
+the licence of the model that produced them. Paper: https://pramana-research.com/research/filing-evidence

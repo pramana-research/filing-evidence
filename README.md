@@ -1,6 +1,6 @@
 # Filing-Evidence
 
-Can open ~8B models pull a number out of an SEC filing **with evidence a machine can check** (the page and the
+Can small open models pull a number out of an SEC filing **with evidence a machine can check** (the page and the
 verbatim line), and say "not found" when it isn't there?
 
 1,000 questions over 90 recent 10-K / 10-Q filings of 45 US companies, with gold answers taken from the filings'
@@ -12,6 +12,9 @@ before any model ran; later changes are logged in its §12.
 the Hugging Face dataset [`pramana-research/filing-evidence`](https://huggingface.co/datasets/pramana-research/filing-evidence).
 Git holds the code, the protocol, the QC hand checks, the dataset fingerprint (`dataset/FROZEN.json`) and each
 run's `summary.json` / `run.json`.
+
+**Paper:** [Show Your Work: Can Small Open Models Read SEC Filings with Evidence a Machine Can Check?](https://pramana-research.com/research/filing-evidence)
+(with a page per model and PDFs).
 
 ## Layout
 
@@ -25,6 +28,7 @@ run's `summary.json` / `run.json`.
 | `serve.py`, `runner.py`, `run_all.sh`, `loadcheck.sh` | serve a model with vLLM, run a setup, run everything |
 | `watchdog.sh` | GPU guard rail for unattended runs |
 | `results/<set>/<model>/<setup>/` | `summary.json`, `run.json` (answers on Hugging Face) |
+| `report/` | the paper and model pages: statistics, charts, templates, PDF build |
 | `smoke/`, `experiments/` | the 19-question smoke set; the 2026-11-15 probe that motivated the benchmark |
 
 ## Reproduce
@@ -42,10 +46,24 @@ uv run python runner.py qwen3.5-9b C1 --regrade
 bash run_all.sh qwen3.5-9b
 ```
 
+Rebuild the paper and model pages (every number is computed from the stored replies) into a checkout of the site:
+
+```bash
+uv run python report/build.py --out ../pramana-research-landing   # research/** HTML
+bash report/pdf.sh ../pramana-research-landing                      # PDFs (headless Chrome)
+```
+
 Rebuilding the dataset from SEC EDGAR (`fetch.py`, then `builder.py`) needs `SEC_USER_AGENT` in `.env`; the result
 is checked against the same fingerprint.
 
 ## Licence
 
-SEC filings are public records. Model outputs are released with each model's licence noted. Code: to be decided
-before publication.
+Source-available for **non-commercial use only**; this is not an open-source licence.
+
+- **Code:** [PolyForm Noncommercial 1.0.0](LICENSE.md). Personal use, research, education and use by non-profit
+  and public bodies are allowed; commercial use is not.
+- **Text, figures, questions, answer key and model outputs:** [CC BY-NC 4.0](LICENSE-DATA.txt). Share and adapt
+  with attribution, not for commercial purposes. Model outputs remain subject to each model's own licence.
+- SEC filings are public records.
+
+For commercial licensing, contact Pramana Research. Copyright 2026 Pramana Research.

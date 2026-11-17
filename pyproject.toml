@@ -1,7 +1,8 @@
 [project]
 name = "filing-evidence"
 version = "1.0.0"
-description = "Filing-Evidence: can open ~8B models extract numbers from SEC filings with checkable evidence?"
+description = "Filing-Evidence: can small open models extract numbers from SEC filings with checkable evidence?"
+license = { file = "LICENSE.md" }
 requires-python = ">=3.11,<3.13"
 dependencies = [
     "httpx>=0.27",
@@ -38,3 +39,5 @@ select = ["E", "F", "I", "B", "UP"]
 "tests/test_ixbrl.py" = ["E501"]
 "tests/test_filing_evidence_builder.py" = ["E501"]
 "tests/test_filing_evidence_checker.py" = ["E501"]
+# The report builds SVG and HTML in strings; their lines are long by nature.
+"report/**" = ["E501"]
