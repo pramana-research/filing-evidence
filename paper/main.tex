@@ -36,7 +36,7 @@
 \maketitle
 
 \begin{abstract}
-A fluent answer from a language model is not a verified one. We ask whether small open models that run on a single consumer GPU can extract numbers from SEC filings \emph{with evidence a machine can check}: the page and the verbatim line the number was read from. We introduce Filing-Evidence, a benchmark of 1,000 questions over 90 recent 10-K and 10-Q filings of 45 US companies, with answer keys taken from the filers' inline XBRL tags. We evaluate ten instruct models from ten developers (7--21B parameters) on one RTX~4090 in three setups: plain, check-and-retry, and the model's own reasoning mode. Accuracy with checkable evidence ranges from 17.1\% to 82.7\% in the plain setup, and the best result is 84.5\% (Qwen3.5-9B). An automatic checker rejects many wrong answers, yet between 16 and 167 answers per 1,000 pass every check and are still wrong. In the plain setup, 57\% of these are scale or unit errors and 30\% take another period or column of the right line. Reasoning significantly reduces such errors for 4 of 5 models that offer it. Retrying after a failed check raises accuracy by up to 3.9 points but never reduces them. Questions, model outputs, code and protocol are public.
+A fluent answer from a language model is not a verified one. We ask whether small open models that run on a single consumer GPU can extract numbers from SEC filings \emph{with evidence a machine can check}: the page and a verbatim quote containing the number. We introduce Filing-Evidence, a benchmark of 1,000 questions over 90 recent 10-K and 10-Q filings of 45 US companies, with answer keys taken from the filers' inline XBRL tags. We evaluate ten instruct models from ten developers (7--21B parameters) on one RTX~4090 in three setups: plain, check-and-retry, and the model's own reasoning mode. Accuracy with checkable evidence ranges from 17.1\% to 82.7\% in the plain setup, and the best result is 84.5\% (Qwen3.5-9B). An automatic checker rejects many wrong answers, but between 16 and 167 answers per 1,000 give a wrong value for an answerable question and still pass every check. In the plain setup, 57\% of these are scale or unit errors and 30\% take another period or column of the right line. Reasoning significantly reduces such errors for 4 of 5 models that offer it. Retrying after a failed check raises accuracy by up to 3.9 points but never reduces them. Questions, model outputs, code and protocol are public.
 \end{abstract}
 
 \noindent\textbf{Keywords:} language models, evaluation, SEC filings, XBRL, attribution, verifiable extraction
@@ -82,7 +82,7 @@ S8 & Not in the provided pages & 45\\
 
 \paragraph{Quality control.} Before the main runs, stratified samples of 100 questions were reviewed against the rendered filing. The review was performed by an AI assistant under the author's direction. Rounds one to three scored 87, 76 and 96 of 100, failing on question wording; the builder was revised after each. Round four scored 98 of 100, meeting the protocol's threshold of 98, and the dataset was frozen with a SHA-256 fingerprint (\texttt{4fa8f252292167fb\ldots}). All 400 reviewed gold values were judged correct. The author did not independently verify the full sample (Section~\ref{sec:limits}).
 
-\paragraph{Checker and metrics.} Models return JSON with a value, scale, page and quoted line, or \texttt{not\_found}. An answer passes when it parses, cites a page that was shown, quotes a line verbatim from that page, and the value appears in the quote (Figure~\ref{fig:checker}). Sign is not graded because filers display negative values inconsistently. \emph{Accuracy} is the share of the 875 answerable questions answered correctly with passing evidence. The \emph{confident-wrong rate} is the share of all 1,000 answers that pass every check but are wrong. \emph{Abstention accuracy} is the share of S8 questions answered ``not found''. Rates carry 95\% Wilson intervals \citep{wilson1927}. Paired comparisons use exact McNemar tests \citep{mcnemar1947} with Holm correction \citep{holm1979} within each family, at $\alpha=0.05$.
+\paragraph{Checker and metrics.} Models return JSON with a value, scale, page and quoted line, or \texttt{not\_found}. An answer passes when it parses, cites a page that was shown, quotes text verbatim from that page, and the value appears in the quote (Figure~\ref{fig:checker}). The prompt asks for the complete line, but the checker accepts any contiguous passage after normalising whitespace: 923 of the 5{,}293 correct plain-setup answers across the ten models quote something other than one whole line. Sign is not graded because filers display negative values inconsistently. \emph{Accuracy} is the share of the 875 answerable questions answered correctly with passing evidence. The \emph{confident-wrong rate} is the share of all 1,000 answers that give a wrong value for an answerable question and pass every check. Answers that invent a figure on S8 are counted separately, as failed abstentions. \emph{Abstention accuracy} is the share of S8 questions answered ``not found''. Rates carry 95\% Wilson intervals \citep{wilson1927}. Paired comparisons use exact McNemar tests \citep{mcnemar1947} with Holm correction \citep{holm1979} at $\alpha=0.05$. For each metric, the 23 within-model setup comparisons form one family (Appendix~\ref{app:within}), and the pairwise model comparisons within each setup form another.
 
 \begin{figure}[!htbp]
 \centering\includegraphics[width=\linewidth]{checker.pdf}
@@ -119,7 +119,7 @@ Qwen3-8B* & Alibaba & 8.2B & bf16 & 2025-04 & yes & Apache 2.0\\
 \FloatBarrier
 \section{Results}
 \subsection{RQ1: Reliability}
-Table~\ref{tab:results} and Figure~\ref{fig:frontier} summarise the results. In the plain setup Qwen3.5-9B reaches 82.7\% (95\% CI 80.1--85.1\%) and is significantly more accurate than every other model (Figure~\ref{fig:significance}). Figure~\ref{fig:outcomes} shows where the answers go. Abstention accuracy ranges from 77.6\% to 100.0\%.
+Table~\ref{tab:results} and Figure~\ref{fig:frontier} summarise the results. In the plain setup Qwen3.5-9B reaches 82.7\% (95\% CI 80.1--85.1\%) and is significantly more accurate than every other model (Figure~\ref{fig:significance}). Figure~\ref{fig:outcomes} shows where the answers go. Abstention accuracy ranges from 77.6\% to 100.0\%. Across the ten models, 73 invented answers to S8 questions passed every check in the plain setup (0 to 24 per model); these are not included in the confident-wrong counts.
 
 \begin{table}[!htbp]\centering\footnotesize
 \caption{Accuracy (of 875), confident-wrong answers (of 1,000) and abstention (of 125, plain setup). ``--'': no reasoning mode. * Supplementary baseline.}\label{tab:results}
@@ -159,7 +159,7 @@ Qwen3-8B* & 66.1\% & 94 & 67.3\% & 101 & 74.1\% & 37 & 88\\
 \subsection{RQ2: Where models fail}
 Pooled over the ten models, plain-setup accuracy is 79.2\% on current-period statements, but 46.0\% on segments, 41.4\% on numbers in prose and 50.5\% on units and per-share items (Figure~\ref{fig:slices}).
 
-The 944 plain-setup confident-wrong answers across the ten models divide into scale or unit errors (57\%), another period or column of the right line (30\%) and wrong items (13\%), as shown in Figure~\ref{fig:cwmix}. The checker cannot detect the first two classes because the quote is genuine and contains the reported digits. Figure~\ref{fig:example} shows a real case.
+Error types are assigned by fixed rules in the grading code: the right digits at the wrong scale, another figure from the answer key's evidence line, or otherwise a wrong item. The 944 plain-setup confident-wrong answers across the ten models divide into scale or unit errors (57\%), another period or column of the right line (30\%) and wrong items (13\%), as shown in Figure~\ref{fig:cwmix}. The checker cannot detect the first two classes because the quote is genuine and contains the reported digits. Figure~\ref{fig:example} shows a real case.
 
 \begin{figure}[!htbp]
 \centering\includegraphics[width=.86\linewidth]{slices.pdf}
@@ -185,7 +185,7 @@ The 944 plain-setup confident-wrong answers across the ten models divide into sc
 \subsection{RQ3: Retry and reasoning}
 Figure~\ref{fig:effects} shows the change from the plain setup. Check-and-retry raises accuracy by 0.1 to 3.9 points, significantly for 8 of the ten models. It never reduces confident-wrong answers, and it significantly increases them for 4 models (Ministral-3-8B, Phi-4, Gemma-3-12B, Llama-3.1-8B). A retry can make a wrong value pass by finding a line that contains it. For Phi-4, 16 of 177 retried answers became confident-wrong.
 
-Reasoning reduces confident-wrong answers for all 5 ranked models with a reasoning mode (4 significantly), and it raises accuracy for 4 of them. Qwen3.5-9B is the exception: accuracy falls from 82.7\% to 74.6\%. It reached the pre-specified 8,192-token limit on 180 questions, 88 of which produced no parseable answer; its accuracy on untruncated answerable questions was 85.1\%. Reasoning multiplies mean generated tokens by 8 to 67 times (Figure~\ref{fig:cost}).
+Reasoning reduces confident-wrong answers for all 5 ranked models with a reasoning mode (4 significantly), and it raises accuracy for 4 of them. Qwen3.5-9B is the exception: accuracy falls from 82.7\% to 74.6\%. It reached the pre-specified 8,192-token limit on 180 questions, 88 of which produced no parseable answer; on the 699 answerable questions it finished within the limit, its accuracy was 85.1\%, against 84.4\% for the plain setup on the same questions. Reasoning multiplies mean generated tokens by 8 to 67 times (Figure~\ref{fig:cost}).
 
 \begin{figure}[!htbp]
 \centering\includegraphics[width=.86\linewidth]{effects.pdf}
@@ -204,9 +204,9 @@ Requiring a verbatim quote exposes many errors at low cost, but it does not esta
 \section{Limitations}\label{sec:limits}
 \begin{itemize}
 \item \textbf{AI-assisted quality control.} The dataset QC review was performed by an AI assistant under the author's direction, and the author did not independently verify the full sample. The planned manual review of 20 error categorisations per model was not carried out.
-\item \textbf{Protocol timing.} The protocol was maintained in version control and was not lodged with an external registry. Repository history was later rewritten to edit commit metadata, so its timestamps are not independent evidence of timing. Deviations are logged in the protocol.
+\item \textbf{Protocol timing.} The protocol was maintained in version control and was not lodged with an external registry. Repository history was later rewritten to edit commit metadata, so its timestamps are not independent evidence of timing. Deviations are logged in the protocol. The protocol's coverage-at-zero-confident-wrong metric was not computed, because every model and setup produced confident-wrong answers and the models report no confidence score to threshold.
 \item \textbf{Configuration on benchmark questions.} Serving settings were checked on 24 questions from the benchmark before the main runs.
-\item \textbf{Units stated off-page.} 24 answerable questions show no units statement on the evidence page. Excluding them changes no model's accuracy by more than 1.8 points (Appendix~\ref{app:sens}).
+\item \textbf{Units stated off-page.} After the results, we identified 30 answerable questions whose evidence page shows no units statement, meaning no plural scale word such as ``millions'' and no scale written with the figure. Excluding them changes no model's accuracy by more than 2.3 points (Appendix~\ref{app:sens}) and lowers the scale or unit share of plain-setup confident-wrong answers from 57\% to 54\%.
 \item \textbf{Scope.} Results reflect one prompt, one run per configuration, three supplied pages per question and text from large US filers. Model versions and quantisation may affect results.
 \item \textbf{Reasoning budget.} The 8,192-token limit truncated some reasoning runs.
 \item \textbf{Contamination.} Models may have seen earlier filings during training, although a memorised answer must still be supported by a verbatim quote.
@@ -243,23 +243,23 @@ The author conceived and directed this study, defined its research questions and
 \appendix
 \section{Sensitivity to off-page units}\label{app:sens}
 \begin{table}[H]\centering\footnotesize
-\caption{Accuracy on all 875 answerable questions and after excluding 24 questions without an on-page units statement.}
+\caption{Accuracy on all 875 answerable questions and after excluding 30 questions without an on-page units statement.}
 \begin{tabular}{lrrrrrr}\toprule
 Model & C1 all & C1 excl. & C2 all & C2 excl. & C3 all & C3 excl.\\\midrule
-Qwen3.5-9B & 82.7\% & 82.8\% & 84.5\% & 84.6\% & 74.6\% & 75.9\%\\
-gpt-oss-20b & 74.4\% & 75.8\% & 77.4\% & 78.8\% & 80.7\% & 82.1\%\\
-Granite-4.2-8B & 73.3\% & 74.3\% & 76.2\% & 77.3\% & 81.3\% & 83.1\%\\
-GLM-4.6V-Flash & 70.9\% & 71.8\% & 73.0\% & 74.0\% & 82.3\% & 82.7\%\\
-Ministral-3-8B & 66.7\% & 68.4\% & 69.6\% & 71.3\% & -- & --\\
-Gemma-3-12B & 61.4\% & 63.0\% & 64.3\% & 66.0\% & -- & --\\
-Llama-3.1-8B & 58.9\% & 60.3\% & 62.7\% & 64.3\% & -- & --\\
-Phi-4 & 57.3\% & 58.6\% & 60.8\% & 62.2\% & -- & --\\
-Nemotron-Nano-9B-v2 & 42.3\% & 43.5\% & 42.4\% & 43.6\% & 54.4\% & 55.9\%\\
-OLMo-3-7B & 17.1\% & 17.3\% & 17.3\% & 17.4\% & -- & --\\
+Qwen3.5-9B & 82.7\% & 82.7\% & 84.5\% & 84.5\% & 74.6\% & 76.1\%\\
+gpt-oss-20b & 74.4\% & 76.0\% & 77.4\% & 79.1\% & 80.7\% & 82.4\%\\
+Granite-4.2-8B & 73.3\% & 74.4\% & 76.2\% & 77.3\% & 81.3\% & 83.6\%\\
+GLM-4.6V-Flash & 70.9\% & 72.3\% & 73.0\% & 74.6\% & 82.3\% & 83.0\%\\
+Ministral-3-8B & 66.7\% & 68.8\% & 69.6\% & 71.7\% & -- & --\\
+Gemma-3-12B & 61.4\% & 63.4\% & 64.3\% & 66.5\% & -- & --\\
+Llama-3.1-8B & 58.9\% & 60.4\% & 62.7\% & 64.4\% & -- & --\\
+Phi-4 & 57.3\% & 58.9\% & 60.8\% & 62.5\% & -- & --\\
+Nemotron-Nano-9B-v2 & 42.3\% & 43.8\% & 42.4\% & 43.9\% & 54.4\% & 56.0\%\\
+OLMo-3-7B & 17.1\% & 17.4\% & 17.3\% & 17.5\% & -- & --\\
 \bottomrule\end{tabular}
 \end{table}
 
-\section{Within-model comparisons}
+\section{Within-model comparisons}\label{app:within}
 {\footnotesize
 \begin{longtable}{llrrrr}
 \caption{Paired exact McNemar tests. ``A/B'' counts questions favouring only the first or second setup; $p$ values are Holm-adjusted.}\\\toprule

@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import json
 import math
+import re
 import sys
 from itertools import combinations
 from pathlib import Path
@@ -178,20 +179,50 @@ UNIT_WORD = {3: "thousand", 6: "million", 9: "billion"}
 
 
 def no_units_header(qs: dict, pages: dict) -> list[str]:
-    """Answerable questions whose evidence page never states the scale word (found after the results: the filer
-    states it once on an earlier page). Used only for the sensitivity analysis; the frozen dataset is unchanged."""
+    """Answerable questions whose evidence page states no units (found after the results: the filer states them once
+    on an earlier page): no plural scale word ("millions") on the page and no scale written with the figure itself
+    ("$5 million"). A singular mention in unrelated prose ("$253 million of credits") is not a units statement for a
+    table. Used only for the sensitivity analysis; the frozen dataset is unchanged."""
     out = []
     for q in qs.values():
         g = q["gold"]
         if g["status"] == "found" and g.get("scale") in UNIT_WORD and g["unit"] in ("USD", "shares"):
-            if UNIT_WORD[g["scale"]] not in pages[g["evidence"][0]["page"]]["text"].lower():
+            word, ev = UNIT_WORD[g["scale"]], g["evidence"][0]
+            if word + "s" not in pages[ev["page"]]["text"].lower() and not re.search(rf"\d\s*{word}", ev["line"].lower()):
                 out.append(q["id"])
     return sorted(out)
 
 
+def quotes_whole_line(r: dict, q: dict, pages: dict) -> bool:
+    """Whether a passing answer's quote is one complete line of the cited page (the checker requires less: any
+    verbatim run of text on that page, whitespace normalised)."""
+    labels = dict(zip(q["page_labels"], q["pages"], strict=True))
+    text = pages[labels[checker.to_page(r["answer"]["page"])]]["text"]
+    return checker.norm_ws(str(r["answer"]["span"])) in {checker.norm_ws(x) for x in text.split("\n")}
+
+
+def robustness(qs: dict, pages: dict, rows_by: dict, noheader: set) -> dict:
+    """Plain-setup figures that qualify the headline definitions, over the ten ranked models."""
+    c1 = {m: rows_by[(m, "C1")] for m in TEN}
+    correct = [(r, qs[r["id"]]) for rows in c1.values() for r in rows if r["outcome"] == "correct"]
+    invented = {m: sum(r["outcome"] == "invented" and r["failed_check"] is None for r in rows) for m, rows in c1.items()}
+    kept = [r for rows in c1.values() for r in rows if r["outcome"] == "confident_wrong" and r["id"] not in noheader]
+    finished = {r["id"] for r in rows_by[("qwen3.5-9b", "C3")] if r["slice"] != "S8" and not r.get("truncated")}
+    plain = [r for r in c1["qwen3.5-9b"] if r["id"] in finished]
+    return {
+        "correct": len(correct),
+        "correct_partial_quote": sum(not quotes_whole_line(r, q, pages) for r, q in correct),
+        "invented_passing": sum(invented.values()),
+        "invented_passing_min": min(invented.values()), "invented_passing_max": max(invented.values()),
+        "scale_share_without_noheader": sum(r["category"] == "scale_or_unit" for r in kept) / len(kept),
+        "q35_plain_on_finished": checker._rate(sum(r["outcome"] == "correct" for r in plain), len(plain)),
+    }
+
+
 def compute() -> dict:
     qs = load_questions()
-    noheader = set(no_units_header(qs, load_pages()))
+    pages = load_pages()
+    noheader = set(no_units_header(qs, pages))
     prof, meta = profiles(), model_meta()
     models = TEN + SUPPLEMENTARY
     runs: dict[str, dict] = {}
@@ -312,6 +343,7 @@ def compute() -> dict:
 
     return {
         "cw_split": cw_split,
+        "robustness": robustness(qs, pages, rows_by, noheader),
         "dataset": json.loads((ROOT / "dataset" / "stats.json").read_text()),
         "no_units_header": sorted(noheader),
         "frozen": json.loads((ROOT / "dataset" / "FROZEN.json").read_text()),
