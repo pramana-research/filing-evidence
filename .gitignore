@@ -26,3 +26,8 @@ report/build/
 
 # upload bundle, rebuilt by report/arxiv.py --bundle
 paper/arxiv-source.tar.gz
+paper/main.aux
+paper/main.fdb_latexmk
+paper/main.fls
+paper/main.log
+paper/main.out

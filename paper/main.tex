@@ -14,14 +14,22 @@
 \usepackage[font=small,labelfont=bf]{caption}
 \usepackage[authoryear,round]{natbib}
 \usepackage{xcolor}
+\usepackage{float}
+\usepackage{placeins}
 \usepackage{url}
 \usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black,breaklinks=true]{hyperref}
 \setlist{itemsep=2pt,topsep=4pt}
+\renewcommand{\topfraction}{.92}
+\renewcommand{\bottomfraction}{.8}
+\renewcommand{\textfraction}{.08}
+\renewcommand{\floatpagefraction}{.8}
+\setcounter{topnumber}{3}
+\setcounter{totalnumber}{5}
 \graphicspath{{figures/}}
 \hypersetup{pdftitle={Show Your Work: Can Small Open Models Read SEC Filings with Evidence a Machine Can Check?},pdfauthor={Krishna Nandula}}
 
 \title{Show Your Work: Can Small Open Models Read SEC Filings with Evidence a Machine Can Check?\thanks{Preprint. This report has not been peer-reviewed.}}
-\author{Krishna Nandula\\Independent Researcher}
+\author{Krishna Nandula\\Independent Researcher\\\texttt{krsna.nandula@gmail.com}}
 \date{November 2026}
 
 \begin{document}
@@ -48,7 +56,7 @@ Our contributions are: (1) a benchmark whose answer keys come from filers' machi
 Financial question answering has been studied with FinQA \citep{chen2021finqa}, TAT-QA \citep{zhu2021tatqa}, FinanceBench \citep{islam2023financebench} and DocFinQA \citep{reddy2024docfinqa}. These benchmarks focus mainly on answer correctness and numerical reasoning. Work on attribution evaluates whether generated statements are supported by cited sources \citep{bohnet2022attributed,gao2023alce,liu2023verifiability}. Filing-Evidence combines the two concerns in a narrow, fully automatic setting: every answer must carry a verbatim quote, and correctness is graded against inline XBRL \citep{xbrl2013inline}.
 
 \section{Benchmark design}
-\begin{figure}[t]
+\begin{figure}[!htbp]
 \centering\includegraphics[width=\linewidth]{pipeline.pdf}
 \caption{Construction and evaluation pipeline.}\label{fig:pipeline}
 \end{figure}
@@ -57,7 +65,7 @@ Financial question answering has been studied with FinQA \citep{chen2021finqa}, 
 
 \paragraph{Questions.} Each question names an item, company and period and is shown with three pages: the answer page, an adjacent page and a random distractor, in random order. The benchmark has eight slices of 125 questions (Table~\ref{tab:slices}). In S8 the requested figure is absent from the pages and the correct response is ``not found''.
 
-\begin{table}[t]\centering\small
+\begin{table}[!htbp]\centering\small
 \caption{Benchmark slices (125 questions each).}\label{tab:slices}
 \begin{tabular}{llr}\toprule
 Slice & Content & Companies\\\midrule
@@ -76,18 +84,19 @@ S8 & Not in the provided pages & 45\\
 
 \paragraph{Checker and metrics.} Models return JSON with a value, scale, page and quoted line, or \texttt{not\_found}. An answer passes when it parses, cites a page that was shown, quotes a line verbatim from that page, and the value appears in the quote (Figure~\ref{fig:checker}). Sign is not graded because filers display negative values inconsistently. \emph{Accuracy} is the share of the 875 answerable questions answered correctly with passing evidence. The \emph{confident-wrong rate} is the share of all 1,000 answers that pass every check but are wrong. \emph{Abstention accuracy} is the share of S8 questions answered ``not found''. Rates carry 95\% Wilson intervals \citep{wilson1927}. Paired comparisons use exact McNemar tests \citep{mcnemar1947} with Holm correction \citep{holm1979} within each family, at $\alpha=0.05$.
 
-\begin{figure}[t]
+\begin{figure}[!htbp]
 \centering\includegraphics[width=\linewidth]{checker.pdf}
 \caption{The checker. It uses the answer and the pages only; comparison with the answer key happens afterwards, for scoring.}\label{fig:checker}
 \end{figure}
 
+\FloatBarrier
 \section{Models and setups}
 All models were served with vLLM~0.33.0 \citep{kwon2023vllm} on one NVIDIA RTX~4090 at temperature~0, using each model's chat template and one shared prompt (Table~\ref{tab:models}). Qwen3-8B, the model of an earlier pilot, is a supplementary baseline and is excluded from model rankings. The setups are shown in Figure~\ref{fig:setups}. C2 reuses C1's first answer and retries only answers that fail a check; the retry message names the failed check and never reveals the answer. gpt-oss-20b has no non-reasoning mode, so its C1 and C2 use low reasoning effort and its C3 uses high effort.
 
-\begin{table}[t]\centering\footnotesize
+\begin{table}[!htbp]\centering\footnotesize
 \caption{Models evaluated. Parameter counts are as published and may include unused vision components. * Supplementary baseline.}\label{tab:models}
-\begin{tabular}{lllllll}\toprule
-Model & Developer & Params & Precision & Repo created & Reasoning & Licence\\\midrule
+\setlength{\tabcolsep}{4pt}\begin{tabular}{lllllll}\toprule
+Model & Developer & Params & Precision & Created & Reasoning & Licence\\\midrule
 Qwen3.5-9B & Alibaba & 9.7B & bf16 & 2026-02 & yes & Apache 2.0\\
 Granite-4.2-8B & IBM & 8.8B & bf16 & 2026-08 & yes & Apache 2.0\\
 Ministral-3-8B & Mistral & 8.9B & bf16 & 2025-10 & no & Apache 2.0\\
@@ -102,16 +111,17 @@ Qwen3-8B* & Alibaba & 8.2B & bf16 & 2025-04 & yes & Apache 2.0\\
 \bottomrule\end{tabular}
 \end{table}
 
-\begin{figure}[t]
+\begin{figure}[!htbp]
 \centering\includegraphics[width=\linewidth]{setups.pdf}
 \caption{The three experimental setups.}\label{fig:setups}
 \end{figure}
 
+\FloatBarrier
 \section{Results}
 \subsection{RQ1: Reliability}
 Table~\ref{tab:results} and Figure~\ref{fig:frontier} summarise the results. In the plain setup Qwen3.5-9B reaches 82.7\% (95\% CI 80.1--85.1\%) and is significantly more accurate than every other model (Figure~\ref{fig:significance}). Figure~\ref{fig:outcomes} shows where the answers go. Abstention accuracy ranges from 77.6\% to 100.0\%.
 
-\begin{table}[t]\centering\footnotesize
+\begin{table}[!htbp]\centering\footnotesize
 \caption{Accuracy (of 875), confident-wrong answers (of 1,000) and abstention (of 125, plain setup). ``--'': no reasoning mode. * Supplementary baseline.}\label{tab:results}
 \begin{tabular}{lrrrrrrr}\toprule
 & \multicolumn{2}{c}{C1 Plain} & \multicolumn{2}{c}{C2 Retry} & \multicolumn{2}{c}{C3 Thinking} & \\
@@ -130,37 +140,38 @@ Qwen3-8B* & 66.1\% & 94 & 67.3\% & 101 & 74.1\% & 37 & 88\\
 \bottomrule\end{tabular}
 \end{table}
 
-\begin{figure}[t]
-\centering\includegraphics[width=\linewidth]{frontier.pdf}
+\begin{figure}[!htbp]
+\centering\includegraphics[width=.86\linewidth]{frontier.pdf}
 \caption{Accuracy against confident-wrong rate for each model and setup. Up and to the left is better.}\label{fig:frontier}
 \end{figure}
 
-\begin{figure}[t]
-\centering\includegraphics[width=.72\linewidth]{significance.pdf}
+\begin{figure}[!htbp]
+\centering\includegraphics[width=.6\linewidth]{significance.pdf}
 \caption{Pairwise differences in plain-setup accuracy (exact McNemar, Holm-corrected over 45 pairs).}\label{fig:significance}
 \end{figure}
 
-\begin{figure}[t]
-\centering\includegraphics[width=\linewidth]{outcomes.pdf}
+\begin{figure}[!htbp]
+\centering\includegraphics[width=.86\linewidth]{outcomes.pdf}
 \caption{Outcomes of the 875 answerable questions in the plain setup.}\label{fig:outcomes}
 \end{figure}
 
+\FloatBarrier
 \subsection{RQ2: Where models fail}
 Pooled over the ten models, plain-setup accuracy is 79.2\% on current-period statements, but 46.0\% on segments, 41.4\% on numbers in prose and 50.5\% on units and per-share items (Figure~\ref{fig:slices}).
 
 The 944 plain-setup confident-wrong answers across the ten models divide into scale or unit errors (57\%), another period or column of the right line (30\%) and wrong items (13\%), as shown in Figure~\ref{fig:cwmix}. The checker cannot detect the first two classes because the quote is genuine and contains the reported digits. Figure~\ref{fig:example} shows a real case.
 
-\begin{figure}[t]
-\centering\includegraphics[width=\linewidth]{slices.pdf}
+\begin{figure}[!htbp]
+\centering\includegraphics[width=.86\linewidth]{slices.pdf}
 \caption{Plain-setup accuracy by model and slice (S8: correct ``not found'').}\label{fig:slices}
 \end{figure}
 
-\begin{figure}[t]
-\centering\includegraphics[width=\linewidth]{cw-mix.pdf}
+\begin{figure}[!htbp]
+\centering\includegraphics[width=.82\linewidth]{cw-mix.pdf}
 \caption{Confident-wrong answers by error type, plain setup.}\label{fig:cwmix}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[!htbp]
 \small\raggedright
 \fbox{\parbox{.97\linewidth}{\raggedright
 \textbf{Question.} What was Bank of America Corporation's net change in derivatives for the nine months ended September 30, 2025?\\[3pt]
@@ -170,21 +181,23 @@ The 944 plain-setup confident-wrong answers across the ten models divide into sc
 \caption{A confident-wrong answer from Qwen3.5-9B in the plain setup (Bank of America Corporation, 10-Q). The line is correct but the figure comes from another column.}\label{fig:example}
 \end{figure}
 
+\FloatBarrier
 \subsection{RQ3: Retry and reasoning}
 Figure~\ref{fig:effects} shows the change from the plain setup. Check-and-retry raises accuracy by 0.1 to 3.9 points, significantly for 8 of the ten models. It never reduces confident-wrong answers, and it significantly increases them for 4 models (Ministral-3-8B, Phi-4, Gemma-3-12B, Llama-3.1-8B). A retry can make a wrong value pass by finding a line that contains it. For Phi-4, 16 of 177 retried answers became confident-wrong.
 
 Reasoning reduces confident-wrong answers for all 5 ranked models with a reasoning mode (4 significantly), and it raises accuracy for 4 of them. Qwen3.5-9B is the exception: accuracy falls from 82.7\% to 74.6\%. It reached the pre-specified 8,192-token limit on 180 questions, 88 of which produced no parseable answer; its accuracy on untruncated answerable questions was 85.1\%. Reasoning multiplies mean generated tokens by 8 to 67 times (Figure~\ref{fig:cost}).
 
-\begin{figure}[t]
-\centering\includegraphics[width=\linewidth]{effects.pdf}
+\begin{figure}[!htbp]
+\centering\includegraphics[width=.86\linewidth]{effects.pdf}
 \caption{Change from the plain setup. Filled markers are significant after Holm correction.}\label{fig:effects}
 \end{figure}
 
-\begin{figure}[t]
-\centering\includegraphics[width=\linewidth]{cost.pdf}
+\begin{figure}[!htbp]
+\centering\includegraphics[width=.8\linewidth]{cost.pdf}
 \caption{Accuracy against mean generated tokens per answer (log scale). * Supplementary baseline.}\label{fig:cost}
 \end{figure}
 
+\FloatBarrier
 \section{Discussion}
 Requiring a verbatim quote exposes many errors at low cost, but it does not establish that the selected figure or its units are right. Because most passing errors occur on the correct line, a stronger checker could require the column header and units statement to be quoted and verify their relationship to the selected figure. Retrying should also be treated cautiously: a retried answer that passes may have been adapted to the checker rather than corrected.
 
@@ -202,8 +215,10 @@ Requiring a verbatim quote exposes many errors at low cost, but it does not esta
 \section{Conclusion}
 Small open models can often extract figures from SEC filings with verifiable quotes, and model choice matters substantially. Verbatim evidence is necessary but insufficient: errors in units and columns can pass automatic checks. Future work should verify the relationship between a figure, its column and its units.
 
+\FloatBarrier
 \section*{Data and code availability}
-Code and protocol: \url{https://github.com/pramana-research/filing-evidence}. Questions, page texts, model outputs and server logs: \url{https://huggingface.co/datasets/pramana-research/filing-evidence}.
+\noindent Code and protocol:\\\url{https://github.com/pramana-research/filing-evidence}\\[4pt]
+Questions, page texts, model outputs and server logs:\\\url{https://huggingface.co/datasets/pramana-research/filing-evidence}
 
 \section*{Acknowledgements and AI use}
 The author conceived and directed this study, defined its research questions and design, and made all decisions on scope, methods and publication. Claude (Anthropic) was used as an assistant for implementing code, running analyses, reviewing the quality-control samples and drafting text. The author reviewed the manuscript and takes full responsibility for its content. This work was done independently; it does not represent the views of any employer, and it is not financial or investment advice.
@@ -224,9 +239,10 @@ The author conceived and directed this study, defined its research questions and
 \bibitem[Zhu et~al.(2021)]{zhu2021tatqa} F. Zhu et al. TAT-QA: A question answering benchmark on a hybrid of tabular and textual content in finance. In \emph{Proceedings of ACL-IJCNLP}, 2021.
 \end{thebibliography}
 
+\clearpage
 \appendix
 \section{Sensitivity to off-page units}\label{app:sens}
-\begin{table}[h]\centering\footnotesize
+\begin{table}[H]\centering\footnotesize
 \caption{Accuracy on all 875 answerable questions and after excluding 24 questions without an on-page units statement.}
 \begin{tabular}{lrrrrrr}\toprule
 Model & C1 all & C1 excl. & C2 all & C2 excl. & C3 all & C3 excl.\\\midrule
@@ -276,8 +292,8 @@ Qwen3-8B & C2 vs C3 & 70/129 & 0.000278 & 73/9 & 3.17e-12\\
 \end{longtable}}
 
 \section{Confident-wrong rates}
-\begin{figure}[h]
-\centering\includegraphics[width=\linewidth]{leaderboard-cw.pdf}
+\begin{figure}[H]
+\centering\includegraphics[width=.86\linewidth]{leaderboard-cw.pdf}
 \caption{Confident-wrong rate with 95\% Wilson intervals.}
 \end{figure}
 
