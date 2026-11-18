@@ -19,7 +19,7 @@
 {% macro pipeline() %}
 <svg class="diagram" viewBox="0 0 760 250" role="img" aria-labelledby="pt pd" xmlns="http://www.w3.org/2000/svg">
 <title id="pt">How the benchmark is built and run</title>
-<desc id="pd">Filings from SEC EDGAR; gold answers from the filers' own inline XBRL tags; 1,000 questions, hand-checked and frozen; ten models served on one GPU in three setups; an automatic checker grades every answer.</desc>
+<desc id="pd">Filings from SEC EDGAR; gold answers from the filers' own inline XBRL tags; 1,000 questions, reviewed and frozen; ten models served on one GPU in three setups; an automatic checker grades every answer.</desc>
 {{ defs() }}
 <text x="0" y="16" font-size="11" font-weight="600" fill="#5B6472" letter-spacing="1">BUILD THE BENCHMARK (BEFORE ANY MODEL RUNS)</text>
 {{ box(0, 30, 170, 86, "SEC EDGAR", "90 filings, 45 companies", "latest 10-K and 10-Q") }}
@@ -28,7 +28,7 @@
 {{ arrow(378, 73, 398, 73) }}
 {{ box(400, 30, 170, 86, "1,000 questions", "8 kinds of content", "3 pages shown per question") }}
 {{ arrow(572, 73, 592, 73) }}
-{{ box(594, 30, 166, 86, "Hand check, freeze", "98 of 100 correct", "sha256 fingerprint", fill="#EEF0FA", stroke="#C4CBEA") }}
+{{ box(594, 30, 166, 86, "QC review, freeze", "98 of 100 passed", "sha256 fingerprint", fill="#EEF0FA", stroke="#C4CBEA") }}
 <text x="0" y="152" font-size="11" font-weight="600" fill="#5B6472" letter-spacing="1">RUN AND GRADE</text>
 {{ box(0, 166, 248, 74, "10 open models, one RTX 4090", "7–21B parameters, served with vLLM", "") }}
 {{ arrow(250, 203, 270, 203) }}

@@ -122,7 +122,7 @@ errors passes through it. Section 7 discusses what closes that gap.</p>
 <h2 id="design">2 · Benchmark design</h2>
 <figure>
   <div class="canvas">{{ dg.pipeline() }}</div>
-  <figcaption><b>Figure 1.</b> How the benchmark was built and run. Everything above the line was finished, hand-checked and fingerprinted before any model saw a question.</figcaption>
+  <figcaption><b>Figure 1.</b> How the benchmark was built and run. Everything above the line was finished, reviewed and fingerprinted before any model saw a question.</figcaption>
 </figure>
 
 <h3>2.1 Filings and answer key</h3>
@@ -155,9 +155,9 @@ figure on a row with a printed label, the row must be fully populated, the perio
 and the question names the item by its printed row label when that label is unique on the shown pages.</p>
 
 <h3>2.3 Quality control and freeze</h3>
-<p>Before any model ran, 100 questions (stratified across slices) were checked by hand against the rendered filing in
+<p>Before any model ran, 100 questions (stratified across slices) were reviewed one by one against the rendered filing by an AI assistant, under the author's direction, in
 each round; the protocol required at least 98 correct. Rounds one to three failed on wording (87, 76 and 96 of 100),
-never on gold values: all 400 hand-checked gold values across the four rounds were right. Round four passed with 98 of
+never on gold values: all 400 gold values reviewed across the four rounds were judged right. Round four passed with 98 of
 100, and the dataset was frozen with a SHA-256 fingerprint
 (<code>{{ d.frozen.fingerprint[:16] }}…</code>). Every result cites it, and the published data verifies against it.</p>
 
@@ -363,6 +363,7 @@ suspicion than a passed first answer, or re-verify it more strictly.</p>
   <li><b>US large-cap filings, text only.</b> 45 companies, recent 10-K and 10-Q filings. No small caps, foreign filers, scanned documents, charts or images.</li>
   <li><b>Three pages per question.</b> The model is shown the right page plus two others; finding the page in a whole filing is a harder, separate task.</li>
   <li><b>Units stated off-page.</b> After the results we found {{ H.n_noheader }} answerable questions (2.7%) whose page shows no units statement, because the filer states it once on an earlier page. The frozen dataset was not changed. Excluding them moves no model's accuracy by more than {{ "%.1f" | format(100 * H.sens_max) }} points and changes no ranking (Appendix A).</li>
+  <li><b>Quality control was AI-assisted.</b> The review of the 100-question samples was performed by an AI assistant under the author's direction. The author did not independently verify the full sample.</li>
   <li><b>Error categories were not reviewed by hand.</b> The protocol planned a hand review of 20 answers per model to confirm the automatic error categories; it was not carried out (recorded as a deviation). Outcomes themselves are exact, by construction; the categories are rule-based.</li>
   <li><b>Thinking budget.</b> The 8,192-token reasoning limit was fixed in advance; it truncated {{ q35.setups.C3.tokens.truncated }} of {{ "qwen3.5-9b" | name }}'s and {{ R["gpt-oss-20b"].setups.C3.tokens.truncated }} of gpt-oss-20b's answers. A larger budget would likely raise their thinking-mode results.</li>
   <li><b>Contamination.</b> Models may have seen older filings in training. 89 of the 90 filings were filed in 2026, and eight of the ten models were released before 2026. A memorised answer must still come with a verbatim quote from the pages shown.</li>

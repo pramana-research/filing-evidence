@@ -10,7 +10,7 @@ before any model ran; later changes are logged in its §12.
 
 **Code and record here, data on Hugging Face.** Questions, page texts, every model reply and the server logs are in
 the Hugging Face dataset [`pramana-research/filing-evidence`](https://huggingface.co/datasets/pramana-research/filing-evidence).
-Git holds the code, the protocol, the QC hand checks, the dataset fingerprint (`dataset/FROZEN.json`) and each
+Git holds the code, the protocol, the QC reviews, the dataset fingerprint (`dataset/FROZEN.json`) and each
 run's `summary.json` / `run.json`.
 
 **Paper:** [Show Your Work: Can Small Open Models Read SEC Filings with Evidence a Machine Can Check?](https://pramana-research.com/research/filing-evidence)
@@ -23,7 +23,7 @@ or accepted by any conference or journal.
 |---|---|
 | `PROTOCOL.md` | the pre-registration: questions, data, setups, checks, metrics, statistics, deviations |
 | `fetch.py`, `builder.py`, `ixbrl.py`, `edgar.py` | download the filings from SEC EDGAR and build the questions |
-| `qc/`, `freeze.py`, `dataset/FROZEN.json` | hand checks of 100 questions per round, then the frozen fingerprint |
+| `qc/`, `freeze.py`, `dataset/FROZEN.json` | AI-assisted reviews of 100 questions per round (see PROTOCOL §12), then the frozen fingerprint |
 | `checker.py` | the automatic checks (§7), outcomes (§8), error categories (§9), metrics |
 | `prompts/`, `models.yaml`, `templates/` | the prompt, the retry messages, how each model is served and asked |
 | `serve.py`, `runner.py`, `run_all.sh`, `loadcheck.sh` | serve a model with vLLM, run a setup, run everything |
