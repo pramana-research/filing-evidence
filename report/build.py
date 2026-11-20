@@ -27,14 +27,21 @@ DATE = "17 November 2026"
 SITE = "https://pramana-research.com"
 GITHUB = "https://github.com/pramana-research/filing-evidence"
 HF = "https://huggingface.co/datasets/pramana-research/filing-evidence"
+ARXIV_ID = "2611.24990"
+ARXIV = f"https://arxiv.org/abs/{ARXIV_ID}"
+DOI = f"10.48550/arXiv.{ARXIV_ID}"
 BIBTEX = f"""@misc{{pramana2026filingevidence,
-  title  = {{Show Your Work: Can Small Open Models Read SEC Filings with Evidence a Machine Can Check?}},
-  author = {{Nandula, Krishna}},
-  organization = {{Pramana Research}},
-  year   = {{2026}},
-  month  = {{nov}},
-  note   = {{Community research report, not peer-reviewed. Filing-Evidence benchmark, version {VERSION}}},
-  url    = {{{SITE}/research/filing-evidence}}
+  title         = {{Show Your Work: Can Small Open Models Read SEC Filings with Evidence a Machine Can Check?}},
+  author        = {{Nandula, Krishna}},
+  organization  = {{Pramana Research}},
+  year          = {{2026}},
+  month         = {{nov}},
+  eprint        = {{{ARXIV_ID}}},
+  archivePrefix = {{arXiv}},
+  primaryClass  = {{cs.SE}},
+  doi           = {{{DOI}}},
+  url           = {{{ARXIV}}},
+  note          = {{Community research report, not peer-reviewed. Filing-Evidence benchmark, version {VERSION}}}
 }}"""
 
 
@@ -153,7 +160,8 @@ def build(out: Path) -> None:
                           "caught_wrong": ("mid", "Caught wrong"), "missed": ("mid", "Missed"),
                           "unverifiable_right": ("mid", "Right value, unusable evidence")}
     common = {"d": d, "H": H, "NAMES": charts.NAMES, "SETUP_NAME": charts.SETUP_NAME, "VERSION": VERSION,
-              "DATE": DATE, "SITE": SITE, "GITHUB": GITHUB, "HF": HF, "BIBTEX": BIBTEX}
+              "DATE": DATE, "SITE": SITE, "GITHUB": GITHUB, "HF": HF, "BIBTEX": BIBTEX,
+              "ARXIV": ARXIV, "ARXIV_ID": ARXIV_ID}
     figs = {
         "frontier": charts.frontier(d), "leader": charts.leaderboard(d),
         "leader_cw": charts.leaderboard(d, metric="confident_wrong"), "outcomes": charts.outcome_bars(d, "C1"),
@@ -183,6 +191,8 @@ def build(out: Path) -> None:
                      "contentUrl": f"{SITE}/research/filing-evidence/pdf/filing-evidence.pdf"},
         "isAccessibleForFree": True,
         "genre": "Community research report", "creativeWorkStatus": "Not peer-reviewed",
+        "sameAs": ARXIV,
+        "identifier": {"@type": "PropertyValue", "propertyID": "DOI", "value": DOI, "url": f"https://doi.org/{DOI}"},
     }
     common["JSONLD_PAPER"] = json.dumps(paper_ld, ensure_ascii=False)
     base = out / "research"

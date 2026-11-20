@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use Filing-Evidence, please cite the paper below."
+title: "Filing-Evidence"
+version: "1.0"
+date-released: "2026-11-17"
+license: Apache-2.0
+repository-code: "https://github.com/pramana-research/filing-evidence"
+url: "https://pramana-research.com/research/filing-evidence"
+authors:
+  - family-names: Nandula
+    given-names: Krishna
+    affiliation: Pramana Research
+identifiers:
+  - type: doi
+    value: 10.48550/arXiv.2611.24990
+    description: arXiv preprint
+preferred-citation:
+  type: article
+  title: "Show Your Work: Can Small Open Models Read SEC Filings with Evidence a Machine Can Check?"
+  authors:
+    - family-names: Nandula
+      given-names: Krishna
+      affiliation: Pramana Research
+  year: 2026
+  month: 11
+  doi: 10.48550/arXiv.2611.24990
+  url: "https://arxiv.org/abs/2611.24990"
+  identifiers:
+    - type: other
+      value: "arXiv:2611.24990"
+  notes: "Community research report, not peer-reviewed."

@@ -3,7 +3,7 @@ pretty_name: Filing-Evidence
 license: cc-by-4.0
 language: [en]
 task_categories: [question-answering]
-tags: [finance, sec-filings, xbrl, evidence, benchmark]
+tags: [finance, sec-filings, xbrl, evidence, benchmark, arxiv:2611.24990]
 size_categories: [1K<n<10K]
 configs:
   - config_name: questions
@@ -32,7 +32,24 @@ Source: SEC EDGAR filings (public records), most recent 10-K and 10-Q of 45 US c
 2026-11-15.
 
 Licence: CC BY 4.0, Copyright 2026 Pramana Research. Model outputs remain subject to
-the licence of the model that produced them. Paper: https://pramana-research.com/research/filing-evidence (a community research report, not peer-reviewed)
+the licence of the model that produced them. Paper: https://pramana-research.com/research/filing-evidence, also on arXiv as
+[arXiv:2611.24990](https://arxiv.org/abs/2611.24990) (a community research report, not peer-reviewed)
+
+## Citation
+
+```bibtex
+@misc{pramana2026filingevidence,
+  title         = {Show Your Work: Can Small Open Models Read SEC Filings with Evidence a Machine Can Check?},
+  author        = {Nandula, Krishna},
+  organization  = {Pramana Research},
+  year          = {2026},
+  eprint        = {2611.24990},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.SE},
+  doi           = {10.48550/arXiv.2611.24990},
+  url           = {https://arxiv.org/abs/2611.24990}
+}
+```
 
 ## Disclaimer
 

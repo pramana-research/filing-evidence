@@ -14,8 +14,9 @@ Git holds the code, the protocol, the QC reviews, the dataset fingerprint (`data
 run's `summary.json` / `run.json`.
 
 **Paper:** [Show Your Work: Can Small Open Models Read SEC Filings with Evidence a Machine Can Check?](https://pramana-research.com/research/filing-evidence)
-(with a page per model and PDFs). An independent community research report: not peer-reviewed, and not submitted to
-or accepted by any conference or journal.
+(with a page per model and PDFs), also on arXiv as [arXiv:2611.24990](https://arxiv.org/abs/2611.24990) [cs.SE]
+(DOI [10.48550/arXiv.2611.24990](https://doi.org/10.48550/arXiv.2611.24990)). An independent community research
+report: not peer-reviewed, and not submitted to or accepted by any conference or journal.
 
 ## Layout
 
@@ -56,6 +57,26 @@ bash report/pdf.sh ../pramana-research-landing                      # PDFs (head
 
 Rebuilding the dataset from SEC EDGAR (`fetch.py`, then `builder.py`) needs `SEC_USER_AGENT` in `.env`; the result
 is checked against the same fingerprint.
+
+## How to cite
+
+```bibtex
+@misc{pramana2026filingevidence,
+  title         = {Show Your Work: Can Small Open Models Read SEC Filings with Evidence a Machine Can Check?},
+  author        = {Nandula, Krishna},
+  organization  = {Pramana Research},
+  year          = {2026},
+  month         = {nov},
+  eprint        = {2611.24990},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.SE},
+  doi           = {10.48550/arXiv.2611.24990},
+  url           = {https://arxiv.org/abs/2611.24990},
+  note          = {Community research report, not peer-reviewed. Filing-Evidence benchmark, version 1.0}
+}
+```
+
+GitHub's "Cite this repository" button reads [CITATION.cff](CITATION.cff).
 
 ## Licence
 
