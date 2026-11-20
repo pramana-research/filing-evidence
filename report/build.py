@@ -22,8 +22,9 @@ sys.path.insert(0, str(HERE))
 import charts  # noqa: E402
 import stats  # noqa: E402
 
-VERSION = "1.0"
+VERSION = "1.1"
 DATE = "17 November 2026"
+UPDATED = "20 November 2026"
 SITE = "https://pramana-research.com"
 GITHUB = "https://github.com/pramana-research/filing-evidence"
 HF = "https://huggingface.co/datasets/pramana-research/filing-evidence"
@@ -41,7 +42,7 @@ BIBTEX = f"""@misc{{pramana2026filingevidence,
   primaryClass  = {{cs.SE}},
   doi           = {{{DOI}}},
   url           = {{{ARXIV}}},
-  note          = {{Community research report, not peer-reviewed. Filing-Evidence benchmark, version {VERSION}}}
+  note          = {{Community research report, not peer-reviewed. Filing-Evidence benchmark, report version {VERSION}}}
 }}"""
 
 
@@ -160,7 +161,7 @@ def build(out: Path) -> None:
                           "caught_wrong": ("mid", "Caught wrong"), "missed": ("mid", "Missed"),
                           "unverifiable_right": ("mid", "Right value, unusable evidence")}
     common = {"d": d, "H": H, "NAMES": charts.NAMES, "SETUP_NAME": charts.SETUP_NAME, "VERSION": VERSION,
-              "DATE": DATE, "SITE": SITE, "GITHUB": GITHUB, "HF": HF, "BIBTEX": BIBTEX,
+              "DATE": DATE, "UPDATED": UPDATED, "SITE": SITE, "GITHUB": GITHUB, "HF": HF, "BIBTEX": BIBTEX,
               "ARXIV": ARXIV, "ARXIV_ID": ARXIV_ID}
     figs = {
         "frontier": charts.frontier(d), "leader": charts.leaderboard(d),
@@ -184,7 +185,7 @@ def build(out: Path) -> None:
         "@context": "https://schema.org", "@type": "ScholarlyArticle",
         "headline": "Show Your Work: Can Small Open Models Read SEC Filings with Evidence a Machine Can Check?",
         "alternativeHeadline": "Filing-Evidence: a pre-registered benchmark of ten open models on one consumer GPU",
-        "author": author, "publisher": org, "datePublished": "2026-11-17", "version": VERSION,
+        "author": author, "publisher": org, "datePublished": "2026-11-17", "dateModified": "2026-11-20", "version": VERSION,
         "url": f"{SITE}/research/filing-evidence", "license": "https://creativecommons.org/licenses/by/4.0/",
         "image": f"{SITE}/research/assets/og-filing-evidence.png", "isBasedOn": dataset,
         "encoding": {"@type": "MediaObject", "encodingFormat": "application/pdf",

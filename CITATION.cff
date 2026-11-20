@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use Filing-Evidence, please cite the paper below."
 title: "Filing-Evidence"
-version: "1.0"
+version: "1.1"
 date-released: "2026-11-17"
 license: Apache-2.0
 repository-code: "https://github.com/pramana-research/filing-evidence"

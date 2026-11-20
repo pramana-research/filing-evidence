@@ -72,7 +72,7 @@ is checked against the same fingerprint.
   primaryClass  = {cs.SE},
   doi           = {10.48550/arXiv.2611.24990},
   url           = {https://arxiv.org/abs/2611.24990},
-  note          = {Community research report, not peer-reviewed. Filing-Evidence benchmark, version 1.0}
+  note          = {Community research report, not peer-reviewed. Filing-Evidence benchmark, report version 1.1}
 }
 ```
 
