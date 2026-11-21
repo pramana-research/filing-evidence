@@ -227,7 +227,7 @@ def build(out: Path) -> None:
         (fe / charts.slug(m) / "index.html").write_text(html)
         (fe / f"{charts.slug(m)}.html").unlink(missing_ok=True)
     # sitemap and robots for the whole site (the home page plus the research pages)
-    urls = ["/", "/research", "/research/filing-evidence"] + [
+    urls = ["/", "/research", "/research/filing-evidence", "/legal"] + [
         f"/research/filing-evidence/{charts.slug(m)}" for m in d["ten"] + d["supplementary"]]
     urls += ["/research/filing-evidence/pdf/filing-evidence.pdf"] + [
         f"/research/filing-evidence/pdf/{charts.slug(m)}.pdf" for m in d["ten"] + d["supplementary"]]
