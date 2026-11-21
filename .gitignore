@@ -34,3 +34,8 @@ paper/main.out
 
 # Explorer model-server logs (local only)
 logs/explorer-serve-*.log
+
+# Sectors set data lives on Hugging Face, never in git
+sets/sectors/dataset/questions.jsonl
+sets/sectors/dataset/pages.jsonl
+sets/sectors/results/**/answers.jsonl
