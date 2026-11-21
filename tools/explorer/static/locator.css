@@ -1,0 +1,7 @@
+/* Injected into the original filing: highlight colours for the Explorer's locator.
+   Rows get a strong outline (filings often shade rows themselves); the located value gets a solid fill. */
+.fe-key-row > td { box-shadow: inset 0 2px 0 #C98A12, inset 0 -2px 0 #C98A12 !important; }
+.fe-key { background: #F2B544 !important; color: #12161C !important; outline: 2px solid #C98A12; outline-offset: 1px; border-radius: 2px; }
+.fe-model-row > td { box-shadow: inset 0 2px 0 #2E3F9E, inset 0 -2px 0 #2E3F9E !important; }
+.fe-model { background: #2E3F9E !important; color: #FFFFFF !important; outline: 2px solid #1B2873; outline-offset: 1px; border-radius: 2px; }
+.fe-key.fe-model { background: linear-gradient(90deg, #F2B544 50%, #2E3F9E 50%) !important; color: #12161C !important; }

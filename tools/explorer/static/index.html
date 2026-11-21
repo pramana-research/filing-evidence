@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Filing-Evidence Explorer</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M24 3 L45 24 L24 45 L3 24 Z' fill='%232E3F9E'/%3E%3Cpath d='M24 3 L45 24 L24 24 Z' fill='%23F2B544'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <svg width="26" height="26" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 3 L45 24 L24 45 L3 24 Z" fill="#2E3F9E"/><path d="M24 3 L45 24 L24 24 Z" fill="#F2B544"/><path d="M3 24 H45 M24 3 V45" stroke="#FFFFFF" stroke-width="1.8"/></svg>
+    <div><div class="brand-name">Filing-Evidence Explorer</div><div class="brand-sub">Pramana Research · internal review tool</div></div>
+  </div>
+  <div class="topbar-mid">
+    <label class="field-inline"><span>Question set</span><select id="set-select"></select></label>
+  </div>
+  <div class="server" id="server">
+    <span class="status-dot" id="server-dot"></span>
+    <div class="server-text"><div class="server-label">Model server</div><div id="server-msg">Checking…</div></div>
+    <select id="model-select" aria-label="Model"></select>
+    <button class="btn btn-primary" id="load-btn">Load model</button>
+    <button class="btn" id="stop-btn">Stop</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="filters">
+      <input type="search" id="search" placeholder="Search questions or IDs  ( / )">
+      <label class="field"><span>Company</span><select id="company"></select></label>
+      <div class="field-row">
+        <label class="field"><span>Form</span><select id="form"><option value="">All</option><option>10-K</option><option>10-Q</option></select></label>
+        <label class="field"><span>Slice</span><select id="slice"><option value="">All</option></select></label>
+      </div>
+      <div class="segmented" id="order">
+        <button data-v="id" class="on">By ID</button><button data-v="hardest">Hardest</button><button data-v="wrong_passed">Wrong but passed</button>
+      </div>
+    </div>
+    <div class="list-head"><span id="list-count">–</span><span class="hint">↑ ↓ to move</span></div>
+    <div class="qlist" id="qlist"></div>
+  </aside>
+
+  <main class="main" id="main">
+    <div class="empty" id="empty">Select a question on the left.</div>
+    <div id="detail" hidden>
+      <section class="qhead">
+        <div class="crumbs" id="crumbs"></div>
+        <h1 id="qtitle"></h1>
+        <div class="qmeta" id="qmeta"></div>
+      </section>
+      <nav class="tabs" id="tabs">
+        <button data-tab="key" class="on">Answer key</button>
+        <button data-tab="pages">Source pages</button>
+        <button data-tab="answers">Model answers <span class="count" id="ans-count"></span></button>
+        <button data-tab="live">Live test</button>
+        <button data-tab="review">Review <span class="count" id="rev-flag"></span></button>
+      </nav>
+      <section class="panel" data-panel="key" id="panel-key"></section>
+      <section class="panel" data-panel="pages" id="panel-pages" hidden></section>
+      <section class="panel" data-panel="answers" id="panel-answers" hidden></section>
+      <section class="panel" data-panel="live" id="panel-live" hidden>
+        <div class="card">
+          <div class="card-head"><h3>Ask a model this question</h3><span class="muted" id="live-model-note"></span></div>
+          <div class="live-controls">
+            <div class="segmented" id="setup">
+              <button data-v="C1" class="on">Plain (C1)</button><button data-v="C2">Check + retry (C2)</button><button data-v="C3">Thinking (C3)</button>
+            </div>
+            <label class="toggle"><input type="checkbox" id="edit-prompt"> Edit the prompt</label>
+            <button class="btn btn-primary" id="ask-btn">Ask the model</button>
+          </div>
+          <p class="muted small" id="edit-note" hidden>Edited prompts are logged and flagged as <b>not comparable</b> with the benchmark.</p>
+          <details class="prompt-box" id="prompt-box"><summary>Prompt sent to the model</summary><textarea id="prompt" spellcheck="false" readonly></textarea></details>
+        </div>
+        <div id="live-result"></div>
+      </section>
+      <section class="panel" data-panel="review" id="panel-review" hidden>
+        <div class="card">
+          <div class="card-head"><h3>Your review</h3><span class="muted" id="review-when"></span></div>
+          <div class="form-grid">
+            <div class="field"><span>Is the answer key correct?</span><div class="segmented" id="rv-gold"><button data-v="yes">Yes</button><button data-v="no">No</button><button data-v="ambiguous">Ambiguous</button></div></div>
+            <div class="field"><span>Do you agree with the checker's verdicts?</span><div class="segmented" id="rv-checker"><button data-v="yes">Yes</button><button data-v="no">No</button><button data-v="n/a">Not applicable</button></div></div>
+            <div class="field full"><span>Why is this datapoint hard?</span><div class="chips" id="rv-why"></div></div>
+            <label class="field full"><span>Note</span><textarea id="rv-note" rows="4" placeholder="What did you see?"></textarea></label>
+          </div>
+          <div class="form-actions"><button class="btn btn-primary" id="save-review">Save review</button><span class="muted" id="review-count"></span></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <aside class="inspector" id="inspector" hidden>
+    <div class="insp-head">
+      <div>
+        <div class="insp-title" id="insp-title">Source filing</div>
+        <div class="insp-status" id="insp-status"></div>
+      </div>
+      <div class="insp-actions">
+        <div class="segmented" id="insp-view"><button data-v="filing" class="on">Original filing</button><button data-v="pages">Pages shown to the model</button></div>
+        <button class="btn icon" id="insp-close" title="Close (Esc)">✕</button>
+      </div>
+    </div>
+    <div class="insp-legend"><span><i class="lg-key"></i>Answer key (XBRL)</span><span><i class="lg-model"></i>Model answer</span></div>
+    <div class="insp-body">
+      <iframe id="insp-frame" title="Original filing"></iframe>
+      <div class="insp-pages" id="insp-pages" hidden></div>
+    </div>
+  </aside>
+</div>
+<div class="toast" id="toast" hidden></div>
+<script src="/static/app.js"></script>
+</body>
+</html>

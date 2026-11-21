@@ -31,3 +31,6 @@ paper/main.fdb_latexmk
 paper/main.fls
 paper/main.log
 paper/main.out
+
+# Explorer model-server logs (local only)
+logs/explorer-serve-*.log

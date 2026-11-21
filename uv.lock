@@ -973,6 +973,10 @@ dependencies = [
 build = [
     { name = "transformers" },
 ]
+explore = [
+    { name = "fastapi" },
+    { name = "uvicorn" },
+]
 run = [
     { name = "mlflow" },
 ]
@@ -988,15 +992,17 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "fastapi", marker = "extra == 'explore'", specifier = ">=0.115" },
     { name = "httpx", specifier = ">=0.27" },
     { name = "huggingface-hub", specifier = ">=0.28" },
     { name = "mlflow", marker = "extra == 'run'", specifier = ">=3.0" },
     { name = "python-dotenv", specifier = ">=1.0" },
     { name = "pyyaml", specifier = ">=6.0" },
     { name = "transformers", marker = "extra == 'build'", specifier = ">=5.0" },
+    { name = "uvicorn", marker = "extra == 'explore'", specifier = ">=0.30" },
     { name = "vllm", marker = "extra == 'serve'", specifier = "==0.33.0" },
 ]
-provides-extras = ["run", "build", "serve"]
+provides-extras = ["run", "build", "serve", "explore"]
 
 [package.metadata.requires-dev]
 dev = [

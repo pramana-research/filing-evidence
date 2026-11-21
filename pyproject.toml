@@ -15,6 +15,7 @@ dependencies = [
 run = ["mlflow>=3.0"]                    # runner.py logs finished runs to MLflow when MLFLOW_TRACKING_URI is set
 build = ["transformers>=5.0"]            # builder.py / smoke.py count prompt tokens
 serve = ["vllm==0.33.0"]                 # the version every reported run used
+explore = ["fastapi>=0.115", "uvicorn>=0.30"]  # tools/explorer: local review UI
 
 [dependency-groups]
 dev = ["pytest>=8", "ruff>=0.6"]
@@ -41,3 +42,5 @@ select = ["E", "F", "I", "B", "UP"]
 "tests/test_filing_evidence_checker.py" = ["E501"]
 # The report builds SVG and HTML in strings; their lines are long by nature.
 "report/**" = ["E501"]
+# The Explorer builds HTML in strings too.
+"tools/explorer/**" = ["E501"]
